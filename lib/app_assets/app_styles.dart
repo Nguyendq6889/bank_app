@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStyles {
+  static const Color primaryColor = Color(0xff4380F4);
 
   static const TextStyle titleAppBarBlack = TextStyle(
     fontSize: 18,
@@ -25,6 +26,6 @@ class AppStyles {
   static const TextStyle textButtonBlue = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,
-    color: Color(0xff4380F4),
+    color: primaryColor,
   );
 }

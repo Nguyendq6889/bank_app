@@ -1,10 +1,10 @@
-import 'package:bank_app/app_styles.dart';
+import 'package:bank_app/app_assets/app_styles.dart';
 import 'package:bank_app/widgets/item_in_payment_widget.dart';
 import 'package:bank_app/widgets/main_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'app_icons.dart';
-import 'app_images.dart';
+import '../app_assets/app_icons.dart';
+import '../app_assets/app_images.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

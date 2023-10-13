@@ -1,5 +1,6 @@
+import 'package:bank_app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'my_app.dart';
+import 'screens/my_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Mulish',
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const SplashScreen(),
     );
   }
 }
