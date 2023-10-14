@@ -1,4 +1,5 @@
 import 'package:bank_app/main.dart';
+import 'package:bank_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'my_app.dart';
@@ -13,8 +14,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(milliseconds: 500), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const MyHomePage()));
+    Future.delayed(const Duration(seconds: 1), () {
+      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const MyHomePage()));
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()), (route) => false);
     });
     super.initState();
   }
