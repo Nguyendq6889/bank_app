@@ -8,4 +8,5 @@ class AppIcons {
   static const String iconAirplane = '$iconsPath/icon_airplane.svg';
   static const String iconInternalBank = '$iconsPath/icon_internal_bank.svg';
   static const String iconExternalBank = '$iconsPath/icon_external_bank.svg';
+  static const String iconFingerprint = '$iconsPath/icon_fingerprint.svg';
 }
