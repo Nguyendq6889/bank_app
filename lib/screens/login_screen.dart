@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
 import '../widgets/main_button_widget.dart';
+import 'main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -197,7 +198,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              MainButtonWidget(text: 'Đăng nhập', onTap: () {}),
+                              MainButtonWidget(text: 'Đăng nhập', onTap: () {
+                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false);
+                              }),
                               const SizedBox(height: 16),
                               GestureDetector(
                                 onTap: () {

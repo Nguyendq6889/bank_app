@@ -1,8 +1,5 @@
-import 'package:bank_app/main.dart';
 import 'package:bank_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'my_app.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
