@@ -1,4 +1,5 @@
 import 'package:bank_app/app_assets/app_icons.dart';
+import 'package:bank_app/app_assets/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_icons.dart';
@@ -7,77 +8,90 @@ class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _NavigationExampleState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _NavigationExampleState extends State<MainScreen> {
-  int currentPageIndex = 0;
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
+  static const TextStyle selectedLabelStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.6);
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 4: School',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        indicatorColor: Colors.amber[800],
-        selectedIndex: currentPageIndex,
-        destinations: <Widget>[
-          NavigationDestination(
-            selectedIcon: SvgPicture.asset(AppIcons.iconHomeBlue),
+      appBar: AppBar(
+        title: const Text('BottomNavigationBar Sample'),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        // selectedFontSize: 14,
+        selectedLabelStyle: selectedLabelStyle,
+        // unselectedFontSize: 14,
+        unselectedLabelStyle: selectedLabelStyle,
+        selectedItemColor: const Color(0XFF5289F4),
+        unselectedItemColor: const Color(0xffC4C4C4),
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(AppIcons.iconHomeBlue),
             icon: SvgPicture.asset(AppIcons.iconHomeGray),
             label: 'Trang chủ',
           ),
-          NavigationDestination(
-            selectedIcon: SvgPicture.asset(AppIcons.iconTransactionsBlue),
+          BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(AppIcons.iconTransactionsBlue),
             icon: SvgPicture.asset(AppIcons.iconTransactionsGray),
             label: 'Giao dịch',
           ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.school),
-            icon: Icon(Icons.school_outlined),
+          BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(AppIcons.iconQRPay, width: 22),
+            icon: SvgPicture.asset(AppIcons.iconQrGray),
             label: 'QR',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.business),
+          BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(AppIcons.iconNotificationsBlue),
+            icon: SvgPicture.asset(AppIcons.iconNotificationsGray),
             label: 'Thông báo',
           ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.school),
-            icon: Icon(Icons.school_outlined),
+          BottomNavigationBarItem(
+            activeIcon: SvgPicture.asset(AppIcons.iconAccountBlue),
+            icon: SvgPicture.asset(AppIcons.iconAccountGray),
             label: 'Tài khoản',
           ),
         ],
+        currentIndex: _selectedIndex,
+//         selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
-      body: <Widget>[
-        Container(
-          color: Colors.red,
-          alignment: Alignment.center,
-          child: const Text('Page 1'),
-        ),
-        Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text('Page 2'),
-        ),
-        Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
-        ),
-        Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text('Page 4'),
-        ),
-        Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 5'),
-        ),
-      ][currentPageIndex],
     );
   }
 }

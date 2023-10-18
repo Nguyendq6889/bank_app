@@ -15,5 +15,7 @@ class AppIcons {
   static const String iconTransactionsBlue = '$iconsPath/icon_transactions_blue.svg';
   static const String iconQrGray = '$iconsPath/icon_qr_gray.svg';
   static const String iconNotificationsGray = '$iconsPath/icon_notifications_gray.svg';
+  static const String iconNotificationsBlue = '$iconsPath/icon_notifications_blue.svg';
   static const String iconAccountGray = '$iconsPath/icon_account_gray.svg';
+  static const String iconAccountBlue = '$iconsPath/icon_account_blue.svg';
 }
