@@ -14,8 +14,16 @@ class AppIcons {
   static const String iconTransactionsGray = '$iconsPath/icon_transactions_gray.svg';
   static const String iconTransactionsBlue = '$iconsPath/icon_transactions_blue.svg';
   static const String iconQrGray = '$iconsPath/icon_qr_gray.svg';
-  static const String iconNotificationsGray = '$iconsPath/icon_notifications_gray.svg';
-  static const String iconNotificationsBlue = '$iconsPath/icon_notifications_blue.svg';
+  static const String iconNotifications = '$iconsPath/icon_notifications.svg';
+  static const String iconNotificationsHomeGray = '$iconsPath/icon_notifications_home_gray.svg';
+  static const String iconNotificationsHomeBlue = '$iconsPath/icon_notifications_home_blue.svg';
   static const String iconAccountGray = '$iconsPath/icon_account_gray.svg';
   static const String iconAccountBlue = '$iconsPath/icon_account_blue.svg';
+  static const String iconArrowRight = '$iconsPath/icon_arrow_right.svg';
+  static const String iconSecurity = '$iconsPath/icon_security.svg';
+  static const String iconHelp = '$iconsPath/icon_help.svg';
+  static const String iconContact = '$iconsPath/icon_contact.svg';
+  static const String iconLanguages = '$iconsPath/icon_languages.svg';
+  static const String iconLogOut = '$iconsPath/icon_log_out.svg';
+  static const String iconMark = '$iconsPath/icon_mark.svg';
 }

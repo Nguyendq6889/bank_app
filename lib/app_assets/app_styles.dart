@@ -5,6 +5,7 @@ class AppStyles {
 
   static const TextStyle titleAppBarBlack = TextStyle(
     fontSize: 18,
+    height: 1.5,
     fontWeight: FontWeight.w700,
     color: Color(0xff2E2E2E),
   );
@@ -15,6 +16,13 @@ class AppStyles {
     fontSize: 14,
     fontWeight: FontWeight.w600,
     color: Colors.white,
+  );
+
+  static const TextStyle textButtonGray = TextStyle(
+    fontSize: 14,
+    height: 1.5,
+    fontWeight: FontWeight.w600,
+    color: Color(0xff888888),
   );
 
   static const TextStyle textButtonBlack = TextStyle(

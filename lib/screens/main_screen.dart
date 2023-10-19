@@ -3,6 +3,7 @@ import 'package:bank_app/app_assets/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_icons.dart';
+import 'account_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -32,10 +33,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 3: Business',
       style: optionStyle,
     ),
-    Text(
-      'Index 4: School',
-      style: optionStyle,
-    ),
+    AccountScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -47,9 +45,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -78,8 +73,8 @@ class _MainScreenState extends State<MainScreen> {
             label: 'QR',
           ),
           BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.iconNotificationsBlue),
-            icon: SvgPicture.asset(AppIcons.iconNotificationsGray),
+            activeIcon: SvgPicture.asset(AppIcons.iconNotificationsHomeBlue),
+            icon: SvgPicture.asset(AppIcons.iconNotificationsHomeGray),
             label: 'Thông báo',
           ),
           BottomNavigationBarItem(
