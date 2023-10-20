@@ -26,4 +26,8 @@ class AppIcons {
   static const String iconLanguages = '$iconsPath/icon_languages.svg';
   static const String iconLogOut = '$iconsPath/icon_log_out.svg';
   static const String iconMark = '$iconsPath/icon_mark.svg';
+  static const String iconClose = '$iconsPath/icon_close.svg';
+  static const String iconSelected = '$iconsPath/icon_selected.svg';
+  static const String iconVietNam = '$iconsPath/icon_viet_nam.svg';
+  static const String iconEnglish = '$iconsPath/icon_english.svg';
 }
