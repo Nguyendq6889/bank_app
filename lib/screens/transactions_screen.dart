@@ -5,14 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_images.dart';
 import '../app_assets/app_styles.dart';
 
-class AccountScreen extends StatefulWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+class TransactionsScreen extends StatefulWidget {
+  const TransactionsScreen({Key? key}) : super(key: key);
 
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  State<TransactionsScreen> createState() => _TransactionsScreenState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _TransactionsScreenState extends State<TransactionsScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -24,7 +24,7 @@ class _AccountScreenState extends State<AccountScreen> {
             children: [
               Container(
                 width: size.width,
-                height: size.height * 20.689 / 100,
+                height: size.height * 16.748 / 100,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
@@ -34,48 +34,61 @@ class _AccountScreenState extends State<AccountScreen> {
                     tileMode: TileMode.clamp,
                   ),
                 ),
+                child: Center(child: Text('Lịch sử giao dịch', style: AppStyles.titleAppBarWhite)),
+              ),
+              Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Row(
+                  padding: const EdgeInsets.fromLTRB(16, 51, 16, 16),
+                  child: Column(
                     children: [
-                      Container(
-                        width: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1),
-                        ),
-                        child: Image.asset(AppImages.avatar),
-                      ),
-                      const SizedBox(width: 16),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        // mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('Đỗ Quang Nguyên', style: AppStyles.titleAppBarWhite),
-                          const SizedBox(height: 4),
-                          Text(
-                            "Chạm để xem và sửa thông tin",
-                            style: AppStyles.textFeatures.copyWith(color: Colors.white, fontWeight: FontWeight.w400)
-                          )
+                          Container(
+                              width: 109,
+                              height: 44,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: Color(0xfff7f6f6)
+                              )
+                          ),
+                          Container(
+                              width: 109,
+                              height: 44,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: Color(0xfff7f6f6)
+                              )
+                          ),
+                          Container(
+                              width: 109,
+                              height: 44,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: Color(0xfff7f6f6)
+                              )
+                          ),
                         ],
-                      )
+                      ),
+
+
+                      Expanded(child: SizedBox())
                     ],
                   ),
                 ),
-              ),
-              const Expanded(
-                child: SizedBox(),
               ),
             ],
           ),
           Positioned(
             left: 16,
-            top: size.height * 16.748 / 100,
+            top: size.height * 11.822 / 100,
             child: Column(
               children: [
                 Container(
                   width: size.width - 32,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  height: size.height * 9.852 / 100,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(16),
@@ -87,33 +100,9 @@ class _AccountScreenState extends State<AccountScreen> {
                       )
                     ],
                   ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                  child: Row(
                     children: [
-                      _buildFeature(AppIcons.iconNotifications, 'Thông báo'),
-                      const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconSecurity, 'Bảo mật', showMark: true),
-                      const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconHelp, 'Trợ giúp'),
-                      const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconContact, 'Liên hệ'),
-                      const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(
-                        AppIcons.iconLanguages,
-                        'Ngôn ngữ',
-                        showLanguage: true,
-                        onTap: () {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            _modalBottomSheetThanhToan(
-                              onTap: () {
-                                print('opennnn');
-                              }
-                            );
-                          });
-                        }
-                      ),
-                      const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconLogOut, 'Đăng xuất', hideArrowRight: true),
+
                     ],
                   ),
                 ),
@@ -143,8 +132,8 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  label,
-                  style: AppStyles.textButtonGray
+                    label,
+                    style: AppStyles.textButtonGray
                 )
               ],
             ),
@@ -180,8 +169,8 @@ class _AccountScreenState extends State<AccountScreen> {
                 SvgPicture.asset(icon),
                 const SizedBox(width: 16),
                 Text(
-                  label,
-                  style: AppStyles.textNormalBlack
+                    label,
+                    style: AppStyles.textNormalBlack
                 )
               ],
             ),
@@ -198,8 +187,8 @@ class _AccountScreenState extends State<AccountScreen> {
     return showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16)
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16)
         ),
       ),
       context: context,
@@ -225,8 +214,8 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                     const SizedBox(height: 8),
                     const Text(
-                      "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?",
-                      style: AppStyles.textButtonGray
+                        "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?",
+                        style: AppStyles.textButtonGray
                     ),
                   ],
                 ),

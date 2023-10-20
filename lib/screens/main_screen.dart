@@ -1,5 +1,6 @@
 import 'package:bank_app/app_assets/app_icons.dart';
 import 'package:bank_app/app_assets/app_styles.dart';
+import 'package:bank_app/screens/transactions_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_icons.dart';
@@ -21,10 +22,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 0: Home',
       style: optionStyle,
     ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
+    TransactionsScreen(),
     Text(
       'Index 2: School',
       style: optionStyle,
