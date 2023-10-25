@@ -1,0 +1,30 @@
+{
+  "welcome_to": "Chào mừng đến với",
+
+  "username": "Tên đăng nhập",
+  "phone_number": "Số điện thoại",
+  "password": "Mật khẩu",
+  "sign_in": "Đăng nhập",
+  "forgot_password": "Quên mật khẩu?",
+  "book_tickets": "Đặt vé",
+  "support": "Hỗ trợ",
+  "sign_up": "Đăng ký tạo tài khoản",
+
+  "home": "Trang chủ",
+  "transactions": "Giao dịch",
+  "notifications": "Thông báo",
+  "account": "Tài khoản",
+
+  "transactions_history": "Lịch sử giao dịch",
+
+  "touch_to_view": "Chạm để xem và sửa thông tin",
+  "notification": "Thông báo",
+  "security": "Bảo mật",
+  "help": "Trợ giúp",
+  "contact": "Liên hệ",
+  "language": "Ngôn ngữ",
+  "sign_out": "Đăng xuất",
+  "version": "Phiên bản",
+  "select_language": "Chọn ngôn ngữ",
+  "language_use_question": "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?"
+}

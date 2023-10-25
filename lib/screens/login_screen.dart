@@ -1,4 +1,5 @@
 import 'package:bank_app/app_assets/app_images.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -60,8 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             _featuresTextStyle('QR Pay', AppIcons.iconQRPay),
                             _featuresTextStyle('ATM', AppIcons.iconATM),
-                            _featuresTextStyle('Đặt vé', AppIcons.iconTicket),
-                            _featuresTextStyle('Hỗ trợ', AppIcons.iconSupport),
+                            _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicket),
+                            _featuresTextStyle('support'.tr(), AppIcons.iconSupport),
                           ],
                         ),
                       ],
@@ -74,10 +75,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: const Color(0xff5dc9a0),
                     child: GestureDetector(
                       onTap: () {
-                        print("Đăng ký tạo tài khoản");
+                        // print("Đăng ký tạo tài khoản");
                       },
                       child: Text(
-                        "Đăng ký tạo tài khoản",
+                        'sign_up'.tr(),
                         textAlign: TextAlign.center,
                         style: AppStyles.textButtonWhite.copyWith(
                           height: 1.5,
@@ -132,17 +133,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: _userNameController,
                                     style: AppStyles.textNormalBlack,
                                     cursorColor: AppStyles.primaryColor,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                                    decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                                       isCollapsed: true,
                                       border: InputBorder.none,
-                                      hintText: 'Username / Phone number',
-                                        hintStyle: TextStyle(
+                                      hintText: '${'username'.tr()} / ${'phone_number'.tr()}',
+                                        hintStyle: const TextStyle(
                                         fontSize: 14, color: Color(0xffA1A1A1), fontWeight: FontWeight.w400
                                       ),
                                     ),
                                     onChanged: (value) {
-                                      print(_userNameController.text.trim());
+                                      // print(_userNameController.text.trim());
                                     },
                                     onTapOutside: (PointerDownEvent event) {
                                       FocusManager.instance.primaryFocus?.unfocus();
@@ -163,17 +164,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                     controller: _passwordController,
                                     style: AppStyles.textNormalBlack,
                                     cursorColor: AppStyles.primaryColor,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                                    decoration: InputDecoration(
+                                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                                       isCollapsed: true,
                                       border: InputBorder.none,
-                                      hintText: 'Password',
-                                        hintStyle: TextStyle(
+                                      hintText: 'password'.tr(),
+                                        hintStyle: const TextStyle(
                                         fontSize: 14, color: Color(0xffA1A1A1), fontWeight: FontWeight.w400
                                       )
                                     ),
                                     onChanged: (value) {
-                                      print(_passwordController.text.trim());
+                                      // print(_passwordController.text.trim());
                                     },
                                     onTapOutside: (PointerDownEvent event) {
                                       FocusManager.instance.primaryFocus?.unfocus();
@@ -183,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  print("Touch ID");
+                                  // print("Touch ID");
                                 },
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -198,16 +199,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              MainButtonWidget(text: 'Đăng nhập', onTap: () {
+                              MainButtonWidget(text: 'sign_in'.tr(), onTap: () {
                                 Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false);
                               }),
                               const SizedBox(height: 16),
                               GestureDetector(
                                 onTap: () {
-                                  print('Quên mật khẩu?');
+                                  // print('Quên mật khẩu?');
                                 },
                                 child: Text(
-                                  'Quên mật khẩu?',
+                                  'forgot_password'.tr(),
                                   style: AppStyles.textButtonBlue.copyWith(height: 1.5, decoration: TextDecoration.underline),
                                 ),
                               ),

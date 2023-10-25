@@ -1,4 +1,5 @@
 import 'package:bank_app/screens/login_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -31,21 +32,21 @@ class _SplashScreenState extends State<SplashScreen> {
             tileMode: TileMode.clamp,
           ),
         ),
-        child: const Center(
+        child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "Chào mừng đến với",
-                style: TextStyle(
+                'welcome_to'.tr(),
+                style: const TextStyle(
                   height: 1.5,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
                 )
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 "Mobile banking",
                 style: TextStyle(
                   height: 1.5,

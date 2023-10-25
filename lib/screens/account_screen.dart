@@ -1,4 +1,5 @@
 import 'package:bank_app/app_assets/app_icons.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,6 +14,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+  String language = 'vi_VN';
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -54,7 +56,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           Text('Đỗ Quang Nguyên', style: AppStyles.titleAppBarWhite),
                           const SizedBox(height: 4),
                           Text(
-                            "Chạm để xem và sửa thông tin",
+                            "touch_to_view".tr(),
                             style: AppStyles.textFeatures.copyWith(color: Colors.white, fontWeight: FontWeight.w400)
                           )
                         ],
@@ -90,17 +92,17 @@ class _AccountScreenState extends State<AccountScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      _buildFeature(AppIcons.iconNotifications, 'Thông báo'),
+                      _buildFeature(AppIcons.iconNotifications, 'notification'.tr()),
                       const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconSecurity, 'Bảo mật', showMark: true),
+                      _buildFeature(AppIcons.iconSecurity, 'security'.tr(), showMark: true),
                       const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconHelp, 'Trợ giúp'),
+                      _buildFeature(AppIcons.iconHelp, 'help'.tr()),
                       const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconContact, 'Liên hệ'),
+                      _buildFeature(AppIcons.iconContact, 'contact'.tr()),
                       const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
                       _buildFeature(
                         AppIcons.iconLanguages,
-                        'Ngôn ngữ',
+                        'language'.tr(),
                         showLanguage: true,
                         onTap: () {
                           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -113,12 +115,12 @@ class _AccountScreenState extends State<AccountScreen> {
                         }
                       ),
                       const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
-                      _buildFeature(AppIcons.iconLogOut, 'Đăng xuất', hideArrowRight: true),
+                      _buildFeature(AppIcons.iconLogOut, 'sign_out'.tr(), hideArrowRight: true),
                     ],
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text('Phiên bản v2.0', style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1))),
+                Text('version'.tr() + ' v2.0', style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1))),
               ],
             ),
           )
@@ -151,7 +153,7 @@ class _AccountScreenState extends State<AccountScreen> {
             (hideArrowRight ?? false) ? const SizedBox() : Row(
               children: [
                 (showLanguage ?? false)
-                    ? Text('Tiếng Việt', style: AppStyles.textButtonBlue.copyWith(fontWeight: FontWeight.w600))
+                    ? Text(language == 'vi_VN' ? 'Tiếng Việt' : 'English', style: AppStyles.textButtonBlue.copyWith(fontWeight: FontWeight.w600))
                     : const SizedBox(),
                 (showMark ?? false)
                     ? SvgPicture.asset(AppIcons.iconMark)
@@ -216,7 +218,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('Chọn ngôn ngữ', style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
+                        Text('select_language'.tr(), style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
                         InkWell(
                           onTap: () => Navigator.pop(context),
                           child: SvgPicture.asset(AppIcons.iconClose),
@@ -224,16 +226,38 @@ class _AccountScreenState extends State<AccountScreen> {
                       ],
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?",
+                    Text(
+                      'language_use_question'.tr(),
                       style: AppStyles.textButtonGray
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 12),
-              _buildLanguageOptions(AppIcons.iconVietNam, 'Tiếng Việt', selected: true),
-              _buildLanguageOptions(AppIcons.iconEnglish, 'English', selected: false),
+              _buildLanguageOptions(
+                AppIcons.iconVietNam,
+                'Tiếng Việt', selected: language == 'vi_VN',
+                onTap: () {
+                  context.setLocale(const Locale('vi', 'VN'));
+                  setState(() {
+                    language = context.locale.toString();
+                  });
+                  Navigator.pop(context);
+                },
+              ),
+              _buildLanguageOptions(
+                AppIcons.iconEnglish,
+                'English', selected: language == 'en_US',
+                onTap: (){
+                  context.setLocale(const Locale('en', 'US'));
+                  setState(() {
+                    language = context.locale.toString();
+                  });
+                  print(context.locale.toString());
+
+                  Navigator.pop(context);
+                },
+              )
             ],
           ),
         );

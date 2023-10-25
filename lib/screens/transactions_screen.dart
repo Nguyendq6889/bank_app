@@ -1,4 +1,5 @@
 import 'package:bank_app/app_assets/app_icons.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -34,7 +35,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     tileMode: TileMode.clamp,
                   ),
                 ),
-                child: Center(child: Text('Lịch sử giao dịch', style: AppStyles.titleAppBarWhite)),
+                child: Center(child: Text('transactions_history'.tr(), style: AppStyles.titleAppBarWhite)),
               ),
               Expanded(
                 child: Padding(

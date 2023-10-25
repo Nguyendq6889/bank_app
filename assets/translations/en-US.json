@@ -1,0 +1,30 @@
+{
+  "welcome_to": "Welcome to",
+
+  "username": "Username",
+  "phone_number": "Phone number",
+  "password": "Password",
+  "sign_in": "Sign in",
+  "forgot_password": "Forgot password?",
+  "book_tickets": "Book tickets",
+  "support": "Support",
+  "sign_up": "Sign up to create an account",
+
+  "home": "Home",
+  "transactions": "Transactions",
+  "notifications": "Notifications",
+  "account": "Account",
+
+  "transactions_history": "Transactions History",
+
+  "touch_to_view": "Touch to view and edit information",
+  "notification": "Notification",
+  "security": "Security",
+  "help": "Help",
+  "contact": "Contact",
+  "language": "Language",
+  "sign_out": "Sign out",
+  "version": "Version",
+  "select_language": "Select language",
+  "language_use_question": "Which language do you want your app to use?"
+}
