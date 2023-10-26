@@ -30,12 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: size.width,
           height: size.height,
           decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xff6592f2), Color(0xff1f68f4)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              tileMode: TileMode.clamp,
-            ),
+            gradient: AppStyles.colorAppBar,
           ),
           child: Stack(
             children: [

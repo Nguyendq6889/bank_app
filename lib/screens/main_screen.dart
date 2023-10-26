@@ -47,44 +47,48 @@ class _MainScreenState extends State<MainScreen> {
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        // selectedFontSize: 14,
-        selectedLabelStyle: selectedLabelStyle,
-        // unselectedFontSize: 14,
-        unselectedLabelStyle: selectedLabelStyle,
-        selectedItemColor: const Color(0XFF5289F4),
-        unselectedItemColor: const Color(0xffC4C4C4),
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.iconHomeBlue),
-            icon: SvgPicture.asset(AppIcons.iconHomeGray),
-            label: 'home'.tr(),
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.iconTransactionsBlue),
-            icon: SvgPicture.asset(AppIcons.iconTransactionsGray),
-            label: 'transactions'.tr(),
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.iconQRPay, width: 22),
-            icon: SvgPicture.asset(AppIcons.iconQrGray),
-            label: 'QR',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.iconNotificationsHomeBlue),
-            icon: SvgPicture.asset(AppIcons.iconNotificationsHomeGray),
-            label: 'notifications'.tr(),
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(AppIcons.iconAccountBlue),
-            icon: SvgPicture.asset(AppIcons.iconAccountGray),
-            label: 'account'.tr(),
-          ),
-        ],
-        currentIndex: _selectedIndex,
+      bottomNavigationBar: Localizations.override(
+        context: context,
+        locale: context.locale,
+        child: BottomNavigationBar(
+          // selectedFontSize: 14,
+          selectedLabelStyle: selectedLabelStyle,
+          // unselectedFontSize: 14,
+          unselectedLabelStyle: selectedLabelStyle,
+          selectedItemColor: const Color(0XFF5289F4),
+          unselectedItemColor: const Color(0xffC4C4C4),
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(AppIcons.iconHomeBlue),
+              icon: SvgPicture.asset(AppIcons.iconHomeGray),
+              label: 'home'.tr(),
+            ),
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(AppIcons.iconTransactionsBlue),
+              icon: SvgPicture.asset(AppIcons.iconTransactionsGray),
+              label: 'transactions'.tr(),
+            ),
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(AppIcons.iconQRPay, width: 22),
+              icon: SvgPicture.asset(AppIcons.iconQrGray),
+              label: 'QR',
+            ),
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(AppIcons.iconNotificationsHomeBlue),
+              icon: SvgPicture.asset(AppIcons.iconNotificationsHomeGray),
+              label: 'notifications'.tr(),
+            ),
+            BottomNavigationBarItem(
+              activeIcon: SvgPicture.asset(AppIcons.iconAccountBlue),
+              icon: SvgPicture.asset(AppIcons.iconAccountGray),
+              label: 'account'.tr(),
+            ),
+          ],
+          currentIndex: _selectedIndex,
 //         selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
+          onTap: _onItemTapped,
+        ),
       ),
     );
   }

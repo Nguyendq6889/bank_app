@@ -18,6 +18,7 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    language = context.locale.toString();
 
     return Scaffold(
       body: Stack(
@@ -29,12 +30,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 height: size.height * 20.689 / 100,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xff6592f2), Color(0xff1f68f4)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    tileMode: TileMode.clamp,
-                  ),
+                  gradient: AppStyles.colorAppBar,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -105,13 +101,9 @@ class _AccountScreenState extends State<AccountScreen> {
                         'language'.tr(),
                         showLanguage: true,
                         onTap: () {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            _modalBottomSheetThanhToan(
-                              onTap: () {
-                                print('opennnn');
-                              }
-                            );
-                          });
+                          // WidgetsBinding.instance.addPostFrameCallback((_) {
+                            _modalBottomSheetThanhToan();
+                          // });
                         }
                       ),
                       const Divider(height: 1, color: Color(0xffF1F1F1), thickness: 1),
@@ -120,7 +112,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Text('version'.tr() + ' v2.0', style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1))),
+                Text('${'version'.tr()} v2.0', style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1))),
               ],
             ),
           )
@@ -196,7 +188,7 @@ class _AccountScreenState extends State<AccountScreen> {
     );
   }
 
-  _modalBottomSheetThanhToan({required VoidCallback onTap}) {
+  _modalBottomSheetThanhToan() {
     return showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -253,8 +245,6 @@ class _AccountScreenState extends State<AccountScreen> {
                   setState(() {
                     language = context.locale.toString();
                   });
-                  print(context.locale.toString());
-
                   Navigator.pop(context);
                 },
               )

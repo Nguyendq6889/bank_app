@@ -28,12 +28,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                 height: size.height * 16.748 / 100,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Color(0xff6592f2), Color(0xff1f68f4)],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    tileMode: TileMode.clamp,
-                  ),
+                  gradient: AppStyles.colorAppBar,
                 ),
                 child: Center(child: Text('transactions_history'.tr(), style: AppStyles.titleAppBarWhite)),
               ),
