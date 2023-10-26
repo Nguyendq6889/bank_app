@@ -1,7 +1,10 @@
 import 'package:bank_app/app_assets/app_images.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:local_auth/local_auth.dart';
 
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
@@ -16,9 +19,21 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  late final LocalAuthentication auth;
+  // bool _supportState = false;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    auth = LocalAuthentication();
+    auth.isDeviceSupported().then((bool isSupported) => setState(() {
+        // _supportState = isSupported;
+      }),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -177,11 +192,29 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 ),
                               ),
+                              // GestureDetector(
+                              //   onTap: () {
+                              //     _getAvailableBiometrics();
+                              //   },
+                              //   child: Row(
+                              //     mainAxisSize: MainAxisSize.min,
+                              //     mainAxisAlignment: MainAxisAlignment.center,
+                              //     children: [
+                              //       SvgPicture.asset(AppIcons.iconFingerprint),
+                              //       const SizedBox(width: 12),
+                              //       Text(
+                              //         "Touch ID",
+                              //         style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
+                              //       )
+                              //     ],
+                              //   ),
+                              // ),
                               GestureDetector(
                                 onTap: () {
-                                  // print("Touch ID");
+                                  _authenticate();
                                 },
                                 child: Row(
+                                  mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SvgPicture.asset(AppIcons.iconFingerprint),
@@ -194,9 +227,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               const SizedBox(height: 16),
-                              MainButtonWidget(text: 'sign_in'.tr(), onTap: () {
-                                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false);
-                              }),
+                              MainButtonWidget(text: 'sign_in'.tr(), onTap: () => _goToMainScreen()),
                               const SizedBox(height: 16),
                               GestureDetector(
                                 onTap: () {
@@ -233,5 +264,42 @@ class _LoginScreenState extends State<LoginScreen> {
         )
       ],
     );
+  }
+
+  // Future<void> _getAvailableBiometrics() async {
+  //   List<BiometricType> availableBiometrics = await auth.getAvailableBiometrics();
+  //   if (kDebugMode) {
+  //     print('List of availableBiometrics: $availableBiometrics');
+  //   }
+  //   if (!mounted) {
+  //     return;
+  //   }
+  // }
+
+  Future<void> _authenticate() async {
+    try {
+      bool authenticated = await auth.authenticate(
+        // localizedReason: 'Let OS determine authentication method',
+        localizedReason: 'text_use_finger'.tr(),
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+          biometricOnly: true
+        ),
+      );
+      if (kDebugMode) {
+        print('Authenticated: $authenticated');
+      }
+      if(authenticated) {
+        _goToMainScreen();
+      }
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
+
+  _goToMainScreen() {
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false);
   }
 }
