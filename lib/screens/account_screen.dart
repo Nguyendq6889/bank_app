@@ -2,6 +2,7 @@ import 'package:bank_app/app_assets/app_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_assets/app_images.dart';
 import '../app_assets/app_styles.dart';
@@ -14,12 +15,35 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  String language = 'vi_VN';
+  String? _language;
+
+  @override
+  void initState() {
+    _getLanguage();
+    super.initState();
+  }
+
+  Future<void> _getLanguage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String savedLanguage = prefs.getString('language') ?? 'en_US';
+    setState(() {
+      _language = savedLanguage;
+    });
+  }
+
+  Future<void> _saveLanguage(String newLanguage) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('language', newLanguage);
+    setState(() {
+      _language = newLanguage;
+    });
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    language = context.locale.toString();
-
     return Scaffold(
       body: Stack(
         children: [
@@ -99,7 +123,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       _buildFeature(
                         AppIcons.iconLanguages,
                         'language'.tr(),
-                        showLanguage: true,
+                        showLanguage: (_language != null) ? true : false,
                         onTap: () {
                           // WidgetsBinding.instance.addPostFrameCallback((_) {
                             _modalBottomSheetThanhToan();
@@ -144,9 +168,12 @@ class _AccountScreenState extends State<AccountScreen> {
             ),
             (hideArrowRight ?? false) ? const SizedBox() : Row(
               children: [
-                (showLanguage ?? false)
-                    ? Text(language == 'vi_VN' ? 'Tiếng Việt' : 'English', style: AppStyles.textButtonBlue.copyWith(fontWeight: FontWeight.w600))
-                    : const SizedBox(),
+                (showLanguage ?? false) ? Text(
+                  _language == 'vi_VN'
+                      ? 'Tiếng Việt'
+                      : 'English',
+                  style: AppStyles.textButtonBlue.copyWith(fontWeight: FontWeight.w600),
+                ) : const SizedBox(),
                 (showMark ?? false)
                     ? SvgPicture.asset(AppIcons.iconMark)
                     : const SizedBox(),
@@ -199,7 +226,7 @@ class _AccountScreenState extends State<AccountScreen> {
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
-          height: 25 * MediaQuery.of(context).size.height / 100,
+          height: 30 * MediaQuery.of(context).size.height / 100,
           child: Column(
             children: [
               Padding(
@@ -228,23 +255,21 @@ class _AccountScreenState extends State<AccountScreen> {
               const SizedBox(height: 12),
               _buildLanguageOptions(
                 AppIcons.iconVietNam,
-                'Tiếng Việt', selected: language == 'vi_VN',
+                'Tiếng Việt',
+                selected: (_language == 'vi_VN') ? true : false,
                 onTap: () {
                   context.setLocale(const Locale('vi', 'VN'));
-                  setState(() {
-                    language = context.locale.toString();
-                  });
+                  _saveLanguage('vi_VN');
                   Navigator.pop(context);
                 },
               ),
               _buildLanguageOptions(
                 AppIcons.iconEnglish,
-                'English', selected: language == 'en_US',
+                'English',
+                selected: (_language == 'en_US') ? true : false,
                 onTap: (){
                   context.setLocale(const Locale('en', 'US'));
-                  setState(() {
-                    language = context.locale.toString();
-                  });
+                  _saveLanguage('en_US');
                   Navigator.pop(context);
                 },
               )

@@ -279,7 +279,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _authenticate() async {
     try {
       bool authenticated = await auth.authenticate(
-        // localizedReason: 'Let OS determine authentication method',
         localizedReason: 'text_use_finger'.tr(),
         options: const AuthenticationOptions(
           stickyAuth: true,
