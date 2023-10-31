@@ -20,7 +20,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   late final LocalAuthentication auth;
-  // bool _supportState = false;
+  bool _supportState = false;
+  List<BiometricType> availableBiometrics = [];
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -28,8 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     auth = LocalAuthentication();
+    _getAvailableBiometrics();
     auth.isDeviceSupported().then((bool isSupported) => setState(() {
-        // _supportState = isSupported;
+        _supportState = isSupported;
       }),
     );
     super.initState();
@@ -209,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               //     ],
                               //   ),
                               // ),
-                              GestureDetector(
+                              if(_supportState) GestureDetector(
                                 onTap: () {
                                   _authenticate();
                                 },
@@ -217,10 +219,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SvgPicture.asset(AppIcons.iconFingerprint),
+                                    availableBiometrics.contains(BiometricType.face)
+                                        ? SvgPicture.asset(AppIcons.iconFaceID, color: AppStyles.primaryColor,)
+                                        : SvgPicture.asset(AppIcons.iconFingerprint),
                                     const SizedBox(width: 12),
                                     Text(
-                                      "Touch ID",
+                                        availableBiometrics.contains(BiometricType.face)
+                                            ? 'Face ID'
+                                            : 'Touch ID',
                                       style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
                                     )
                                   ],
@@ -266,15 +272,15 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Future<void> _getAvailableBiometrics() async {
-  //   List<BiometricType> availableBiometrics = await auth.getAvailableBiometrics();
-  //   if (kDebugMode) {
-  //     print('List of availableBiometrics: $availableBiometrics');
-  //   }
-  //   if (!mounted) {
-  //     return;
-  //   }
-  // }
+  Future<void> _getAvailableBiometrics() async {
+    availableBiometrics = await auth.getAvailableBiometrics();
+    if (kDebugMode) {
+      print('List of availableBiometrics: $availableBiometrics');
+    }
+    if (!mounted) {
+      return;
+    }
+  }
 
   Future<void> _authenticate() async {
     try {
