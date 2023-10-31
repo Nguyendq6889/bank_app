@@ -39,37 +39,78 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     children: [
                       Row(
                         // mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                              width: 109,
+                          Expanded(
+                            child: Container(
+                              // width: 109,
                               height: 44,
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color: Color(0xfff7f6f6)
-                              )
+                                borderRadius: BorderRadius.circular(6),
+                                color: const Color(0xfff7f6f6)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                      "Tháng 11",
+                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                  ),
+                                  SvgPicture.asset(AppIcons.iconArrowDown)
+                                ],
+                              ),
+                            ),
                           ),
-                          Container(
-                              width: 109,
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Container(
+                              // width: 109,
                               height: 44,
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color: Color(0xfff7f6f6)
-                              )
+                                borderRadius: BorderRadius.circular(6),
+                                color: const Color(0xfff7f6f6)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                      "Tháng 11",
+                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                  ),
+                                  SvgPicture.asset(AppIcons.iconArrowDown)
+                                ],
+                              ),
+                            ),
                           ),
-                          Container(
-                              width: 109,
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Container(
+                              // width: 109,
                               height: 44,
+                              padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(6),
-                                  color: Color(0xfff7f6f6)
-                              )
+                                borderRadius: BorderRadius.circular(6),
+                                color: const Color(0xfff7f6f6)
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                      "Tháng 11",
+                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                  ),
+                                  SvgPicture.asset(AppIcons.iconArrowDown)
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
 
 
-                      Expanded(child: SizedBox())
+                      const Expanded(child: SizedBox())
                     ],
                   ),
                 ),
@@ -79,32 +120,104 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
           Positioned(
             left: 16,
             top: size.height * 11.822 / 100,
-            child: Column(
-              children: [
-                Container(
-                  width: size.width - 32,
-                  height: size.height * 9.852 / 100,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.12),
-                        blurRadius: 8, // soften the shadow
-                        spreadRadius: 0, //extend the shadow
-                      )
-                    ],
+            child: Container(
+              width: size.width - 32,
+              height: size.height * 9.852 / 100,
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.12),
+                    blurRadius: 8, // soften the shadow
+                    spreadRadius: 0, //extend the shadow
+                  )
+                ],
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: 12,
+                                  height: 12,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xff5077F7),
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  "Khoản thu",
+                                  style: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1))
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 22),
+                              child: Text(
+                                "16.100.000",
+                                style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                  child: Row(
-                    children: [
-
-                    ],
+                  Container(
+                    width: 1,
+                    height: double.infinity,
+                    color: const Color(0xffEEEEEE),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Text('Phiên bản v2.0', style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1))),
-              ],
+                  Expanded(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: 12,
+                                  height: 12,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xffD03339),
+                                    shape: BoxShape.circle,
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  "Khoản chi",
+                                  style: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1))
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 22),
+                              child: Text(
+                                "2.100.000.000",
+                                style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],
