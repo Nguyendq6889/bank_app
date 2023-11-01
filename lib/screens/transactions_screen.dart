@@ -1,9 +1,9 @@
-import 'package:bank_app/app_assets/app_icons.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../app_assets/app_images.dart';
+import '../app_assets/app_colors.dart';
+import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
 
 class TransactionsScreen extends StatefulWidget {
@@ -17,8 +17,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Column(
@@ -28,22 +28,21 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                 height: size.height * 16.748 / 100,
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: const BoxDecoration(
-                  gradient: AppStyles.colorAppBar,
+                  gradient: AppColors.colorAppBar,
                 ),
-                child: Center(child: Text('transactions_history'.tr(), style: AppStyles.titleAppBarWhite)),
+                child: Center(
+                  child: Text('transactions_history'.tr(), style: AppStyles.titleAppBarWhite),
+                ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 51, 16, 16),
+                  padding: EdgeInsets.fromLTRB(16, size.height * 6.8 / 100, 16, 0),
                   child: Column(
                     children: [
                       Row(
-                        // mainAxisSize: MainAxisSize.min,
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Container(
-                              // width: 109,
                               height: 44,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -54,8 +53,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                      "Tháng 11",
-                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                    'november'.tr(),
+                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
                                   ),
                                   SvgPicture.asset(AppIcons.iconArrowDown)
                                 ],
@@ -65,7 +64,6 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Container(
-                              // width: 109,
                               height: 44,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -76,8 +74,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                      "Tháng 11",
-                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                    '2023',
+                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
                                   ),
                                   SvgPicture.asset(AppIcons.iconArrowDown)
                                 ],
@@ -87,7 +85,6 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: Container(
-                              // width: 109,
                               height: 44,
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
@@ -98,8 +95,8 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                      "Tháng 11",
-                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                    'all'.tr(),
+                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
                                   ),
                                   SvgPicture.asset(AppIcons.iconArrowDown)
                                 ],
@@ -108,9 +105,61 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                           ),
                         ],
                       ),
-
-
-                      const Expanded(child: SizedBox())
+                      const SizedBox(height: 16),
+                      Expanded(
+                        child: ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: 20,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    width: 44,
+                                    height: 44,
+                                    margin: const EdgeInsets.only(right: 12),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(4),
+                                      color: const Color(0xfff8f8f8),
+                                    ),
+                                    child: Center(
+                                      child: SvgPicture.asset(index % 2 == 0 ? AppIcons.iconArrowUpBlue : AppIcons.iconArrowDownRed),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "11/06/2023 12:45",
+                                          style: AppStyles.textFeatures.copyWith(fontWeight: FontWeight.w400)
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          index % 2 == 0
+                                              ? '${'transfer_from'.tr()}: 1014686229'
+                                              : '${'transfer_to'.tr()}: 1014686229',
+                                          style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Text(
+                                    index % 2 == 0
+                                        ? '+1,000,000 ${'currency'.tr()}'
+                                        : '-500,000 ${'currency'.tr()}',
+                                    style: AppStyles.textButtonBlack.copyWith(
+                                      color: index % 2 == 0 ? AppColors.primaryColor : const Color(0xffEB383D),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }
+                        ),
+                      )
                     ],
                   ),
                 ),
@@ -157,7 +206,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "Khoản thu",
+                                  'total_revenues'.tr(),
                                   style: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1))
                                 ),
                               ],
@@ -165,7 +214,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 22),
                               child: Text(
-                                "16.100.000",
+                                "16,100,000",
                                 style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                             )
@@ -199,7 +248,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  "Khoản chi",
+                                  'total_expenditure'.tr(),
                                   style: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1))
                                 ),
                               ],
@@ -207,7 +256,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                             Padding(
                               padding: const EdgeInsets.only(left: 22),
                               child: Text(
-                                "2.100.000.000",
+                                "2,100,000",
                                 style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                             )
