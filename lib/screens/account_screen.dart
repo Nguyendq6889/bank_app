@@ -46,6 +46,7 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Column(
@@ -78,7 +79,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           const SizedBox(height: 4),
                           Text(
                             "touch_to_view".tr(),
-                            style: AppStyles.textFeatures.copyWith(color: Colors.white, fontWeight: FontWeight.w400)
+                            style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
                           )
                         ],
                       )

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../app_assets/app_icons.dart';
 import 'account_screen.dart';
+import 'home_screen.dart';
 import 'transactions_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,14 +15,11 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   static const TextStyle selectedLabelStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.6);
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    HomeScreen(),
     TransactionsScreen(),
     Text(
       'Index 2: School',
