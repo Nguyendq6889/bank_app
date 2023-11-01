@@ -17,6 +17,13 @@
   "account": "Account",
 
   "transactions_history": "Transactions History",
+  "total_revenues": "Total revenues",
+  "total_expenditure": "Total expenditure",
+  "november": "November",
+  "all": "All",
+  "transfer_from": "From",
+  "transfer_to": "To",
+  "currency": "USD",
 
   "touch_to_view": "Touch to view and edit information",
   "notification": "Notification",

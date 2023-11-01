@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
 
 class AppStyles {
-  static const Color primaryColor = Color(0xff4380F4);
-
-  static const LinearGradient colorAppBar = LinearGradient(
-    // colors: [Color(0xff6592f2), Color(0xff1f68f4)],
-    colors: [Color(0xff4E86F3), Color(0xff1F69F6)],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    tileMode: TileMode.clamp,
-  );
-
   static const TextStyle titleAppBarBlack = TextStyle(
     fontSize: 18,
     height: 1.5,
@@ -35,6 +26,7 @@ class AppStyles {
 
   static const TextStyle textButtonBlack = TextStyle(
     fontSize: 14,
+    height: 1.5,
     fontWeight: FontWeight.w700,
     color: Color(0xff2E2E2E),
   );
@@ -42,7 +34,7 @@ class AppStyles {
   static const TextStyle textButtonBlue = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w700,
-    color: primaryColor,
+    color: AppColors.primaryColor,
   );
 
   static const TextStyle textFeatures = TextStyle(

@@ -17,6 +17,13 @@
   "account": "Tài khoản",
 
   "transactions_history": "Lịch sử giao dịch",
+  "total_revenues": "Khoản thu",
+  "total_expenditure": "Khoản chi",
+  "november": "Tháng 11",
+  "all": "Tất cả",
+  "transfer_from": "Từ",
+  "transfer_to": "Đến",
+  "currency": "VNĐ",
 
   "touch_to_view": "Chạm để xem và sửa thông tin",
   "notification": "Thông báo",

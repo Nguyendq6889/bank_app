@@ -1,4 +1,3 @@
-import 'package:bank_app/app_assets/app_images.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:local_auth/local_auth.dart';
 
+import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
+import '../app_assets/app_images.dart';
 import '../app_assets/app_styles.dart';
 import '../widgets/main_button_widget.dart';
 import 'main_screen.dart';
@@ -47,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
           width: size.width,
           height: size.height,
           decoration: const BoxDecoration(
-            gradient: AppStyles.colorAppBar,
+            gradient: AppColors.colorAppBar,
           ),
           child: Stack(
             children: [
@@ -144,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: TextFormField(
                                     controller: _userNameController,
                                     style: AppStyles.textNormalBlack,
-                                    cursorColor: AppStyles.primaryColor,
+                                    cursorColor: AppColors.primaryColor,
                                     decoration: InputDecoration(
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                                       isCollapsed: true,
@@ -175,7 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: TextFormField(
                                     controller: _passwordController,
                                     style: AppStyles.textNormalBlack,
-                                    cursorColor: AppStyles.primaryColor,
+                                    cursorColor: AppColors.primaryColor,
                                     decoration: InputDecoration(
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                                       isCollapsed: true,
@@ -220,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     availableBiometrics.contains(BiometricType.face)
-                                        ? SvgPicture.asset(AppIcons.iconFaceID, color: AppStyles.primaryColor,)
+                                        ? SvgPicture.asset(AppIcons.iconFaceID, color: AppColors.primaryColor,)
                                         : SvgPicture.asset(AppIcons.iconFingerprint),
                                     const SizedBox(width: 12),
                                     Text(

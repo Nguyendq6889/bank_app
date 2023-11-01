@@ -32,4 +32,6 @@ class AppIcons {
   static const String iconVietNam = '$iconsPath/icon_viet_nam.svg';
   static const String iconEnglish = '$iconsPath/icon_english.svg';
   static const String iconArrowDown = '$iconsPath/icon_arrow_down.svg';
+  static const String iconArrowUpBlue = '$iconsPath/icon_arrow_up_blue.svg';
+  static const String iconArrowDownRed = '$iconsPath/icon_arrow_down_red.svg';
 }
