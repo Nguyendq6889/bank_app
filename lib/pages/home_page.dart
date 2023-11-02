@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const SizedBox(height: 12),
                     Text(
-                      "Xin chào, Trần Thành Công",
+                      "${'hello'.tr()}, Đỗ Quang Nguyên",
                       style: AppStyles.titleAppBarWhite
                     ),
                     const SizedBox(height: 12),
@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Tài khoản thanh toán",
+                          'payment_account'.tr(),
                           style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
                         ),
                         Text(
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Số dư hiện tại",
+                          'current_balance'.tr(),
                           style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
                         ),
                         Text(
@@ -119,16 +119,16 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Chức năng",
+                              'features'.tr(),
                               style: AppStyles.textButtonBlack
                             ),
                             Text(
-                                "Tất cả",
-                                style: AppStyles.textButtonBlue
+                              'all'.tr(),
+                              style: AppStyles.textButtonBlue
                             )
                           ],
                         ),

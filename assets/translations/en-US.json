@@ -16,6 +16,10 @@
   "notifications": "Notifications",
   "account": "Account",
 
+  "hello": "Hello",
+  "payment_account": "Payment account",
+  "current_balance": "Current balance",
+  "features": "Features",
   "transfer": "Transfer",
   "payment": "Payment",
   "saving": "Saving",

@@ -16,6 +16,10 @@
   "notifications": "Thông báo",
   "account": "Tài khoản",
 
+  "hello": "Xin chào",
+  "payment_account": "Tài khoản thanh toán",
+  "current_balance": "Số dư hiện tại",
+  "features": "Chức năng",
   "transfer": "Chuyển khoản",
   "payment": "Thanh toán",
   "saving": "Tiết kiệm",
