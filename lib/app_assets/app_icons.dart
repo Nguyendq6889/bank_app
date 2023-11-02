@@ -1,25 +1,31 @@
 class AppIcons {
   static const String iconsPath = 'assets/icons';
 
+  static const String iconAirplane = '$iconsPath/icon_airplane.svg';
+  static const String iconInternalBank = '$iconsPath/icon_internal_bank.svg';
+  static const String iconExternalBank = '$iconsPath/icon_external_bank.svg';
+
+  // Sign in screen
+  static const String iconFingerprint = '$iconsPath/icon_fingerprint.svg';
+  static const String iconFaceID = '$iconsPath/icon_face_id.svg';
   static const String iconQRPay = '$iconsPath/icon_qr_pay.svg';
   static const String iconATM = '$iconsPath/icon_atm.svg';
   static const String iconTicket = '$iconsPath/icon_ticket.svg';
   static const String iconSupport = '$iconsPath/icon_support.svg';
-  static const String iconAirplane = '$iconsPath/icon_airplane.svg';
-  static const String iconInternalBank = '$iconsPath/icon_internal_bank.svg';
-  static const String iconExternalBank = '$iconsPath/icon_external_bank.svg';
-  static const String iconFingerprint = '$iconsPath/icon_fingerprint.svg';
-  static const String iconFaceID = '$iconsPath/icon_face_id.svg';
+
+  // Main screen
   static const String iconHomeGray = '$iconsPath/icon_home_gray.svg';
   static const String iconHomeBlue = '$iconsPath/icon_home_blue.svg';
   static const String iconTransactionsGray = '$iconsPath/icon_transactions_gray.svg';
   static const String iconTransactionsBlue = '$iconsPath/icon_transactions_blue.svg';
   static const String iconQrGray = '$iconsPath/icon_qr_gray.svg';
-  static const String iconNotifications = '$iconsPath/icon_notifications.svg';
   static const String iconNotificationsHomeGray = '$iconsPath/icon_notifications_home_gray.svg';
   static const String iconNotificationsHomeBlue = '$iconsPath/icon_notifications_home_blue.svg';
   static const String iconAccountGray = '$iconsPath/icon_account_gray.svg';
   static const String iconAccountBlue = '$iconsPath/icon_account_blue.svg';
+
+  // Account page
+  static const String iconNotifications = '$iconsPath/icon_notifications.svg';
   static const String iconArrowRight = '$iconsPath/icon_arrow_right.svg';
   static const String iconSecurity = '$iconsPath/icon_security.svg';
   static const String iconHelp = '$iconsPath/icon_help.svg';
@@ -31,7 +37,27 @@ class AppIcons {
   static const String iconSelected = '$iconsPath/icon_selected.svg';
   static const String iconVietNam = '$iconsPath/icon_viet_nam.svg';
   static const String iconEnglish = '$iconsPath/icon_english.svg';
+
+  // Transactions page
   static const String iconArrowDown = '$iconsPath/icon_arrow_down.svg';
   static const String iconArrowUpBlue = '$iconsPath/icon_arrow_up_blue.svg';
   static const String iconArrowDownRed = '$iconsPath/icon_arrow_down_red.svg';
+
+  // Home page
+  static const String iconTransfer = '$iconsPath/icon_transfer.svg';
+  static const String iconPayment = '$iconsPath/icon_payment.svg';
+  static const String iconSaving = '$iconsPath/icon_saving.svg';
+  static const String iconPaymentRequest = '$iconsPath/icon_payment_request.svg';
+  static const String iconWallet = '$iconsPath/icon_wallet.svg';
+  static const String iconCards = '$iconsPath/icon_cards.svg';
+  static const String iconInsurance = '$iconsPath/icon_insurance.svg';
+  static const String iconTopUp = '$iconsPath/icon_top_up.svg';
+  static const String iconATMHome = '$iconsPath/icon_atm_home.svg';
+  static const String iconWithdraw = '$iconsPath/icon_withdraw.svg';
+  static const String iconInterestRate = '$iconsPath/icon_interest_rate.svg';
+  static const String iconExchangeRate = '$iconsPath/icon_exchange_rate.svg';
+  static const String iconPromotion = '$iconsPath/icon_promotion.svg';
+  static const String iconTicketHome = '$iconsPath/icon_ticket_home.svg';
+  static const String iconSupportHome = '$iconsPath/icon_support_home.svg';
+  static const String iconNews = '$iconsPath/icon_news.svg';
 }

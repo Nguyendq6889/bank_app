@@ -6,14 +6,14 @@ import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
 
-class TransactionsScreen extends StatefulWidget {
-  const TransactionsScreen({Key? key}) : super(key: key);
+class TransactionsPage extends StatefulWidget {
+  const TransactionsPage({Key? key}) : super(key: key);
 
   @override
-  State<TransactionsScreen> createState() => _TransactionsScreenState();
+  State<TransactionsPage> createState() => _TransactionsPageState();
 }
 
-class _TransactionsScreenState extends State<TransactionsScreen> {
+class _TransactionsPageState extends State<TransactionsPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

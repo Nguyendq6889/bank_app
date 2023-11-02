@@ -12,14 +12,14 @@ import '../app_assets/app_styles.dart';
 import '../widgets/main_button_widget.dart';
 import 'main_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   late final LocalAuthentication auth;
   bool _supportState = false;
   List<BiometricType> availableBiometrics = [];

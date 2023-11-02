@@ -6,14 +6,14 @@ import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomePageState extends State<HomePage> {
 
   int selectedIndex = 0;
   PageController pageController = PageController();
@@ -132,43 +132,64 @@ class _HomeScreenState extends State<HomeScreen> {
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: 200,
-                          child: PageView.builder(
-                              controller: pageController,
-                              itemCount: 2,
-                              onPageChanged: (index) {
-                                setState(() {
-                                  selectedIndex = index;
-                                });
-                              },
-                              itemBuilder: (_, pageIndex) {
-                                return GridView.count(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  padding: EdgeInsets.zero,
-                                  primary: false,
-                                  childAspectRatio: 1.1,
-                                  shrinkWrap: true,
-                                  crossAxisSpacing: 0,
-                                  mainAxisSpacing: 0,
-                                  crossAxisCount: 4,
-                                  children: List.generate(_listFeatures.length ~/ 2, (index) {
-                                    return GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        width: 50,
-                                        height: 50,
-                                        // color: Colors.amber,
-                                        alignment: Alignment.center,
-                                        child: _featuresTextStyle(_listFeatures[index].name, _listFeatures[index].icon),
-                                      ),
-                                    );
-                                  }),
-                                );
-                              }),
+                        const SizedBox(height: 24),
+                        GridView.count(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          primary: false,
+                          padding: EdgeInsets.zero,
+                          childAspectRatio: 1.4,
+                          mainAxisSpacing: 12,
+                          crossAxisCount: 4,
+                          children: <Widget>[
+                            _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                            _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                            _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
+                            _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                            _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
+                            _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
+                            _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
+                            _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                          ],
                         ),
+                        const SizedBox(height: 8),
+                        // SizedBox(
+                        //   height: 200,
+                        //   child: PageView.builder(
+                        //       controller: pageController,
+                        //       itemCount: 2,
+                        //       onPageChanged: (index) {
+                        //         setState(() {
+                        //           selectedIndex = index;
+                        //         });
+                        //       },
+                        //       itemBuilder: (_, pageIndex) {
+                        //         return GridView.count(
+                        //           physics: const NeverScrollableScrollPhysics(),
+                        //           padding: EdgeInsets.zero,
+                        //           primary: false,
+                        //           childAspectRatio: 1.1,
+                        //           shrinkWrap: true,
+                        //           crossAxisSpacing: 0,
+                        //           mainAxisSpacing: 0,
+                        //           crossAxisCount: 4,
+                        //           children: List.generate(_listFeatures.length ~/ 2, (index) {
+                        //             return GestureDetector(
+                        //               onTap: () {},
+                        //               child: Container(
+                        //                 width: 50,
+                        //                 height: 50,
+                        //                 // color: Colors.amber,
+                        //                 alignment: Alignment.center,
+                        //                 child: _featuresTextStyle(_listFeatures[index].name, _listFeatures[index].icon),
+                        //               ),
+                        //             );
+                        //           }),
+                        //         );
+                        //       }),
+                        // ),
                         SizedBox(
-                          height: 15,
+                          height: 10,
                           child: ListView.builder(
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
@@ -179,13 +200,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
                                 },
                                 child: AnimatedContainer(
+                                  width: selectedIndex == index ? 28 : 10,
+                                  height: 10,
+                                  margin: const EdgeInsets.symmetric(horizontal: 4),
                                   duration: const Duration(milliseconds: 100),
                                   decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                      color: Colors.red.withOpacity(selectedIndex == index ? 1 : 0.5)),
-                                  margin: const EdgeInsets.all(5),
-                                  width: 10,
-                                  height: 10,
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: selectedIndex == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
+                                  ),
                                 ),
                               );
                             },
@@ -216,18 +238,24 @@ class _HomeScreenState extends State<HomeScreen> {
     // return _listFeatures;
   // }
 
+
   Widget _featuresTextStyle(String title, String icon) {
     return Column(
       children: [
         SvgPicture.asset(icon),
-        const SizedBox(height: 12),
-        Text(
-            title,
-            style: AppStyles.textFeatures.copyWith(fontSize: 13)
+        Expanded(
+          child: Center(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: AppStyles.textFeatures.copyWith(height: 1.2)
+            ),
+          ),
         )
       ],
     );
   }
+
 }
 
 class Model {

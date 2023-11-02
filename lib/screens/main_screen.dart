@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../app_assets/app_icons.dart';
-import 'account_screen.dart';
-import 'home_screen.dart';
-import 'transactions_screen.dart';
+import '../pages/account_page.dart';
+import '../pages/home_page.dart';
+import '../pages/transactions_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -19,8 +19,8 @@ class _MainScreenState extends State<MainScreen> {
   static const TextStyle selectedLabelStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.6);
   static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-    HomeScreen(),
-    TransactionsScreen(),
+    HomePage(),
+    TransactionsPage(),
     Text(
       'Index 2: School',
       style: optionStyle,
@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 3: Business',
       style: optionStyle,
     ),
-    AccountScreen()
+    AccountPage()
   ];
 
   void _onItemTapped(int index) {

@@ -8,14 +8,14 @@ import '../app_assets/app_icons.dart';
 import '../app_assets/app_images.dart';
 import '../app_assets/app_styles.dart';
 
-class AccountScreen extends StatefulWidget {
-  const AccountScreen({Key? key}) : super(key: key);
+class AccountPage extends StatefulWidget {
+  const AccountPage({Key? key}) : super(key: key);
 
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _AccountPageState extends State<AccountPage> {
   String? _language;
 
   @override
