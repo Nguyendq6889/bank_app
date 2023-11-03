@@ -108,6 +108,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                       const SizedBox(height: 16),
                       Expanded(
                         child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
                           padding: EdgeInsets.zero,
                           itemCount: 20,
                           itemBuilder: (BuildContext context, int index) {

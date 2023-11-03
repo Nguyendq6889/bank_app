@@ -1,4 +1,6 @@
+import 'package:bank_app/app_assets/app_images.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -14,33 +16,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  int selectedIndex = 0;
-  PageController pageController = PageController();
-  final List<Model> _listFeatures = [
-    const Model('QR Pay', AppIcons.iconQRPay),
-    const Model('ATM', AppIcons.iconATM),
-    Model('book_tickets'.tr(), AppIcons.iconTicket),
-    Model('support'.tr(), AppIcons.iconSupport),
-    const Model('QR Pay', AppIcons.iconQRPay),
-    const Model('ATM', AppIcons.iconATM),
-    Model('book_tickets'.tr(), AppIcons.iconTicket),
-    Model('support'.tr(), AppIcons.iconSupport),
-    const Model('QR Pay', AppIcons.iconQRPay),
-    const Model('ATM', AppIcons.iconATM),
-    Model('book_tickets'.tr(), AppIcons.iconTicket),
-    Model('support'.tr(), AppIcons.iconSupport),
-    const Model('QR Pay', AppIcons.iconQRPay),
-    const Model('ATM', AppIcons.iconATM),
-    Model('book_tickets'.tr(), AppIcons.iconTicket),
-    Model('support'.tr(), AppIcons.iconSupport),
-  ];
-
-  @override
-  void initState() {
-    pageController = PageController(initialPage: 0);
-    super.initState();
-  }
+  final PageController _featuresPageController = PageController(initialPage: 0);
+  final PageController _bannerPageController = PageController(initialPage: 0, viewportFraction: 1);
+  int _selectedFeaturesPage = 0;
+  int _selectedBannerPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +76,7 @@ class _HomePageState extends State<HomePage> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        "VND",
+                        'currency'.tr(),
                         style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400)
                       ),
                     )
@@ -107,124 +86,167 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(16),
-                        topRight: Radius.circular(16)
-                    ),
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16),
                   ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'features'.tr(),
+                ),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'features'.tr(),
+                            style: AppStyles.textButtonBlack
+                          ),
+                          Text(
+                            'all'.tr(),
+                            style: AppStyles.textButtonBlue
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      ExpandablePageView(
+                        controller: _featuresPageController,
+                        physics: const BouncingScrollPhysics(),
+                        onPageChanged: (index){
+                          setState(() {
+                            _selectedFeaturesPage = index;
+                          });
+                        },
+                        children: [
+                          GridView.count(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            primary: false,
+                            padding: EdgeInsets.zero,
+                            childAspectRatio: 1.4,
+                            mainAxisSpacing: 12,
+                            crossAxisCount: 4,
+                            children: <Widget>[
+                              _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                              _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                              _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
+                              _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                              _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
+                              _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
+                              _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
+                              _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                            ],
+                          ),
+                          GridView.count(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            primary: false,
+                            padding: EdgeInsets.zero,
+                            childAspectRatio: 1.4,
+                            mainAxisSpacing: 12,
+                            crossAxisCount: 4,
+                            children: <Widget>[
+                              _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
+                              _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
+                              _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
+                              _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                              _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
+                              _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
+                              _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
+                              _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                            ],
+                          ),
+                        ]
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        height: 10,
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 2,
+                          itemBuilder: (_, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                _featuresPageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                              },
+                              child: AnimatedContainer(
+                                width: _selectedFeaturesPage == index ? 28 : 10,
+                                height: 10,
+                                margin: const EdgeInsets.symmetric(horizontal: 4),
+                                duration: const Duration(milliseconds: 100),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: _selectedFeaturesPage == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                              'news'.tr(),
                               style: AppStyles.textButtonBlack
-                            ),
-                            Text(
+                          ),
+                          Text(
                               'all'.tr(),
                               style: AppStyles.textButtonBlue
-                            )
-                          ],
-                        ),
-                        const SizedBox(height: 24),
-                        GridView.count(
-                          physics: const NeverScrollableScrollPhysics(),
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+                      ExpandablePageView(
+                        controller: _bannerPageController,
+                        physics: const BouncingScrollPhysics(),
+                        onPageChanged: (index){
+                          setState(() {
+                            _selectedBannerPage = index;
+                          });
+                        },
+                        children: [
+                          Image.asset(AppImages.imageBanner, width: double.infinity),
+                          Image.asset(AppImages.imageBanner, width: double.infinity),
+                          Image.asset(AppImages.imageBanner, width: double.infinity),
+                          Image.asset(AppImages.imageBanner, width: double.infinity),
+                        ]
+                      ),
+                      const SizedBox(height: 16),
+                      SizedBox(
+                        height: 10,
+                        child: ListView.builder(
                           shrinkWrap: true,
-                          primary: false,
-                          padding: EdgeInsets.zero,
-                          childAspectRatio: 1.4,
-                          mainAxisSpacing: 12,
-                          crossAxisCount: 4,
-                          children: <Widget>[
-                            _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
-                            _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
-                            _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
-                            _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                            _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
-                            _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
-                            _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
-                            _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        // SizedBox(
-                        //   height: 200,
-                        //   child: PageView.builder(
-                        //       controller: pageController,
-                        //       itemCount: 2,
-                        //       onPageChanged: (index) {
-                        //         setState(() {
-                        //           selectedIndex = index;
-                        //         });
-                        //       },
-                        //       itemBuilder: (_, pageIndex) {
-                        //         return GridView.count(
-                        //           physics: const NeverScrollableScrollPhysics(),
-                        //           padding: EdgeInsets.zero,
-                        //           primary: false,
-                        //           childAspectRatio: 1.1,
-                        //           shrinkWrap: true,
-                        //           crossAxisSpacing: 0,
-                        //           mainAxisSpacing: 0,
-                        //           crossAxisCount: 4,
-                        //           children: List.generate(_listFeatures.length ~/ 2, (index) {
-                        //             return GestureDetector(
-                        //               onTap: () {},
-                        //               child: Container(
-                        //                 width: 50,
-                        //                 height: 50,
-                        //                 // color: Colors.amber,
-                        //                 alignment: Alignment.center,
-                        //                 child: _featuresTextStyle(_listFeatures[index].name, _listFeatures[index].icon),
-                        //               ),
-                        //             );
-                        //           }),
-                        //         );
-                        //       }),
-                        // ),
-                        SizedBox(
-                          height: 10,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemCount: 2,
-                            itemBuilder: (_, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  pageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                                },
-                                child: AnimatedContainer(
-                                  width: selectedIndex == index ? 28 : 10,
-                                  height: 10,
-                                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                                  duration: const Duration(milliseconds: 100),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: selectedIndex == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
-                                  ),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 4,
+                          itemBuilder: (_, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                _bannerPageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                              },
+                              child: AnimatedContainer(
+                                width: _selectedBannerPage == index ? 28 : 10,
+                                height: 10,
+                                margin: const EdgeInsets.symmetric(horizontal: 4),
+                                duration: const Duration(milliseconds: 100),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: _selectedBannerPage == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
                         ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        //   children: [
-                        //     _featuresTextStyle('QR Pay', AppIcons.iconQRPay),
-                        //     _featuresTextStyle('ATM', AppIcons.iconATM),
-                        //     _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicket),
-                        //     _featuresTextStyle('support'.tr(), AppIcons.iconSupport),
-                        //   ],
-                        // ),
-                      ],
-                    ),
-                  )
+                      ),
+                      const SizedBox(height: 26),
+                    ],
+                  ),
+                )
               ),
             ),
           ],
@@ -232,12 +254,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-  // List<Widget> list() {
-  //   _listFeatures =
-    // return _listFeatures;
-  // }
-
 
   Widget _featuresTextStyle(String title, String icon) {
     return Column(
@@ -255,11 +271,4 @@ class _HomePageState extends State<HomePage> {
       ],
     );
   }
-
-}
-
-class Model {
-  final String name;
-  final String icon;
-   const Model(this.name, this.icon);
 }
