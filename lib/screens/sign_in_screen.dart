@@ -195,23 +195,6 @@ class _SignInScreenState extends State<SignInScreen> {
                                   ),
                                 ),
                               ),
-                              // GestureDetector(
-                              //   onTap: () {
-                              //     _getAvailableBiometrics();
-                              //   },
-                              //   child: Row(
-                              //     mainAxisSize: MainAxisSize.min,
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     children: [
-                              //       SvgPicture.asset(AppIcons.iconFingerprint),
-                              //       const SizedBox(width: 12),
-                              //       Text(
-                              //         "Touch ID",
-                              //         style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
-                              //       )
-                              //     ],
-                              //   ),
-                              // ),
                               if(_supportState) GestureDetector(
                                 onTap: () {
                                   _authenticate();

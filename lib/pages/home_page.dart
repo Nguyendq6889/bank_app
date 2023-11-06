@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PageController _featuresPageController = PageController(initialPage: 0);
-  final PageController _bannerPageController = PageController(initialPage: 0, viewportFraction: 1);
+  final PageController _bannerPageController = PageController(initialPage: 0);
   int _selectedFeaturesPage = 0;
   int _selectedBannerPage = 0;
 
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                padding: const EdgeInsets.only(top: 16),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -98,108 +98,121 @@ class _HomePageState extends State<HomePage> {
                   physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'features'.tr(),
-                            style: AppStyles.textButtonBlack
-                          ),
-                          Text(
-                            'all'.tr(),
-                            style: AppStyles.textButtonBlue
-                          )
-                        ],
-                      ),
-                      const SizedBox(height: 24),
-                      ExpandablePageView(
-                        controller: _featuresPageController,
-                        physics: const BouncingScrollPhysics(),
-                        onPageChanged: (index){
-                          setState(() {
-                            _selectedFeaturesPage = index;
-                          });
-                        },
-                        children: [
-                          GridView.count(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            primary: false,
-                            padding: EdgeInsets.zero,
-                            childAspectRatio: 1.4,
-                            mainAxisSpacing: 12,
-                            crossAxisCount: 4,
-                            children: <Widget>[
-                              _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
-                              _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
-                              _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
-                              _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                              _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
-                              _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
-                              _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
-                              _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
-                            ],
-                          ),
-                          GridView.count(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            primary: false,
-                            padding: EdgeInsets.zero,
-                            childAspectRatio: 1.4,
-                            mainAxisSpacing: 12,
-                            crossAxisCount: 4,
-                            children: <Widget>[
-                              _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
-                              _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
-                              _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
-                              _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                              _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
-                              _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
-                              _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
-                              _featuresTextStyle('news'.tr(), AppIcons.iconNews),
-                            ],
-                          ),
-                        ]
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        height: 10,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 2,
-                          itemBuilder: (_, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                _featuresPageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                              },
-                              child: AnimatedContainer(
-                                width: _selectedFeaturesPage == index ? 28 : 10,
-                                height: 10,
-                                margin: const EdgeInsets.symmetric(horizontal: 4),
-                                duration: const Duration(milliseconds: 100),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: _selectedFeaturesPage == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'features'.tr(),
+                                  style: AppStyles.textButtonBlack
                                 ),
+                                GestureDetector(
+                                  onTap: () => _showModalBottomSheet(),
+                                  child: Text(
+                                    'all'.tr(),
+                                    style: AppStyles.textButtonBlue
+                                  ),
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 24),
+                            ExpandablePageView(
+                              controller: _featuresPageController,
+                              physics: const BouncingScrollPhysics(),
+                              onPageChanged: (index){
+                                setState(() {
+                                  _selectedFeaturesPage = index;
+                                });
+                              },
+                              children: [
+                                GridView.count(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  padding: EdgeInsets.zero,
+                                  childAspectRatio: 1.4,
+                                  mainAxisSpacing: 12,
+                                  crossAxisCount: 4,
+                                  children: <Widget>[
+                                    _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                                    _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                                    _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
+                                    _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                                    _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
+                                    _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
+                                    _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
+                                    _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                                  ],
+                                ),
+                                GridView.count(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  padding: EdgeInsets.zero,
+                                  childAspectRatio: 1.4,
+                                  mainAxisSpacing: 12,
+                                  crossAxisCount: 4,
+                                  children: <Widget>[
+                                    _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
+                                    _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
+                                    _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
+                                    _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                                    _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
+                                    _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
+                                    _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
+                                    _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                                  ],
+                                ),
+                              ]
+                            ),
+                            const SizedBox(height: 10),
+                            SizedBox(
+                              height: 10,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: 2,
+                                itemBuilder: (_, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      _featuresPageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                                    },
+                                    child: AnimatedContainer(
+                                      width: _selectedFeaturesPage == index ? 28 : 10,
+                                      height: 10,
+                                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                                      duration: const Duration(milliseconds: 100),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: _selectedFeaturesPage == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
+                                      ),
+                                    ),
+                                  );
+                                },
                               ),
-                            );
-                          },
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'news'.tr(),
+                                  style: AppStyles.textButtonBlack
+                                ),
+                                GestureDetector(
+                                  onTap: () => _showModalBottomSheet(),
+                                  child: Text(
+                                    'all'.tr(),
+                                    style: AppStyles.textButtonBlue
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
-                      ),
-                      const SizedBox(height: 16),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                              'news'.tr(),
-                              style: AppStyles.textButtonBlack
-                          ),
-                          Text(
-                              'all'.tr(),
-                              style: AppStyles.textButtonBlue
-                          )
-                        ],
                       ),
                       const SizedBox(height: 16),
                       ExpandablePageView(
@@ -211,10 +224,10 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         children: [
-                          Image.asset(AppImages.imageBanner, width: double.infinity),
-                          Image.asset(AppImages.imageBanner, width: double.infinity),
-                          Image.asset(AppImages.imageBanner, width: double.infinity),
-                          Image.asset(AppImages.imageBanner, width: double.infinity),
+                          _banner(AppImages.imageBanner, size),
+                          _banner(AppImages.imageBanner2, size),
+                          _banner(AppImages.imageBanner3, size),
+                          _banner(AppImages.imageBanner4, size),
                         ]
                       ),
                       const SizedBox(height: 16),
@@ -255,6 +268,78 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  _showModalBottomSheet() {
+    return showModalBottomSheet<void>(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16)
+        ),
+      ),
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.77,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'features'.tr(),
+                          style: AppStyles.textButtonBlack.copyWith(fontSize: 16)
+                        ),
+                        InkWell(
+                          onTap: () => Navigator.pop(context),
+                          child: SvgPicture.asset(AppIcons.iconClose),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                primary: false,
+                padding: EdgeInsets.zero,
+                childAspectRatio: 1.4,
+                mainAxisSpacing: 12,
+                crossAxisCount: 4,
+                children: <Widget>[
+                  _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                  _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                  _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
+                  _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                  _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
+                  _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
+                  _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
+                  _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                  _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
+                  _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
+                  _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
+                  _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                  _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
+                  _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
+                  _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
+                  _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   Widget _featuresTextStyle(String title, String icon) {
     return Column(
       children: [
@@ -269,6 +354,20 @@ class _HomePageState extends State<HomePage> {
           ),
         )
       ],
+    );
+  }
+
+  Widget _banner(String image, Size size) {
+    return Container(
+      height: size.height * 26.108 / 100,
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        image: DecorationImage(
+          image: AssetImage(image), fit: BoxFit.cover,
+        )
+      ),
     );
   }
 }
