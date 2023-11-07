@@ -270,10 +270,11 @@ class _HomePageState extends State<HomePage> {
 
   _showModalBottomSheet() {
     return showModalBottomSheet<void>(
+      backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16)
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16)
         ),
       ),
       isScrollControlled: true,
@@ -281,59 +282,54 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext context) {
         return SizedBox(
           height: MediaQuery.of(context).size.height * 0.77,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'features'.tr(),
-                          style: AppStyles.textButtonBlack.copyWith(fontSize: 16)
-                        ),
-                        InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: SvgPicture.asset(AppIcons.iconClose),
-                        )
-                      ],
+                    Text(
+                      'features'.tr(),
+                      style: AppStyles.textButtonBlack.copyWith(fontSize: 16)
                     ),
-                    const SizedBox(height: 8),
+                    InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: SvgPicture.asset(AppIcons.iconClose),
+                    )
                   ],
                 ),
-              ),
-              const SizedBox(height: 24),
-              GridView.count(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                primary: false,
-                padding: EdgeInsets.zero,
-                childAspectRatio: 1.4,
-                mainAxisSpacing: 12,
-                crossAxisCount: 4,
-                children: <Widget>[
-                  _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
-                  _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
-                  _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
-                  _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                  _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
-                  _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
-                  _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
-                  _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
-                  _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
-                  _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
-                  _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
-                  _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                  _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
-                  _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
-                  _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
-                  _featuresTextStyle('news'.tr(), AppIcons.iconNews),
-                ],
-              ),
-            ],
+                const SizedBox(height: 24),
+                GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  primary: false,
+                  padding: EdgeInsets.zero,
+                  childAspectRatio: 1.4,
+                  mainAxisSpacing: 12,
+                  crossAxisCount: 4,
+                  children: <Widget>[
+                    _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                    _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                    _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
+                    _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                    _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
+                    _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
+                    _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
+                    _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                    _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
+                    _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
+                    _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
+                    _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                    _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
+                    _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
+                    _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
+                    _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
