@@ -44,6 +44,7 @@ dependencies:
 #  infinite_scroll_pagination: ^4.0.0
   shared_preferences: ^2.2.2
   expandable_page_view: ^1.0.17
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,7 @@ class AppIcons {
   static const String iconAirplane = '$iconsPath/icon_airplane.svg';
   static const String iconInternalBank = '$iconsPath/icon_internal_bank.svg';
   static const String iconExternalBank = '$iconsPath/icon_external_bank.svg';
+  static const String iconBack = '$iconsPath/icon_back.svg';
 
   // Sign in screen
   static const String iconFingerprint = '$iconsPath/icon_fingerprint.svg';
@@ -60,4 +61,8 @@ class AppIcons {
   static const String iconTicketHome = '$iconsPath/icon_ticket_home.svg';
   static const String iconSupportHome = '$iconsPath/icon_support_home.svg';
   static const String iconNews = '$iconsPath/icon_news.svg';
+
+  // QR code scan screen
+  static const String iconLightBulb = '$iconsPath/icon_light_bulb.svg';
+  static const String iconImage = '$iconsPath/icon_image.svg';
 }

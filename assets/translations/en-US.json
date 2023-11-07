@@ -52,5 +52,10 @@
   "sign_out": "Sign out",
   "version": "Version",
   "select_language": "Select language",
-  "language_use_question": "What kind of language do you want to used?"
+  "language_use_question": "What kind of language do you want to used?",
+
+  "qr_code_scan": "QR code scan",
+  "move_camera": "Move the camera into the area with the QR code to scan",
+  "turn_on_flash": "Turn on the flash",
+  "select_qr_photo": "Select QR photo"
 }

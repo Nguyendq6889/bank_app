@@ -52,5 +52,10 @@
   "sign_out": "Đăng xuất",
   "version": "Phiên bản",
   "select_language": "Chọn ngôn ngữ",
-  "language_use_question": "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?"
+  "language_use_question": "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?",
+
+  "qr_code_scan": "Quét mã QR",
+  "move_camera": "Di chuyển camera vào vùng có mã QR để quét",
+  "turn_on_flash": "Bật đèn flash",
+  "select_qr_photo": "Chọn ảnh QR"
 }
