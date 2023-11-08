@@ -57,5 +57,14 @@
   "qr_code_scan": "Quét mã QR",
   "move_camera": "Di chuyển camera vào vùng có mã QR để quét",
   "turn_on_flash": "Bật đèn flash",
-  "select_qr_photo": "Chọn ảnh QR"
+  "select_qr_photo": "Chọn ảnh QR",
+
+  "qr_code_detail": "Chi tiết mã QR",
+  "qr_code_info": "Thông tin mã QR",
+  "account_name": "Tên tài khoản",
+  "account_number": "Số tài khoản",
+  "transfer_amount": "Số tiền",
+  "description": "Nội dung",
+  "barcode_type": "Loại mã",
+  "data": "Dữ liệu"
 }

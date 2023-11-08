@@ -1,15 +1,14 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:bank_app/app_assets/app_icons.dart';
-import 'package:bank_app/screens/qr_code_info.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
+import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
+import 'qr_code_info_screen.dart';
 
 class QRCodeScanScreen extends StatefulWidget {
   const QRCodeScanScreen({Key? key}) : super(key: key);
@@ -19,7 +18,6 @@ class QRCodeScanScreen extends StatefulWidget {
 }
 
 class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
-  Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
@@ -49,7 +47,6 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
         ),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          // iconSize: 18.0,
           icon: SvgPicture.asset(AppIcons.iconBack),
         )
       ),
@@ -128,10 +125,7 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
   }
 
   Widget _buildQrView(BuildContext context) {
-    // For this example we check how width or tall the device is and change the scanArea and overlay accordingly.
     var scanArea = MediaQuery.of(context).size.width - 96;
-    // To ensure the Scanner view is properly sizes after rotation
-    // we need to listen for Flutter SizeChanged notification and update controller
     return QRView(
       key: qrKey,
       onQRViewCreated: _onQRViewCreated,
@@ -150,13 +144,15 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
     setState(() {
       this.controller = controller;
     });
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-      });
-      Navigator.pushReplacement<void, void>(context, MaterialPageRoute<void>(builder: (BuildContext context) => const QRCodeInfo()));
-      // Navigator.pushReplacement(context, EnterExitRoute(enterPage: const QRCodeInfo()));
+    controller.scannedDataStream.listen((scanData) async {
+      await controller.pauseCamera();
+      goToQRCodeInfoScreen(scanData);
+      // Navigator.pushReplacement(context, EnterExitRoute(enterPage: const QRCodeInfoScreen()));
     });
+  }
+
+  void goToQRCodeInfoScreen(Barcode result) {
+    Navigator.pushReplacement<void, void>(context, MaterialPageRoute<void>(builder: (BuildContext context) => QRCodeInfoScreen(result: result)));
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
@@ -173,42 +169,4 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
     controller?.dispose();
     super.dispose();
   }
-}
-
-class EnterExitRoute extends PageRouteBuilder {
-  final Widget enterPage;
-  final Widget? exitPage;
-  EnterExitRoute({this.exitPage, required this.enterPage})
-      : super(
-    pageBuilder: (
-        BuildContext context,
-        Animation<double> animation,
-        Animation<double> secondaryAnimation,
-        ) =>
-    enterPage,
-    transitionsBuilder: (
-        BuildContext context,
-        Animation<double> animation,
-        Animation<double> secondaryAnimation,
-        Widget child,
-        ) =>
-        Stack(
-          children: <Widget>[
-            SlideTransition(
-              position: new Tween<Offset>(
-                begin: const Offset(0.0, 0.0),
-                end: const Offset(-1.0, 0.0),
-              ).animate(animation),
-              child: exitPage,
-            ),
-            SlideTransition(
-              position: new Tween<Offset>(
-                begin: const Offset(1.0, 0.0),
-                end: Offset.zero,
-              ).animate(animation),
-              child: enterPage,
-            )
-          ],
-        ),
-  );
 }

@@ -1,3 +1,4 @@
+import 'package:bank_app/screens/qr_code_info_screen.dart';
 import 'package:bank_app/screens/qr_code_scan_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class _MainScreenState extends State<MainScreen> {
   void _onItemTapped(int index) {
     if(index == 2) {
       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const QRCodeScanScreen()));
+      // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const QRCodeInfoScreen()));
     } else {
       setState(() {
         _selectedIndex = index;

@@ -5,12 +5,13 @@ import '../app_assets/app_styles.dart';
 class MainButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
-  const MainButtonWidget({Key? key, required this.text, required this.onTap}) : super(key: key);
+  final double? width;
+  const MainButtonWidget({Key? key, required this.text, required this.onTap, this.width}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: width ?? double.infinity,
       height: 44.0,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(6)),

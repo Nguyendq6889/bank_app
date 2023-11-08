@@ -179,7 +179,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.12),
+                    color: Colors.black.withOpacity(0.1),
                     blurRadius: 8, // soften the shadow
                     spreadRadius: 0, //extend the shadow
                   )

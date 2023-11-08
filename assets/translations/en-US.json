@@ -57,5 +57,14 @@
   "qr_code_scan": "QR code scan",
   "move_camera": "Move the camera into the area with the QR code to scan",
   "turn_on_flash": "Turn on the flash",
-  "select_qr_photo": "Select QR photo"
+  "select_qr_photo": "Select QR photo",
+
+  "qr_code_detail": "QR code detail",
+  "qr_code_info": "QR code info",
+  "account_name": "Account name",
+  "account_number": "Account number",
+  "transfer_amount": "Transfer amount",
+  "description": "Description",
+  "barcode_type": "Barcode type",
+  "data": "Data"
 }
