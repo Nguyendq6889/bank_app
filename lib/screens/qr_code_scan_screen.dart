@@ -43,7 +43,7 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
         centerTitle: true,
         title: Text(
           'qr_code_scan'.tr(),
-          style: AppStyles.titleAppBarWhite.copyWith(height: 1, fontSize: 18)
+          style: AppStyles.titleAppBarWhite.copyWith(height: 1)
         ),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),

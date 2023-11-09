@@ -65,4 +65,7 @@ class AppIcons {
   // QR code scan screen
   static const String iconLightBulb = '$iconsPath/icon_light_bulb.svg';
   static const String iconImage = '$iconsPath/icon_image.svg';
+
+  // News screen
+  static const String iconClock = '$iconsPath/icon_clock.svg';
 }

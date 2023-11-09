@@ -204,7 +204,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     availableBiometrics.contains(BiometricType.face)
-                                        ? SvgPicture.asset(AppIcons.iconFaceID, color: AppColors.primaryColor,)
+                                        ? SvgPicture.asset(AppIcons.iconFaceID, colorFilter: const ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn))
                                         : SvgPicture.asset(AppIcons.iconFingerprint),
                                     const SizedBox(width: 12),
                                     Text(
