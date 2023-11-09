@@ -46,6 +46,23 @@ dependencies:
   expandable_page_view: ^1.0.17
   qr_code_scanner: ^1.0.1
 
+  flutter_native_splash: ^2.3.5
+flutter_native_splash:
+  android: true
+  ios: true
+  web: false
+  color: "#1F68F4"
+  image: assets/images/logo.png
+  color_dark: "#1F68F4"
+  image_dark: assets/images/logo.png
+  android_12:
+#    image: assets/images/logo.png
+    color: "#ffffff"
+    color_dark: "#ffffff"
+#    icon_background_color: "#1F68F4"
+#    icon_background_color_dark: "#1F68F4"
+  fullscreen: true
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
