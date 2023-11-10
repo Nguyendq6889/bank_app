@@ -8,6 +8,7 @@ import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
 import '../screens/news_screen.dart';
+import '../screens/transfer_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -138,7 +139,11 @@ class _HomePageState extends State<HomePage> {
                             mainAxisSpacing: 12,
                             crossAxisCount: 4,
                             children: <Widget>[
-                              _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                              _featuresTextStyle(
+                                'transfer'.tr(),
+                                AppIcons.iconTransfer,
+                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
+                              ),
                               _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
                               _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
                               _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
@@ -312,7 +317,11 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 12,
                   crossAxisCount: 4,
                   children: <Widget>[
-                    _featuresTextStyle('transfer'.tr(), AppIcons.iconTransfer),
+                    _featuresTextStyle(
+                      'transfer'.tr(),
+                      AppIcons.iconTransfer,
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
+                    ),
                     _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
                     _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
                     _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
@@ -338,20 +347,23 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _featuresTextStyle(String title, String icon) {
-    return Column(
-      children: [
-        SvgPicture.asset(icon),
-        Expanded(
-          child: Center(
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: AppStyles.textFeatures.copyWith(height: 1.2)
+  Widget _featuresTextStyle(String title, String icon, {VoidCallback? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        children: [
+          SvgPicture.asset(icon),
+          Expanded(
+            child: Center(
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: AppStyles.textFeatures.copyWith(height: 1.2)
+              ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 

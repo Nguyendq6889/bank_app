@@ -39,8 +39,8 @@
   "total_expenditure": "Khoản chi",
   "november": "Tháng 11",
   "all": "Tất cả",
-  "transfer_from": "Từ",
-  "transfer_to": "Đến",
+  "from": "Từ",
+  "to": "Đến",
   "currency": "VNĐ",
 
   "touch_to_view": "Chạm để xem và sửa thông tin",
@@ -66,5 +66,16 @@
   "transfer_amount": "Số tiền",
   "description": "Nội dung",
   "barcode_type": "Loại mã",
-  "data": "Dữ liệu"
+  "data": "Dữ liệu",
+
+  "transfer_from": "Chuyển từ",
+  "change": "Thay đổi",
+  "balance": "Số dư",
+  "select_transfer_type": "Chọn loại chuyển khoản",
+  "intra_bank": "Trong ngân hàng",
+  "interbank": "Liên ngân hàng",
+  "international": "Quốc tế",
+  "savedList": "Danh sách đã lưu",
+
+  "interbank_transfer": "Chuyển khoản liên ngân hàng"
 }

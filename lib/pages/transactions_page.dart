@@ -140,8 +140,8 @@ class _TransactionsPageState extends State<TransactionsPage> {
                                         const SizedBox(height: 4),
                                         Text(
                                           index % 2 == 0
-                                              ? '${'transfer_from'.tr()}: 1014686229'
-                                              : '${'transfer_to'.tr()}: 1014686229',
+                                              ? '${'from'.tr()}: 1014686229'
+                                              : '${'to'.tr()}: 1014686229',
                                           style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
                                         )
                                       ],

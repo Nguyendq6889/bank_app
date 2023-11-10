@@ -39,8 +39,8 @@
   "total_expenditure": "Total expenditure",
   "november": "November",
   "all": "All",
-  "transfer_from": "From",
-  "transfer_to": "To",
+  "from": "From",
+  "to": "To",
   "currency": "USD",
 
   "touch_to_view": "Touch to view and edit information",
@@ -66,5 +66,16 @@
   "transfer_amount": "Transfer amount",
   "description": "Description",
   "barcode_type": "Barcode type",
-  "data": "Data"
+  "data": "Data",
+
+  "transfer_from": "Transfer from",
+  "change": "Change",
+  "balance": "Balance",
+  "select_transfer_type": "Select transfer type",
+  "intra_bank": "Intra bank",
+  "interbank": "Interbank",
+  "international": "International",
+  "savedList": "Saved list",
+
+  "interbank_transfer": "Interbank transfer"
 }

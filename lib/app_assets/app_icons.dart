@@ -2,8 +2,7 @@ class AppIcons {
   static const String iconsPath = 'assets/icons';
 
   static const String iconAirplane = '$iconsPath/icon_airplane.svg';
-  static const String iconInternalBank = '$iconsPath/icon_internal_bank.svg';
-  static const String iconExternalBank = '$iconsPath/icon_external_bank.svg';
+
   static const String iconBack = '$iconsPath/icon_back.svg';
 
   // Sign in screen
@@ -68,4 +67,10 @@ class AppIcons {
 
   // News screen
   static const String iconClock = '$iconsPath/icon_clock.svg';
+
+  // Transfer screen
+  static const String iconIntraBank = '$iconsPath/icon_intra_bank.svg';
+  static const String iconInterbank = '$iconsPath/icon_interbank.svg';
+  static const String iconInternational = '$iconsPath/icon_international.svg';
+  static const String iconSavedList = '$iconsPath/icon_saved_list.svg';
 }
