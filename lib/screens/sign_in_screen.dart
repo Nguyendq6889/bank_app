@@ -124,11 +124,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: Column(
                     children: [
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: SvgPicture.asset(AppImages.imageLogoVisa),
                       ),
                       Expanded(
-                        flex: 2,
+                        flex: 5,
                         child: Form(
                           key: _formKey,
                           child: Column(
@@ -167,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               Container(
                                 width: double.infinity,
                                 height: 44,
-                                margin: const EdgeInsets.only(bottom: 16),
+                                margin: EdgeInsets.only(bottom: size.height * 2.5 / 100),
                                 decoration: BoxDecoration(
                                   color: const Color(0xfff7f6f6),
                                   borderRadius: BorderRadius.circular(6),
@@ -216,9 +216,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                   ],
                                 ),
                               ),
-                              const SizedBox(height: 16),
+                              SizedBox(height: size.height * 2.5 / 100),
                               MainButtonWidget(text: 'sign_in'.tr(), onTap: () => _goToMainScreen()),
-                              const SizedBox(height: 16),
+                              SizedBox(height: size.height * 2.5 / 100),
                               GestureDetector(
                                 onTap: () {
                                   // print('Quên mật khẩu?');

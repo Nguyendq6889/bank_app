@@ -156,13 +156,14 @@ class _NewsScreenState extends State<NewsScreen> {
 
   Widget _recentNews(String image, String title) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           height: 74,
           width: 112,
           margin: const EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: Colors.grey[400],
             borderRadius: BorderRadius.circular(6),
             image: DecorationImage(
               image: AssetImage(image), fit: BoxFit.cover,
