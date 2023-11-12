@@ -41,6 +41,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Mulish',
         primarySwatch: Colors.blue,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
       ),
       home: const SplashScreen(),
     );
