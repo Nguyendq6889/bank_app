@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.only(top: 4),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -101,26 +101,29 @@ class _HomePageState extends State<HomePage> {
                   child: Column(
                     children: [
 // Features
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
                               'features'.tr(),
                               style: AppStyles.textButtonBlack
                             ),
-                            GestureDetector(
-                              onTap: () => _showModalBottomSheet(),
+                          ),
+                          InkWell(
+                            onTap: () => _showModalBottomSheet(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
                               child: Text(
                                 'all'.tr(),
                                 style: AppStyles.textButtonBlue
                               ),
-                            )
-                          ],
-                        ),
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(height: 24),
+                      const SizedBox(height: 8),
                       ExpandablePageView(
                         controller: _featuresPageController,
                         physics: const BouncingScrollPhysics(),
@@ -134,7 +137,8 @@ class _HomePageState extends State<HomePage> {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             primary: false,
-                            padding: EdgeInsets.zero,
+                            // padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             childAspectRatio: 1.4,
                             mainAxisSpacing: 12,
                             crossAxisCount: 4,
@@ -157,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
                             primary: false,
-                            padding: EdgeInsets.zero,
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             childAspectRatio: 1.4,
                             mainAxisSpacing: 12,
                             crossAxisCount: 4,
@@ -200,28 +204,29 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ),
-                      const SizedBox(height: 16),
 // News
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
                               'news'.tr(),
                               style: AppStyles.textButtonBlack
                             ),
-                            GestureDetector(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const NewsScreen())),
+                          ),
+                          InkWell(
+                            onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const NewsScreen())),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
                               child: Text(
                                 'all'.tr(),
                                 style: AppStyles.textButtonBlue
                               ),
-                            )
-                          ],
-                        ),
+                            ),
+                          )
+                        ],
                       ),
-                      const SizedBox(height: 16),
                       ExpandablePageView(
                         controller: _bannerPageController,
                         physics: const BouncingScrollPhysics(),
@@ -289,58 +294,61 @@ class _HomePageState extends State<HomePage> {
       builder: (BuildContext context) {
         return SizedBox(
           height: MediaQuery.of(context).size.height * 0.77,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(
                       'features'.tr(),
                       style: AppStyles.textButtonBlack.copyWith(fontSize: 16)
                     ),
-                    InkWell(
-                      onTap: () => Navigator.pop(context),
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                       child: SvgPicture.asset(AppIcons.iconClose),
-                    )
-                  ],
-                ),
-                const SizedBox(height: 24),
-                GridView.count(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  primary: false,
-                  padding: EdgeInsets.zero,
-                  childAspectRatio: 1.4,
-                  mainAxisSpacing: 12,
-                  crossAxisCount: 4,
-                  children: <Widget>[
-                    _featuresTextStyle(
-                      'transfer'.tr(),
-                      AppIcons.iconTransfer,
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
                     ),
-                    _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
-                    _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
-                    _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                    _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
-                    _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
-                    _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
-                    _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
-                    _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
-                    _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
-                    _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
-                    _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                    _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
-                    _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
-                    _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
-                    _featuresTextStyle('news'.tr(), AppIcons.iconNews),
-                  ],
-                ),
-              ],
-            ),
+                  )
+                ],
+              ),
+              GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                primary: false,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                childAspectRatio: 1.4,
+                mainAxisSpacing: 12,
+                crossAxisCount: 4,
+                children: <Widget>[
+                  _featuresTextStyle(
+                    'transfer'.tr(),
+                    AppIcons.iconTransfer,
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
+                  ),
+                  _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                  _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
+                  _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                  _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
+                  _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
+                  _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
+                  _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                  _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
+                  _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
+                  _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
+                  _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                  _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
+                  _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
+                  _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
+                  _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                ],
+              ),
+            ],
           ),
         );
       },

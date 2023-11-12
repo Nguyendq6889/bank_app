@@ -229,27 +229,27 @@ class _AccountPageState extends State<AccountPage> {
           height: 30 * MediaQuery.of(context).size.height / 100,
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text('select_language'.tr(), style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+                      child: SvgPicture.asset(AppIcons.iconClose),
+                    ),
+                  )
+                ],
+              ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('select_language'.tr(), style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
-                        InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: SvgPicture.asset(AppIcons.iconClose),
-                        )
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'language_use_question'.tr(),
-                      style: AppStyles.textButtonGray
-                    ),
-                  ],
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'language_use_question'.tr(),
+                  style: AppStyles.textButtonGray
                 ),
               ),
               const SizedBox(height: 12),

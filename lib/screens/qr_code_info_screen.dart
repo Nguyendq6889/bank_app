@@ -39,9 +39,9 @@ class QRCodeInfoScreen extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GestureDetector(
+                            InkWell(
                               onTap: () => Navigator.pop(context),
-                              child: Container(
+                              child: Padding(
                                 padding: const EdgeInsets.all(16),
                                 child: SvgPicture.asset(AppIcons.iconBack),
                               ),
