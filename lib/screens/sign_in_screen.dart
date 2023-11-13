@@ -10,7 +10,7 @@ import '../app_assets/app_icons.dart';
 import '../app_assets/app_images.dart';
 import '../app_assets/app_styles.dart';
 import '../widgets/main_button_widget.dart';
-import 'main_screen.dart';
+import 'main_screens/main_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);

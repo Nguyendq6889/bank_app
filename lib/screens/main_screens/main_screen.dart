@@ -4,10 +4,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../app_assets/app_icons.dart';
-import '../pages/account_page.dart';
-import '../pages/home_page.dart';
-import '../pages/transactions_page.dart';
+import '../../app_assets/app_icons.dart';
+import 'pages/account_page.dart';
+import 'pages/home_page.dart';
+import 'pages/notifications_page.dart';
+import 'pages/transactions_page.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -27,10 +28,7 @@ class _MainScreenState extends State<MainScreen> {
       'Index 2: School',
       style: optionStyle,
     ),
-    Text(
-      'Index 3: Business',
-      style: optionStyle,
-    ),
+    NotificationsPage(),
     AccountPage()
   ];
 

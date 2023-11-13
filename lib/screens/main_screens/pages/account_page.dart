@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../app_assets/app_colors.dart';
-import '../app_assets/app_icons.dart';
-import '../app_assets/app_images.dart';
-import '../app_assets/app_styles.dart';
+import '../../../app_assets/app_colors.dart';
+import '../../../app_assets/app_icons.dart';
+import '../../../app_assets/app_images.dart';
+import '../../../app_assets/app_styles.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);

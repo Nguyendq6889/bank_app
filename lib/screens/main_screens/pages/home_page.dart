@@ -4,11 +4,11 @@ import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../app_assets/app_colors.dart';
-import '../app_assets/app_icons.dart';
-import '../app_assets/app_styles.dart';
-import '../screens/news_screen.dart';
-import '../screens/transfer_screen.dart';
+import '../../../app_assets/app_colors.dart';
+import '../../../app_assets/app_icons.dart';
+import '../../../app_assets/app_styles.dart';
+import '../../news_screen.dart';
+import '../../transfer_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

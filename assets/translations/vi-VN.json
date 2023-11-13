@@ -91,6 +91,11 @@
   "barcode_type": "Loại mã",
   "data": "Dữ liệu",
 
+  "account_received_payment": "Tài khoản nhận khoản thanh toán",
+  "transfer_successful": "Chuyển khoản thành công",
+  "received_amount": "đã nhận số tiền",
+  "successfully_transferred_amount": "đã chuyển khoản thành công số tiền",
+
   "transfer_from": "Chuyển từ",
   "change": "Thay đổi",
   "balance": "Số dư",

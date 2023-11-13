@@ -91,6 +91,11 @@
   "barcode_type": "Barcode type",
   "data": "Data",
 
+  "account_received_payment": "The account has received payment",
+  "transfer_successful": "Transfer successful",
+  "received_amount": "received the amount",
+  "successfully_transferred_amount": "has successfully transferred the amount",
+
   "transfer_from": "Transfer from",
   "change": "Change",
   "balance": "Balance",

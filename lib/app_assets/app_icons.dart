@@ -25,6 +25,7 @@ class AppIcons {
   static const String iconAccountBlue = '$iconsPath/icon_account_blue.svg';
 
   // Account page
+  static const String iconNotificationOutline = '$iconsPath/icon_notification_outline.svg';
   static const String iconNotifications = '$iconsPath/icon_notifications.svg';
   static const String iconArrowRight = '$iconsPath/icon_arrow_right.svg';
   static const String iconSecurity = '$iconsPath/icon_security.svg';
