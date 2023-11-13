@@ -57,6 +57,15 @@
   "select_year": "Chọn năm",
   "select_type": "Chọn loại giao dịch",
 
+  "transaction_detail": "Chi tiết giao dịch",
+  "transaction": "Giao dịch",
+  "bank": "Ngân hàng",
+  "transaction_information": "Thông tin giao dịch",
+  "transaction_code": "Mã giao dịch",
+  "date": "Ngày",
+  "fee": "Phí",
+  "total": "Tổng",
+
   "touch_to_view": "Chạm để xem và sửa thông tin",
   "notification": "Thông báo",
   "security": "Bảo mật",

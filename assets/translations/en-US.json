@@ -57,6 +57,15 @@
   "select_year": "Select year",
   "select_type": "Select transaction type",
 
+  "transaction_detail": "Transaction detail",
+  "transaction": "Transaction",
+  "bank": "Bank",
+  "transaction_information": "Transaction informations",
+  "transaction_code": "Transaction code",
+  "date": "Date",
+  "fee": "Fee",
+  "total": "Total",
+
   "touch_to_view": "Touch to view and edit information",
   "notification": "Notification",
   "security": "Security",

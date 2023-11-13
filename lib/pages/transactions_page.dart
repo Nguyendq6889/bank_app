@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
+import '../screens/transaction_detail_screen.dart';
 
 class TransactionsPage extends StatefulWidget {
   const TransactionsPage({Key? key}) : super(key: key);
@@ -165,48 +166,51 @@ class _TransactionsPageState extends State<TransactionsPage> {
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 16),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Container(
-                                    width: 44,
-                                    height: 44,
-                                    margin: const EdgeInsets.only(right: 12),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(4),
-                                      color: const Color(0xfff8f8f8),
+                              child: InkWell(
+                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransactionDetailScreen())),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      width: 44,
+                                      height: 44,
+                                      margin: const EdgeInsets.only(right: 12),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(4),
+                                        color: const Color(0xfff8f8f8),
+                                      ),
+                                      child: Center(
+                                        child: SvgPicture.asset(index % 2 == 0 ? AppIcons.iconArrowUpBlue : AppIcons.iconArrowDownRed),
+                                      ),
                                     ),
-                                    child: Center(
-                                      child: SvgPicture.asset(index % 2 == 0 ? AppIcons.iconArrowUpBlue : AppIcons.iconArrowDownRed),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "11/06/2023 12:45",
+                                            style: AppStyles.textFeatures.copyWith(fontWeight: FontWeight.w400)
+                                          ),
+                                          const SizedBox(height: 4),
+                                          Text(
+                                            index % 2 == 0
+                                                ? '${'from'.tr()}: 1014686229'
+                                                : '${'to'.tr()}: 1014686229',
+                                            style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "11/06/2023 12:45",
-                                          style: AppStyles.textFeatures.copyWith(fontWeight: FontWeight.w400)
-                                        ),
-                                        const SizedBox(height: 4),
-                                        Text(
-                                          index % 2 == 0
-                                              ? '${'from'.tr()}: 1014686229'
-                                              : '${'to'.tr()}: 1014686229',
-                                          style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Text(
-                                    index % 2 == 0
-                                        ? '+1,000,000 ${'currency'.tr()}'
-                                        : '-500,000 ${'currency'.tr()}',
-                                    style: AppStyles.textButtonBlack.copyWith(
-                                      color: index % 2 == 0 ? AppColors.primaryColor : const Color(0xffEB383D),
-                                    ),
-                                  )
-                                ],
+                                    Text(
+                                      index % 2 == 0
+                                          ? '+1,000,000 ${'currency'.tr()}'
+                                          : '-500,000 ${'currency'.tr()}',
+                                      style: AppStyles.textButtonBlack.copyWith(
+                                        color: index % 2 == 0 ? AppColors.primaryColor : const Color(0xffEB383D),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             );
                           }
@@ -344,19 +348,19 @@ class _TransactionsPageState extends State<TransactionsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(valueType, style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
                   ),
                   InkWell(
                     onTap: () => Navigator.pop(context),
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+                      padding: const EdgeInsets.all(16),
                       child: SvgPicture.asset(AppIcons.iconClose),
                     ),
                   )
                 ],
               ),
-              Divider(color: Colors.black.withOpacity(0.25), height: 1.0, thickness: 1, indent: 20, endIndent: 20,),
+              const Divider(color: Color(0xfff1f1f1), height: 1.0, thickness: 1, indent: 16, endIndent: 16),
               Expanded(
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),

@@ -38,7 +38,7 @@ class _NewsScreenState extends State<NewsScreen> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0.5),
           child: Container(
-            color: Colors.black.withOpacity(0.25),
+            color: const Color(0xfff1f1f1),
             height: 1.0,
           ),
         ),
