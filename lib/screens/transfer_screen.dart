@@ -25,7 +25,6 @@ class TransferScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          // AppBar
           Column(
             children: [
               Container(
@@ -87,41 +86,6 @@ class TransferScreen extends StatelessWidget {
               ),
             ],
           ),
-          // Column(
-          //   children: [
-          //     Container(
-          //       width: size.width,
-          //       height: size.height * 18.472 / 100,
-          //       decoration: const BoxDecoration(
-          //         gradient: AppColors.colorAppBar,
-          //       ),
-          //       child: SafeArea(
-          //         child: Column(
-          //           children: [
-          //             SizedBox(
-          //               height: (size.height * 11.822 / 100) - MediaQuery.of(context).padding.top,
-          //               child: Row(
-          //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //                 children: [
-          //                   GestureDetector(
-          //                     onTap: () => Navigator.pop(context),
-          //                     child: Container(
-          //                       padding: const EdgeInsets.all(16),
-          //                       child: SvgPicture.asset(AppIcons.iconBack),
-          //                     ),
-          //                   ),
-          //                   Text('transfer'.tr(), style: AppStyles.titleAppBarWhite.copyWith(height: 1)),
-          //                   const SizedBox(width: 42)
-          //                 ],
-          //               ),
-          //             ),
-          //           ],
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Body
           Positioned(
             left: 16,
             top: 52,

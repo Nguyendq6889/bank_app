@@ -228,6 +228,7 @@ class _AccountPageState extends State<AccountPage> {
         return SizedBox(
           height: 30 * MediaQuery.of(context).size.height / 100,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

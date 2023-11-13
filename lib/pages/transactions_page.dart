@@ -14,6 +14,36 @@ class TransactionsPage extends StatefulWidget {
 }
 
 class _TransactionsPageState extends State<TransactionsPage> {
+  String month = 'february'.tr();
+  String year = '2023';
+  String transactionType = 'all'.tr();
+
+  List<String> listMonths = [
+    'january'.tr(),
+    'february'.tr(),
+    'march'.tr(),
+    'april'.tr(),
+    'may'.tr(),
+    'june'.tr(),
+    'july'.tr(),
+    'august'.tr(),
+    'september'.tr(),
+    'october'.tr(),
+    'november'.tr(),
+    'december'.tr()
+  ];
+  List<String> listYears = [
+    '2020',
+    '2021',
+    '2022',
+    '2023'
+  ];
+  List<String> listTransactionType = [
+    'from'.tr(),
+    'to'.tr(),
+    'all'.tr()
+  ];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,64 +72,85 @@ class _TransactionsPageState extends State<TransactionsPage> {
                       Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              height: 44,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: const Color(0xfff7f6f6)
+                            child: InkWell(
+                              onTap: () => _modalBottomSheet(
+                                listData: listMonths,
+                                valueType: 'select_month'.tr(),
+                                currentValue: month
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'november'.tr(),
-                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
-                                  ),
-                                  SvgPicture.asset(AppIcons.iconArrowDown)
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          Expanded(
-                            child: Container(
-                              height: 44,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: const Color(0xfff7f6f6)
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    '2023',
-                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
-                                  ),
-                                  SvgPicture.asset(AppIcons.iconArrowDown)
-                                ],
+                              child: Container(
+                                height: 44,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: const Color(0xfff7f6f6)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      month,
+                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                    ),
+                                    SvgPicture.asset(AppIcons.iconArrowDown)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
-                            child: Container(
-                              height: 44,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                color: const Color(0xfff7f6f6)
+                            child: InkWell(
+                              onTap: () => _modalBottomSheet(
+                                listData: listYears,
+                                valueType: 'select_year'.tr(),
+                                currentValue: year
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'all'.tr(),
-                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
-                                  ),
-                                  SvgPicture.asset(AppIcons.iconArrowDown)
-                                ],
+                              child: Container(
+                                height: 44,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: const Color(0xfff7f6f6)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      year,
+                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                    ),
+                                    SvgPicture.asset(AppIcons.iconArrowDown)
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: InkWell(
+                              onTap: () => _modalBottomSheet(
+                                listData: listTransactionType,
+                                valueType: 'select_type'.tr(),
+                                currentValue: transactionType
+                              ),
+                              child: Container(
+                                height: 44,
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  color: const Color(0xfff7f6f6)
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      transactionType,
+                                      style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                                    ),
+                                    SvgPicture.asset(AppIcons.iconArrowDown)
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -275,113 +326,73 @@ class _TransactionsPageState extends State<TransactionsPage> {
     );
   }
 
-  Widget _buildFeature(String icon, String label, {bool? hideArrowRight, bool? showLanguage, bool? showMark, VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap ?? () {},
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(minWidth: 20),
-                  child: SvgPicture.asset(icon),
-                ),
-                const SizedBox(width: 16),
-                Text(
-                    label,
-                    style: AppStyles.textButtonGray
-                )
-              ],
-            ),
-            (hideArrowRight ?? false) ? const SizedBox() : Row(
-              children: [
-                (showLanguage ?? false)
-                    ? Text('Tiếng Việt', style: AppStyles.textButtonBlue.copyWith(fontWeight: FontWeight.w600))
-                    : const SizedBox(),
-                (showMark ?? false)
-                    ? SvgPicture.asset(AppIcons.iconMark)
-                    : const SizedBox(),
-                const SizedBox(width: 12),
-                SvgPicture.asset(AppIcons.iconArrowRight),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLanguageOptions(String icon, String label, {bool? selected, VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap ?? () {},
-      child: Container(
-        color: (selected ?? false) ? const Color(0xfff1f1f1) : null,
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                SvgPicture.asset(icon),
-                const SizedBox(width: 16),
-                Text(
-                    label,
-                    style: AppStyles.textNormalBlack
-                )
-              ],
-            ),
-            (selected ?? false)
-                ? SvgPicture.asset(AppIcons.iconSelected)
-                : const SizedBox(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  _modalBottomSheetThanhToan({required VoidCallback onTap}) {
+  _modalBottomSheet({required List<String> listData, required String valueType, required String currentValue}) {
     return showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16)
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16)
         ),
       ),
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
-          height: 25 * MediaQuery.of(context).size.height / 100,
+          height: 50 * MediaQuery.of(context).size.height / 100,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text('Chọn ngôn ngữ', style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
-                        InkWell(
-                          onTap: () => Navigator.pop(context),
-                          child: SvgPicture.asset(AppIcons.iconClose),
-                        )
-                      ],
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(valueType, style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+                      child: SvgPicture.asset(AppIcons.iconClose),
                     ),
-                    const SizedBox(height: 8),
-                    const Text(
-                        "Bạn muốn dùng ngôn ngữ nào cho ứng dụng?",
-                        style: AppStyles.textButtonGray
-                    ),
-                  ],
-                ),
+                  )
+                ],
               ),
-              const SizedBox(height: 12),
-              _buildLanguageOptions(AppIcons.iconVietNam, 'Tiếng Việt', selected: true),
-              _buildLanguageOptions(AppIcons.iconEnglish, 'English', selected: false),
+              Divider(color: Colors.black.withOpacity(0.25), height: 1.0, thickness: 1, indent: 20, endIndent: 20,),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      ...List.generate(listData.length, (index) {
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              if(listData == listMonths) {
+                                month = listData[index];
+                              } else if(listData == listYears) {
+                                year = listData[index];
+                              } else {
+                                transactionType = listData[index];
+                              }
+                            });
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            color: (listData[index] == currentValue) ? const Color(0xfff1f1f1) : null,
+                            child: Text(
+                              listData[index],
+                              textAlign: TextAlign.center,
+                              style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff2e2e2e))
+                            ),
+                          )
+                        );
+                      })
+                    ]
+                  ),
+                ),
+              )
             ],
           ),
         );
