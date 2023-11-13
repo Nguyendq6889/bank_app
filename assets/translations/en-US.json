@@ -105,5 +105,11 @@
   "international": "International",
   "savedList": "Saved list",
 
-  "interbank_transfer": "Interbank transfer"
+  "interbank_transfer": "Interbank transfer",
+
+  "electric_bill": "Electric bill",
+  "water_fee": "Water fee",
+  "airline_tickets": "Airline tickets",
+  "television": "Television",
+  "select_payment_type": "Select the type of invoice to pay"
 }

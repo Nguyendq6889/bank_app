@@ -105,5 +105,11 @@
   "international": "Quốc tế",
   "savedList": "Danh sách đã lưu",
 
-  "interbank_transfer": "Chuyển khoản liên ngân hàng"
+  "interbank_transfer": "Chuyển khoản liên ngân hàng",
+
+  "electric_bill": "Tiền điện",
+  "water_fee": "Tiền nước",
+  "airline_tickets": "Vé máy bay",
+  "television": "Truyền hình",
+  "select_payment_type": "Chọn loại hóa đơn cần thanh toán"
 }

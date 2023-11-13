@@ -8,6 +8,7 @@ import '../../../app_assets/app_colors.dart';
 import '../../../app_assets/app_icons.dart';
 import '../../../app_assets/app_styles.dart';
 import '../../news_screen.dart';
+import '../../payment_screen.dart';
 import '../../transfer_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -148,7 +149,11 @@ class _HomePageState extends State<HomePage> {
                                 AppIcons.iconTransfer,
                                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
                               ),
-                              _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                              _featuresTextStyle(
+                                'payment'.tr(),
+                                AppIcons.iconPayment,
+                                onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PaymentScreen())),
+                              ),
                               _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
                               _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
                               _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
