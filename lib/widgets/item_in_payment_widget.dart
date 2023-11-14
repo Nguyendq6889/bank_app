@@ -1,50 +1,47 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ItemInPaymentWidget extends StatelessWidget {
-  final String text;
+import '../app_assets/app_styles.dart';
+
+class FeatureWidget extends StatelessWidget {
+  final String title;
   final String icon;
-  final VoidCallback onTap;
-  const ItemInPaymentWidget({Key? key, required this.text, required this.icon, required this.onTap}) : super(key: key);
+  final double? iconWidth;
+  final VoidCallback? onTap;
+  const FeatureWidget({Key? key, required this.title, required this.icon, this.iconWidth, this.onTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 106,
-      height: 108,
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8, // soften the shadow
-            spreadRadius: 0, //extend the shadow
-          )
-        ],
-      ),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Center(
-          child: Column(
-            children: [
-              Expanded(
-                flex: 3,
-                  child: Center(child: SvgPicture.asset(icon))
-              ),
-              Expanded(
-                flex: 2,
-                child: Center(
-                  child: Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)
-                  ),
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(8, 16, 8, 10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 8, // soften the shadow
+              spreadRadius: 0, //extend the shadow
+            )
+          ],
+        ),
+        child: Column(
+          children: [
+            SvgPicture.asset(icon, width: iconWidth),
+            const SizedBox(height: 6),
+            Expanded(
+              child: Center(
+                child: Text(
+                  title.tr(),
+                  textAlign: TextAlign.center,
+                  style: AppStyles.textFeatures.copyWith(height: 1.2)
                 ),
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
