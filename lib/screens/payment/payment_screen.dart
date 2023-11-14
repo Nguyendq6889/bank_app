@@ -1,14 +1,13 @@
+import 'package:bank_app/widgets/item_in_payment_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../app_assets/app_colors.dart';
+import '../../app_assets/app_icons.dart';
+import '../../app_assets/app_styles.dart';
 
-import '../app_assets/app_colors.dart';
-import '../app_assets/app_icons.dart';
-import '../app_assets/app_styles.dart';
-import 'interbank_transfer_screen.dart';
-
-class TransferScreen extends StatelessWidget {
-  const TransferScreen({Key? key}) : super(key: key);
+class PaymentScreen extends StatelessWidget {
+  const PaymentScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class TransferScreen extends StatelessWidget {
                               child: SvgPicture.asset(AppIcons.iconBack),
                             ),
                           ),
-                          Text('transfer'.tr(), style: AppStyles.titleAppBarWhite.copyWith(height: 1)),
+                          Text('payment'.tr(), style: AppStyles.titleAppBarWhite.copyWith(height: 1)),
                           const SizedBox(width: 42)
                         ],
                       ),
@@ -57,7 +56,7 @@ class TransferScreen extends StatelessWidget {
               ),
               const SizedBox(height: 70),
               Text(
-                'select_transfer_type'.tr(),
+                'select_payment_type'.tr(),
                 style: AppStyles.textButtonBlack
               ),
               const SizedBox(height: 24),
@@ -72,15 +71,18 @@ class TransferScreen extends StatelessWidget {
                   mainAxisSpacing: 12,
                   crossAxisSpacing: 12,
                   crossAxisCount: 3,
-                  children: <Widget>[
-                    _feature('intra_bank'.tr(), AppIcons.iconIntraBank,
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InterbankTransferScreen()))
+                  children: const <Widget>[
+                    FeatureWidget(title: 'electric_bill', icon: AppIcons.iconElectric,
+                      // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InterbankPaymentScreen()))
                     ),
-                    _feature('interbank'.tr(), AppIcons.iconInterbank,
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InterbankTransferScreen()))
+                    FeatureWidget(title: 'water_fee', icon: AppIcons.iconWater,
+                      // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InterbankPaymentScreen()))
                     ),
-                    _feature('international'.tr(), AppIcons.iconInternational),
-                    _feature('savedList'.tr(), AppIcons.iconSavedList),
+                    FeatureWidget(title: 'airline_tickets', icon: AppIcons.iconAirplane),
+                    FeatureWidget(title: 'Internet', icon: AppIcons.iconInternet),
+                    FeatureWidget(title: 'television', icon: AppIcons.iconTV),
+                    FeatureWidget(title: 'top_up', icon: AppIcons.iconTopUp, iconWidth: 31.66),
+                    FeatureWidget(title: 'insurance', icon: AppIcons.iconInsurance, iconWidth: 40),
                   ],
                 ),
               ),
@@ -158,41 +160,6 @@ class TransferScreen extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget _feature(String title, String icon, {VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(8, 16, 8, 10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8, // soften the shadow
-              spreadRadius: 0, //extend the shadow
-            )
-          ],
-        ),
-        child: Column(
-          children: [
-            SvgPicture.asset(icon),
-            const SizedBox(height: 6),
-            Expanded(
-              child: Center(
-                child: Text(
-                  title.tr(),
-                  textAlign: TextAlign.center,
-                  style: AppStyles.textFeatures.copyWith(height: 1.2)
-                ),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

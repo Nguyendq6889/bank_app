@@ -8,8 +8,8 @@ import '../../../app_assets/app_colors.dart';
 import '../../../app_assets/app_icons.dart';
 import '../../../app_assets/app_styles.dart';
 import '../../news_screen.dart';
-import '../../payment_screen.dart';
-import '../../transfer_screen.dart';
+import '../../payment/payment_screen.dart';
+import '../../transfer/transfer_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

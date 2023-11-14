@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import '../app_assets/app_icons.dart';
-import '../app_assets/app_styles.dart';
+import '../../app_assets/app_icons.dart';
+import '../../app_assets/app_styles.dart';
 import 'qr_code_info_screen.dart';
 
 class QRCodeScanScreen extends StatefulWidget {

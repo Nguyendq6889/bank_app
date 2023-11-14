@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import '../app_assets/app_colors.dart';
-import '../app_assets/app_icons.dart';
-import '../app_assets/app_styles.dart';
-import '../widgets/main_button_widget.dart';
+import '../../app_assets/app_colors.dart';
+import '../../app_assets/app_icons.dart';
+import '../../app_assets/app_styles.dart';
+import '../../widgets/main_button_widget.dart';
 
 class QRCodeInfoScreen extends StatelessWidget {
   final Barcode result;

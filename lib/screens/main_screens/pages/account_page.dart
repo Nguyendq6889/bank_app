@@ -7,6 +7,7 @@ import '../../../app_assets/app_colors.dart';
 import '../../../app_assets/app_icons.dart';
 import '../../../app_assets/app_images.dart';
 import '../../../app_assets/app_styles.dart';
+import '../../../widgets/language_option_widget.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -187,34 +188,6 @@ class _AccountPageState extends State<AccountPage> {
     );
   }
 
-  Widget _buildLanguageOptions(String icon, String label, {bool? selected, VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap ?? () {},
-      child: Container(
-        color: (selected ?? false) ? const Color(0xfff1f1f1) : null,
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                SvgPicture.asset(icon),
-                const SizedBox(width: 16),
-                Text(
-                  label,
-                  style: AppStyles.textNormalBlack
-                )
-              ],
-            ),
-            (selected ?? false)
-                ? SvgPicture.asset(AppIcons.iconSelected)
-                : const SizedBox(),
-          ],
-        ),
-      ),
-    );
-  }
-
   _showModalBottomSheet() {
     return showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
@@ -254,9 +227,9 @@ class _AccountPageState extends State<AccountPage> {
                 ),
               ),
               const SizedBox(height: 12),
-              _buildLanguageOptions(
-                AppIcons.iconVietNam,
-                'Tiếng Việt',
+              LanguageOptionWidget(
+                icon: AppIcons.iconVietNam,
+                label: 'Tiếng Việt',
                 selected: (_language == 'vi_VN') ? true : false,
                 onTap: () {
                   context.setLocale(const Locale('vi', 'VN'));
@@ -264,9 +237,9 @@ class _AccountPageState extends State<AccountPage> {
                   Navigator.pop(context);
                 },
               ),
-              _buildLanguageOptions(
-                AppIcons.iconEnglish,
-                'English',
+              LanguageOptionWidget(
+                icon: AppIcons.iconEnglish,
+                label: 'English',
                 selected: (_language == 'en_US') ? true : false,
                 onTap: (){
                   context.setLocale(const Locale('en', 'US'));

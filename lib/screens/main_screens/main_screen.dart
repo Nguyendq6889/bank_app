@@ -1,5 +1,5 @@
-import 'package:bank_app/screens/qr_code_info_screen.dart';
-import 'package:bank_app/screens/qr_code_scan_screen.dart';
+import 'package:bank_app/screens/qr_code/qr_code_info_screen.dart';
+import 'package:bank_app/screens/qr_code/qr_code_scan_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
