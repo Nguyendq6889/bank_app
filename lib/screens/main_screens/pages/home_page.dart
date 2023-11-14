@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                           style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
                         ),
                         Text(
-                          "12.000.000",
+                          "12,000,000",
                           style: AppStyles.titleAppBarWhite.copyWith(fontSize: 22)
                         ),
                       ],
