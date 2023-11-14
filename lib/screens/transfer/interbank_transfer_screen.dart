@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../app_assets/app_colors.dart';
-import '../app_assets/app_icons.dart';
-import '../app_assets/app_styles.dart';
+import '../../app_assets/app_colors.dart';
+import '../../app_assets/app_icons.dart';
+import '../../app_assets/app_styles.dart';
 
 class InterbankTransferScreen extends StatelessWidget {
   const InterbankTransferScreen({Key? key}) : super(key: key);
@@ -130,41 +130,6 @@ class InterbankTransferScreen extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget _feature(String title, String icon, {VoidCallback? onTap}) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(8, 16, 8, 10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 8, // soften the shadow
-              spreadRadius: 0, //extend the shadow
-            )
-          ],
-        ),
-        child: Column(
-          children: [
-            SvgPicture.asset(icon),
-            const SizedBox(height: 6),
-            Expanded(
-              child: Center(
-                child: Text(
-                  title.tr(),
-                  textAlign: TextAlign.center,
-                  style: AppStyles.textFeatures.copyWith(height: 1.2)
-                ),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

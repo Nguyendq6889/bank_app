@@ -144,22 +144,22 @@ class _HomePageState extends State<HomePage> {
                             mainAxisSpacing: 12,
                             crossAxisCount: 4,
                             children: <Widget>[
-                              _featuresTextStyle(
+                              _feature(
                                 'transfer'.tr(),
                                 AppIcons.iconTransfer,
                                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
                               ),
-                              _featuresTextStyle(
+                              _feature(
                                 'payment'.tr(),
                                 AppIcons.iconPayment,
                                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PaymentScreen())),
                               ),
-                              _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
-                              _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                              _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
-                              _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
-                              _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
-                              _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
+                              _feature('saving'.tr(), AppIcons.iconSaving),
+                              _feature('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                              _feature('account'.tr(), AppIcons.iconWallet),
+                              _feature('card_service'.tr(), AppIcons.iconCards),
+                              _feature('insurance'.tr(), AppIcons.iconInsurance),
+                              _feature('top_up'.tr(), AppIcons.iconTopUp),
                             ],
                           ),
                           GridView.count(
@@ -171,14 +171,14 @@ class _HomePageState extends State<HomePage> {
                             mainAxisSpacing: 12,
                             crossAxisCount: 4,
                             children: <Widget>[
-                              _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
-                              _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
-                              _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
-                              _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                              _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
-                              _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
-                              _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
-                              _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                              _feature('atm_branch'.tr(), AppIcons.iconATMHome),
+                              _feature('withdraw'.tr(), AppIcons.iconWithdraw),
+                              _feature('interest_rate'.tr(), AppIcons.iconInterestRate),
+                              _feature('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                              _feature('promotion'.tr(), AppIcons.iconPromotion),
+                              _feature('book_tickets'.tr(), AppIcons.iconTicketHome),
+                              _feature('support'.tr(), AppIcons.iconSupportHome),
+                              _feature('news'.tr(), AppIcons.iconNews),
                             ],
                           ),
                         ]
@@ -331,30 +331,30 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 12,
                 crossAxisCount: 4,
                 children: <Widget>[
-                  _featuresTextStyle(
+                  _feature(
                     'transfer'.tr(),
                     AppIcons.iconTransfer,
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
                   ),
-                  _featuresTextStyle(
+                  _feature(
                     'payment'.tr(),
                     AppIcons.iconPayment,
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PaymentScreen())),
                   ),
-                  _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
-                  _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                  _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
-                  _featuresTextStyle('card_service'.tr(), AppIcons.iconCards),
-                  _featuresTextStyle('insurance'.tr(), AppIcons.iconInsurance),
-                  _featuresTextStyle('top_up'.tr(), AppIcons.iconTopUp),
-                  _featuresTextStyle('atm_branch'.tr(), AppIcons.iconATMHome),
-                  _featuresTextStyle('withdraw'.tr(), AppIcons.iconWithdraw),
-                  _featuresTextStyle('interest_rate'.tr(), AppIcons.iconInterestRate),
-                  _featuresTextStyle('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                  _featuresTextStyle('promotion'.tr(), AppIcons.iconPromotion),
-                  _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicketHome),
-                  _featuresTextStyle('support'.tr(), AppIcons.iconSupportHome),
-                  _featuresTextStyle('news'.tr(), AppIcons.iconNews),
+                  _feature('saving'.tr(), AppIcons.iconSaving),
+                  _feature('payment_request'.tr(), AppIcons.iconPaymentRequest),
+                  _feature('account'.tr(), AppIcons.iconWallet),
+                  _feature('card_service'.tr(), AppIcons.iconCards),
+                  _feature('insurance'.tr(), AppIcons.iconInsurance),
+                  _feature('top_up'.tr(), AppIcons.iconTopUp),
+                  _feature('atm_branch'.tr(), AppIcons.iconATMHome),
+                  _feature('withdraw'.tr(), AppIcons.iconWithdraw),
+                  _feature('interest_rate'.tr(), AppIcons.iconInterestRate),
+                  _feature('exchange_rate'.tr(), AppIcons.iconExchangeRate),
+                  _feature('promotion'.tr(), AppIcons.iconPromotion),
+                  _feature('book_tickets'.tr(), AppIcons.iconTicketHome),
+                  _feature('support'.tr(), AppIcons.iconSupportHome),
+                  _feature('news'.tr(), AppIcons.iconNews),
                 ],
               ),
             ],
@@ -364,7 +364,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _featuresTextStyle(String title, String icon, {VoidCallback? onTap}) {
+  Widget _feature(String title, String icon, {VoidCallback? onTap}) {
     return InkWell(
       onTap: onTap,
       child: Column(

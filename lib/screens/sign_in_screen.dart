@@ -102,10 +102,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            _featuresTextStyle('QR Pay', AppIcons.iconQRPay),
-                            _featuresTextStyle('ATM', AppIcons.iconATM),
-                            _featuresTextStyle('book_tickets'.tr(), AppIcons.iconTicket),
-                            _featuresTextStyle('support'.tr(), AppIcons.iconSupport),
+                            _feature('QR Pay', AppIcons.iconQRPay),
+                            _feature('ATM', AppIcons.iconATM),
+                            _feature('book_tickets'.tr(), AppIcons.iconTicket),
+                            _feature('support'.tr(), AppIcons.iconSupport),
                           ],
                         ),
                       ],
@@ -273,7 +273,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  Widget _featuresTextStyle(String title, String icon) {
+  Widget _feature(String title, String icon) {
     return Column(
       children: [
         SvgPicture.asset(icon),

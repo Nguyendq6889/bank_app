@@ -1,4 +1,4 @@
-import 'package:bank_app/widgets/item_in_payment_widget.dart';
+import 'package:bank_app/widgets/feature_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
