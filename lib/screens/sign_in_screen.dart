@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_images.dart';
 import '../app_assets/app_styles.dart';
+import '../widgets/language_option_widget.dart';
 import '../widgets/main_button_widget.dart';
 import 'main_screens/main_screen.dart';
 
@@ -20,6 +22,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  String? _language;
   late final LocalAuthentication auth;
   bool _supportState = false;
   List<BiometricType> availableBiometrics = [];
@@ -30,6 +33,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     auth = LocalAuthentication();
+    _getLanguage();
     _getAvailableBiometrics();
     auth.isDeviceSupported().then((bool isSupported) => setState(() {
         _supportState = isSupported;
@@ -55,6 +59,32 @@ class _SignInScreenState extends State<SignInScreen> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SizedBox(width: double.infinity, height: MediaQuery.of(context).padding.top),
+                        InkWell(
+                          onTap: () => _showModalBottomSheet(),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                SvgPicture.asset(_language == 'vi_VN' ? AppIcons.iconVietNam : AppIcons.iconEnglish),
+                                const SizedBox(width: 6),
+                                Text(
+                                  _language == 'vi_VN' ? 'VI' : 'EN',
+                                  style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.bold)
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ),
                   Container(
                     width: size.width,
                     height: size.height * 60.837 / 100,
@@ -254,6 +284,91 @@ class _SignInScreenState extends State<SignInScreen> {
         )
       ],
     );
+  }
+
+  _showModalBottomSheet() {
+    return showModalBottomSheet<void>(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16)
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: 30 * MediaQuery.of(context).size.height / 100,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      'select_language'.tr(),
+                      style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
+                      child: SvgPicture.asset(AppIcons.iconClose),
+                    ),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Text(
+                  'language_use_question'.tr(),
+                  style: AppStyles.textButtonGray,
+                ),
+              ),
+              const SizedBox(height: 12),
+              LanguageOptionWidget(
+                icon: AppIcons.iconVietNam,
+                label: 'Tiếng Việt',
+                selected: (_language == 'vi_VN') ? true : false,
+                onTap: () {
+                  context.setLocale(const Locale('vi', 'VN'));
+                  _saveLanguage('vi_VN');
+                  Navigator.pop(context);
+                },
+              ),
+              LanguageOptionWidget(
+                icon: AppIcons.iconEnglish,
+                label: 'English',
+                selected: (_language == 'en_US') ? true : false,
+                onTap: (){
+                  context.setLocale(const Locale('en', 'US'));
+                  _saveLanguage('en_US');
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _getLanguage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String savedLanguage = prefs.getString('language') ?? 'en_US';
+    setState(() {
+      _language = savedLanguage;
+    });
+  }
+
+  Future<void> _saveLanguage(String newLanguage) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('language', newLanguage);
+    setState(() {
+      _language = newLanguage;
+    });
   }
 
   Future<void> _getAvailableBiometrics() async {
