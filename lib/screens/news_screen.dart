@@ -62,10 +62,10 @@ class _NewsScreenState extends State<NewsScreen> {
                       });
                     },
                     children: [
-                      _banner(AppImages.imageBanner, size),
-                      _banner(AppImages.imageBanner2, size),
-                      _banner(AppImages.imageBanner3, size),
-                      _banner(AppImages.imageBanner4, size),
+                      _banner(AppImages.imageNews1, size),
+                      _banner(AppImages.imageNews2, size),
+                      _banner(AppImages.imageNews3, size),
+                      _banner(AppImages.imageNews4, size),
                     ]
                   ),
                   const Padding(
@@ -128,9 +128,9 @@ class _NewsScreenState extends State<NewsScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: Column(
                 children: [
-                  _recentNews(AppImages.imageNews1, 'Ngân hàng dành nhiều ưu đãi cho khách hàng mở và giao dịch thẻ trực tuyến'),
-                  _recentNews(AppImages.imageNews2, 'Các ngân hàng liên kết tạo quỹ chống suy thoái trước tiền cảnh kinh tế ảnh hưởng dịch'),
-                  _recentNews(AppImages.imageNews3, 'Bản tin Kinh tế - Tình hình kinh tế Quý I năm 2020')
+                  _recentNews(AppImages.imageRecentNews1, 'Ngân hàng dành nhiều ưu đãi cho khách hàng mở và giao dịch thẻ trực tuyến'),
+                  _recentNews(AppImages.imageRecentNews2, 'Các ngân hàng liên kết tạo quỹ chống suy thoái trước tiền cảnh kinh tế ảnh hưởng dịch'),
+                  _recentNews(AppImages.imageRecentNews3, 'Bản tin Kinh tế - Tình hình kinh tế Quý I năm 2020')
                 ]
               ),
             )

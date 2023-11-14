@@ -241,10 +241,10 @@ class _HomePageState extends State<HomePage> {
                           });
                         },
                         children: [
-                          _banner(AppImages.imageBanner, size),
-                          _banner(AppImages.imageBanner2, size),
-                          _banner(AppImages.imageBanner3, size),
-                          _banner(AppImages.imageBanner4, size),
+                          _banner(AppImages.imageNews1, size),
+                          _banner(AppImages.imageNews2, size),
+                          _banner(AppImages.imageNews3, size),
+                          _banner(AppImages.imageNews4, size),
                         ]
                       ),
                       const SizedBox(height: 16),
@@ -336,7 +336,11 @@ class _HomePageState extends State<HomePage> {
                     AppIcons.iconTransfer,
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const TransferScreen())),
                   ),
-                  _featuresTextStyle('payment'.tr(), AppIcons.iconPayment),
+                  _featuresTextStyle(
+                    'payment'.tr(),
+                    AppIcons.iconPayment,
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PaymentScreen())),
+                  ),
                   _featuresTextStyle('saving'.tr(), AppIcons.iconSaving),
                   _featuresTextStyle('payment_request'.tr(), AppIcons.iconPaymentRequest),
                   _featuresTextStyle('account'.tr(), AppIcons.iconWallet),
