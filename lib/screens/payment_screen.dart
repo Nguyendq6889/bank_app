@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import '../app_assets/app_colors.dart';
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
-import 'interbank_transfer_screen.dart';
 
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({Key? key}) : super(key: key);

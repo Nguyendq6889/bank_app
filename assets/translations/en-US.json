@@ -1,10 +1,10 @@
 {
   "welcome_to": "Welcome to",
 
+  "sign_in": "Sign in",
   "username": "Username",
   "phone_number": "Phone number",
   "password": "Password",
-  "sign_in": "Sign in",
   "forgot_password": "Forgot password?",
   "book_tickets": "Book tickets",
   "support": "Support",
@@ -12,16 +12,10 @@
   "text_use_finger": "Please use fingerprint for authentication",
 
   "home": "Home",
-  "transactions": "Transactions",
-  "notifications": "Notifications",
-  "account": "Account",
-
   "hello": "Hello",
   "payment_account": "Payment account",
   "current_balance": "Current balance",
   "features": "Features",
-  "transfer": "Transfer",
-  "payment": "Payment",
   "saving": "Saving",
   "payment_request": "Payment request",
   "card_service": "Card services",
@@ -32,8 +26,8 @@
   "interest_rate": "Interest rate",
   "exchange_rate": "Exchange rate",
   "promotion": "Promotion",
-  "news": "News",
 
+  "transactions": "Transactions",
   "transactions_history": "Transactions History",
   "total_revenues": "Total revenues",
   "total_expenditure": "Total expenditure",
@@ -66,17 +60,6 @@
   "fee": "Fee",
   "total": "Total",
 
-  "touch_to_view": "Touch to view and edit information",
-  "notification": "Notification",
-  "security": "Security",
-  "help": "Help",
-  "contact": "Contact",
-  "language": "Language",
-  "sign_out": "Sign out",
-  "version": "Version",
-  "select_language": "Select language",
-  "language_use_question": "What kind of language do you want to used?",
-
   "qr_code_scan": "QR code scan",
   "move_camera": "Move the camera into the area with the QR code to scan",
   "turn_on_flash": "Turn on the flash",
@@ -91,11 +74,25 @@
   "barcode_type": "Barcode type",
   "data": "Data",
 
+  "notifications": "Notifications",
   "account_received_payment": "The account has received payment",
   "transfer_successful": "Transfer successful",
   "received_amount": "received the amount",
   "successfully_transferred_amount": "has successfully transferred the amount",
 
+  "account": "Account",
+  "touch_to_view": "Touch to view and edit information",
+  "notification": "Notification",
+  "security": "Security",
+  "help": "Help",
+  "contact": "Contact",
+  "language": "Language",
+  "sign_out": "Sign out",
+  "version": "Version",
+  "select_language": "Select language",
+  "language_use_question": "What kind of language do you want to used?",
+
+  "transfer": "Transfer",
   "transfer_from": "Transfer from",
   "change": "Change",
   "balance": "Balance",
@@ -107,9 +104,17 @@
 
   "interbank_transfer": "Interbank transfer",
 
+  "payment": "Payment",
   "electric_bill": "Electric bill",
   "water_fee": "Water fee",
   "airline_tickets": "Airline tickets",
   "television": "Television",
-  "select_payment_type": "Select the type of invoice to pay"
+  "select_payment_type": "Select the type of invoice to pay",
+
+  "news": "News",
+  "recent_news": "Recent news",
+  "news_title": "Banks accompany businesses, entrepreneurs, and the people to overcome the 'storm' of Covid-19",
+  "recent_news_title_1": "The bank offers many incentives for customers to open and transact with online cards",
+  "recent_news_title_2": "Banks collaborate to establish a fund to counter recession in anticipation of the economic impact caused by the pandemic",
+  "recent_news_title_3": "Economic Newsletter - Economic Situation of the first quarter of 2023"
 }
