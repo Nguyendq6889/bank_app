@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_images.dart';
 
@@ -45,73 +44,75 @@ class _NewsScreenState extends State<NewsScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            ExpandablePageView(
-              controller: _bannerPageController,
-              physics: const BouncingScrollPhysics(),
-              onPageChanged: (index){
-                setState(() {
-                  _selectedBannerPage = index;
-                });
-              },
-              children: [
-                _banner(AppImages.imageNews1, size),
-                _banner(AppImages.imageNews2, size),
-                _banner(AppImages.imageNews3, size),
-                _banner(AppImages.imageNews4, size),
-              ]
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              height: 10,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: 4,
-                itemBuilder: (_, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      _bannerPageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
-                    },
-                    child: AnimatedContainer(
-                      width: _selectedBannerPage == index ? 28 : 10,
-                      height: 10,
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      duration: const Duration(milliseconds: 100),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: _selectedBannerPage == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
-                      ),
-                    ),
-                  );
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              const SizedBox(height: 16),
+              ExpandablePageView(
+                controller: _bannerPageController,
+                physics: const BouncingScrollPhysics(),
+                onPageChanged: (index){
+                  setState(() {
+                    _selectedBannerPage = index;
+                  });
                 },
-              ),
-            ),
-            const SizedBox(height: 16),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              color: const Color(0xffF9F9F9),
-              child: Text(
-                'recent_news'.tr(),
-                style: AppStyles.textButtonBlack
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Column(
                 children: [
-                  _recentNews(AppImages.imageRecentNews1, 'recent_news_title_1'.tr()),
-                  _recentNews(AppImages.imageRecentNews2, 'recent_news_title_2'.tr()),
-                  _recentNews(AppImages.imageRecentNews3, 'recent_news_title_3'.tr())
+                  _banner(AppImages.imageNews1, size),
+                  _banner(AppImages.imageNews2, size),
+                  _banner(AppImages.imageNews3, size),
+                  _banner(AppImages.imageNews4, size),
                 ]
               ),
-            )
-          ],
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 10,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (_, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        _bannerPageController.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
+                      },
+                      child: AnimatedContainer(
+                        width: _selectedBannerPage == index ? 28 : 10,
+                        height: 10,
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        duration: const Duration(milliseconds: 100),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: _selectedBannerPage == index ? const Color(0xff5289F4) : const Color(0xffDDDDDD),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(16),
+                color: const Color(0xffF9F9F9),
+                child: Text(
+                  'recent_news'.tr(),
+                  style: AppStyles.textButtonBlack
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: Column(
+                  children: [
+                    _recentNews(AppImages.imageRecentNews1, 'recent_news_title_1'.tr()),
+                    _recentNews(AppImages.imageRecentNews2, 'recent_news_title_2'.tr()),
+                    _recentNews(AppImages.imageRecentNews3, 'recent_news_title_3'.tr())
+                  ]
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -125,17 +126,17 @@ class _NewsScreenState extends State<NewsScreen> {
           width: double.infinity,
           margin: const EdgeInsets.symmetric(horizontal: 16),
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              image: DecorationImage(
-                image: AssetImage(image), fit: BoxFit.cover,
-              )
+            borderRadius: BorderRadius.circular(16),
+            image: DecorationImage(
+              image: AssetImage(image), fit: BoxFit.cover,
+            )
           ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 6),
           child: Text(
-              'news_title'.tr(),
-              style: AppStyles.textButtonBlack
+            'news_title'.tr(),
+            style: AppStyles.textButtonBlack
           ),
         ),
         Padding(
@@ -145,7 +146,7 @@ class _NewsScreenState extends State<NewsScreen> {
               SvgPicture.asset(AppIcons.iconClock),
               const SizedBox(width: 8),
               Text(
-                "09:00 - 19/03/2020",
+                "09:00 - 03/11/2023",
                 style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1)),
               ),
             ],
@@ -184,7 +185,7 @@ class _NewsScreenState extends State<NewsScreen> {
               ),
               const SizedBox(height: 6),
               Text(
-                "09:00 - 19/03/2020",
+                "09:00 - 03/11/2023",
                 style: AppStyles.textFeatures.copyWith(color: const Color(0xffA1A1A1)),
               ),
             ],
