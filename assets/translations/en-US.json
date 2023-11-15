@@ -103,6 +103,15 @@
   "savedList": "Saved list",
 
   "interbank_transfer": "Interbank transfer",
+  "card_number": "Card number",
+  "select_bank": "Select bank",
+  "select_currency": "Select currency",
+  "select_fee_payer": "Select fee payer",
+  "transfer_info": "Transfer informations",
+  "charged_to": "Charged to",
+  "sender": "Sender",
+  "receiver": "Receiver",
+  "save_beneficiary": "Save the beneficiary",
 
   "payment": "Payment",
   "electric_bill": "Electric bill",

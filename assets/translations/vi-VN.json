@@ -103,6 +103,15 @@
   "savedList": "Danh sách đã lưu",
 
   "interbank_transfer": "Chuyển khoản liên ngân hàng",
+  "card_number": "Số thẻ",
+  "select_bank": "Chọn ngân hàng",
+  "select_currency": "Chọn tiền tệ",
+  "select_fee_payer": "Chọn người chịu phí",
+  "transfer_info": "Thông tin chuyển khoản",
+  "charged_to": "Thu phí",
+  "sender": "Người chuyển",
+  "receiver": "Người nhận",
+  "save_beneficiary": "Lưu người thụ hưởng",
 
   "payment": "Thanh toán",
   "electric_bill": "Tiền điện",

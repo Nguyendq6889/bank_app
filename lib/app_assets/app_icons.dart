@@ -73,6 +73,9 @@ class AppIcons {
   static const String iconInternational = '$iconsPath/icon_international.svg';
   static const String iconSavedList = '$iconsPath/icon_saved_list.svg';
 
+  // Interbank transfer screen
+  static const String iconArrowDownBlue = '$iconsPath/icon_arrow_down_blue.svg';
+
   // Payment screen
   static const String iconAirplane = '$iconsPath/icon_airplane.svg';
   static const String iconElectric = '$iconsPath/icon_electric.svg';

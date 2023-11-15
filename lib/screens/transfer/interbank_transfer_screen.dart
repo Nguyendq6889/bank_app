@@ -5,9 +5,34 @@ import 'package:flutter_svg/svg.dart';
 import '../../app_assets/app_colors.dart';
 import '../../app_assets/app_icons.dart';
 import '../../app_assets/app_styles.dart';
+import '../../widgets/main_button_widget.dart';
 
-class InterbankTransferScreen extends StatelessWidget {
+class InterbankTransferScreen extends StatefulWidget {
   const InterbankTransferScreen({Key? key}) : super(key: key);
+
+  @override
+  State<InterbankTransferScreen> createState() => _InterbankTransferScreenState();
+}
+
+class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _accountNumberOrCardNumberCtrl = TextEditingController();
+  final TextEditingController _amountMoneyCtrl = TextEditingController();
+  final TextEditingController _descriptionCtrl = TextEditingController();
+  bool isSwitched = true;
+  String? selectedBank;
+  String selectedFeePayer = 'sender'.tr();
+  String selectedCurrency = 'currency'.tr();
+
+  List<String> listBanks = [
+    'Bank of America (BoA)',
+    'The Bank of Tokyo - Mitsubishi UFJ.LTD (MUFG)',
+    'HSBC Holdings Plc',
+    'BNP Paribas',
+    'Crédit Agricole',
+  ];
+  List<String> listCurrency = ['VNĐ', 'USD',];
+  List<String> listFeePayer = ['sender'.tr(), 'receiver'.tr()];
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +49,9 @@ class InterbankTransferScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          // AppBar
           Column(
             children: [
+              // AppBar
               Container(
                 width: size.width,
                 height: 105,
@@ -55,7 +80,235 @@ class InterbankTransferScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 70),
+              // Body
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 68, 16, 0),
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'to'.tr(),
+                            style: AppStyles.textButtonBlack
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 44,
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                              color: const Color(0xfff7f6f6),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Center(
+                              child: TextFormField(
+                                controller: _accountNumberOrCardNumberCtrl,
+                                keyboardType: TextInputType.number,
+                                style: AppStyles.textNormalBlack,
+                                cursorColor: AppColors.primaryColor,
+                                decoration: InputDecoration(
+                                  contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+                                  isCollapsed: true,
+                                  border: InputBorder.none,
+                                  hintText: '${'account_number'.tr()} / ${'card_number'.tr()}',
+                                  hintStyle: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1)),
+                                ),
+                                onChanged: (value) {
+                                  // print(_userNameController.text.trim());
+                                },
+                                onTapOutside: (PointerDownEvent event) {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () => _modalBottomSheet(listData: listBanks, valueType: 'select_bank', currentValue: selectedBank),
+                            child: Container(
+                              width: double.infinity,
+                              height: 44,
+                              margin: const EdgeInsets.only(bottom: 16),
+                              padding: const EdgeInsets.only(left: 12, right: 16),
+                              decoration: BoxDecoration(
+                                color: const Color(0xfff7f6f6),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      selectedBank ?? 'select_bank'.tr(),
+                                      overflow: TextOverflow.ellipsis,
+                                      style: selectedBank != null
+                                          ? AppStyles.textNormalBlack
+                                          : AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1)),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  SvgPicture.asset(AppIcons.iconArrowDownBlue)
+                                ],
+                              )
+                            ),
+                          ),
+                          Text(
+                            'transfer_info'.tr(),
+                            style: AppStyles.textButtonBlack
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: 44,
+                            padding: const EdgeInsets.fromLTRB(12, 6, 0, 6),
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                              color: const Color(0xfff7f6f6),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    controller: _amountMoneyCtrl,
+                                    maxLength: 13,
+                                    keyboardType: TextInputType.number,
+                                    style: AppStyles.textNormalBlack,
+                                    cursorColor: AppColors.primaryColor,
+                                    decoration: InputDecoration(
+                                      counterText: "",
+                                      isCollapsed: true,
+                                      border: InputBorder.none,
+                                      hintText: 'transfer_amount'.tr(),
+                                      hintStyle: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1)),
+                                    ),
+                                    onChanged: (value) {
+                                      // print(_passwordController.text.trim());
+                                    },
+                                    onTapOutside: (PointerDownEvent event) {
+                                      FocusManager.instance.primaryFocus?.unfocus();
+                                    },
+                                  ),
+                                ),
+                                const VerticalDivider(thickness: 1, width: 1, color: Color(0xffD7DBE6)),
+                                InkWell(
+                                  onTap: () => _modalBottomSheet(
+                                    listData: listCurrency,
+                                    valueType: 'select_currency',
+                                    currentValue: selectedCurrency,
+                                    height: 30,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 12, right: 16, top: 6, bottom: 6),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          selectedCurrency,
+                                          style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff5289F4)),
+                                        ),
+                                        const SizedBox(width: 8),
+                                        SvgPicture.asset(AppIcons.iconArrowDownBlue),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            onTap: () => _modalBottomSheet(
+                              listData: listFeePayer,
+                              valueType: 'select_fee_payer',
+                              currentValue: selectedFeePayer,
+                              height: 30,
+                            ),
+                            child: Container(
+                              width: double.infinity,
+                              height: 44,
+                              padding: const EdgeInsets.only(left: 12, right: 16),
+                              margin: const EdgeInsets.only(bottom: 16),
+                              decoration: BoxDecoration(
+                                color: const Color(0xfff7f6f6),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'charged_to'.tr(),
+                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1)),
+                                  ),
+                                  const Expanded(child: SizedBox()),
+                                  Text(
+                                    selectedFeePayer,
+                                    style: AppStyles.textNormalBlack.copyWith(color: const Color(0xff5289F4)),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  SvgPicture.asset(AppIcons.iconArrowDownBlue)
+                                ],
+                              )
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'save_beneficiary'.tr(),
+                                style: AppStyles.textButtonBlack.copyWith(height: 1)
+                              ),
+                              SizedBox(
+                                height: 24,
+                                width: 40,
+                                child: Switch(
+                                  value: isSwitched,
+                                  materialTapTargetSize: MaterialTapTargetSize.padded,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isSwitched = value;
+                                    });
+                                  },
+                                  activeTrackColor: const Color(0xffd2e1ff),
+                                  activeColor: const Color(0xff5289F4),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            width: double.infinity,
+                            height: size.height * 10.837 / 100,
+                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            decoration: BoxDecoration(
+                              color: const Color(0xfff7f6f6),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: TextFormField(
+                              controller: _descriptionCtrl,
+                              maxLines: null,
+                              style: AppStyles.textNormalBlack,
+                              cursorColor: AppColors.primaryColor,
+                              decoration: InputDecoration(
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                isCollapsed: true,
+                                border: InputBorder.none,
+                                hintText: 'description'.tr(),
+                                hintStyle: AppStyles.textNormalBlack.copyWith(color: const Color(0xffA1A1A1)),
+                              ),
+                              onChanged: (value) {
+                                // print(_userNameController.text.trim());
+                              },
+                              onTapOutside: (PointerDownEvent event) {
+                                FocusManager.instance.primaryFocus?.unfocus();
+                              },
+                            ),
+                          ),
+                          MainButtonWidget(text: 'transfer'.tr(), onTap: () {}),
+                          const SizedBox(height: 16),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
           Positioned(
@@ -131,6 +384,80 @@ class InterbankTransferScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  _modalBottomSheet({required List<String> listData, required String valueType, required String? currentValue, int? height}) {
+    return showModalBottomSheet<void>(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16)
+        ),
+      ),
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: (height ?? 50) * MediaQuery.of(context).size.height / 100,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(valueType.tr(), style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
+                  ),
+                  InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: SvgPicture.asset(AppIcons.iconClose),
+                    ),
+                  )
+                ],
+              ),
+              const Divider(color: Color(0xfff1f1f1), height: 1.0, thickness: 1, indent: 16, endIndent: 16),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 10),
+                      ...List.generate(listData.length, (index) {
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              if(listData == listBanks) {
+                                selectedBank = listData[index];
+                              } else if(listData == listFeePayer) {
+                                selectedFeePayer = listData[index];
+                              } else {
+                                selectedCurrency = listData[index];
+                              }
+                            });
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            color: (listData[index] == currentValue) ? const Color(0xfff1f1f1) : null,
+                            child: Text(
+                              listData[index],
+                              textAlign: TextAlign.center,
+                              style: AppStyles.textButtonBlack.copyWith(color: const Color(0xff666666))
+                            ),
+                          )
+                        );
+                      })
+                    ]
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

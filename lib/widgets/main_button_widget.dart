@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../app_assets/app_styles.dart';
 
 class MainButtonWidget extends StatelessWidget {
