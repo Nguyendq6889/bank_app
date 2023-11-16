@@ -152,7 +152,7 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
   }
 
   void goToQRCodeInfoScreen(Barcode result) {
-    Navigator.pushReplacement<void, void>(context, MaterialPageRoute<void>(builder: (BuildContext context) => QRCodeInfoScreen(result: result)));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => QRCodeInfoScreen(result: result)));
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {

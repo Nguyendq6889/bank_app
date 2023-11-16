@@ -404,6 +404,6 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   _goToMainScreen() {
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()), (route) => false);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()));
   }
 }
