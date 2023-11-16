@@ -440,12 +440,21 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                           },
                           child: Container(
                             width: double.infinity,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
                             color: (listData[index] == currentValue) ? const Color(0xfff1f1f1) : null,
-                            child: Text(
-                              listData[index],
-                              textAlign: TextAlign.center,
-                              style: AppStyles.textButtonBlack.copyWith(color: const Color(0xff666666))
+                            child: Row(
+                              children: [
+                                SizedBox(width: (listData[index] == currentValue) ? 15 : 0),
+                                Expanded(
+                                  child: Text(
+                                    listData[index],
+                                    // overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
+                                    style: AppStyles.textButtonBlack.copyWith(color: const Color(0xff666666), height: 1)
+                                  ),
+                                ),
+                              (listData[index] == currentValue) ? SvgPicture.asset(AppIcons.iconSelected) : const SizedBox(),
+                              ],
                             ),
                           )
                         );
