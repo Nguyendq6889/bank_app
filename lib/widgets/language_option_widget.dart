@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../app_assets/app_icons.dart';
 import '../app_assets/app_styles.dart';
 

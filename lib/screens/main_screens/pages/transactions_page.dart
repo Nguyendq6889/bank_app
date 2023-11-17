@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../app_assets/app_colors.dart';
 import '../../../app_assets/app_icons.dart';
 import '../../../app_assets/app_styles.dart';
+import '../../../widgets/common_widget.dart';
 import '../../transaction_detail_screen.dart';
 
 class TransactionsPage extends StatefulWidget {
@@ -74,10 +74,17 @@ class _TransactionsPageState extends State<TransactionsPage> {
                         children: [
                           Expanded(
                             child: InkWell(
-                              onTap: () => _modalBottomSheet(
+                              onTap: () => CommonWidget.modalBottomSheetSelectValue(
+                                context: context,
                                 listData: listMonths,
                                 valueType: 'select_month'.tr(),
-                                currentValue: month
+                                currentValue: month,
+                                onValueSelected: (selectedValue) {
+                                  // Reset the value of variable "month" to the selected value
+                                  setState(() {
+                                    month = selectedValue;
+                                  });
+                                },
                               ),
                               child: Container(
                                 height: 44,
@@ -102,10 +109,17 @@ class _TransactionsPageState extends State<TransactionsPage> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: InkWell(
-                              onTap: () => _modalBottomSheet(
+                              onTap: () => CommonWidget.modalBottomSheetSelectValue(
+                                context: context,
                                 listData: listYears,
                                 valueType: 'select_year'.tr(),
-                                currentValue: year
+                                currentValue: year,
+                                onValueSelected: (selectedValue) {
+                                  // Reset the value of variable "year" to the selected value
+                                  setState(() {
+                                    year = selectedValue;
+                                  });
+                                },
                               ),
                               child: Container(
                                 height: 44,
@@ -130,10 +144,17 @@ class _TransactionsPageState extends State<TransactionsPage> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: InkWell(
-                              onTap: () => _modalBottomSheet(
+                              onTap: () => CommonWidget.modalBottomSheetSelectValue(
+                                context: context,
                                 listData: listTransactionType,
                                 valueType: 'select_type'.tr(),
-                                currentValue: transactionType
+                                currentValue: transactionType,
+                                onValueSelected: (selectedValue) {
+                                  // Reset the value of variable "transactionType" to the selected value
+                                  setState(() {
+                                    transactionType = selectedValue;
+                                  });
+                                },
                               ),
                               child: Container(
                                 height: 44,
@@ -327,89 +348,6 @@ class _TransactionsPageState extends State<TransactionsPage> {
           )
         ],
       ),
-    );
-  }
-
-  _modalBottomSheet({required List<String> listData, required String valueType, required String currentValue}) {
-    return showModalBottomSheet<void>(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16)
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return SizedBox(
-          height: 50 * MediaQuery.of(context).size.height / 100,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(valueType, style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
-                  ),
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: SvgPicture.asset(AppIcons.iconClose),
-                    ),
-                  )
-                ],
-              ),
-              const Divider(color: Color(0xfff1f1f1), height: 1.0, thickness: 1, indent: 16, endIndent: 16),
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      ...List.generate(listData.length, (index) {
-                        return InkWell(
-                          onTap: () {
-                            setState(() {
-                              if(listData == listMonths) {
-                                month = listData[index];
-                              } else if(listData == listYears) {
-                                year = listData[index];
-                              } else {
-                                transactionType = listData[index];
-                              }
-                            });
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
-                            color: (listData[index] == currentValue) ? const Color(0xfff1f1f1) : null,
-                            child: Row(
-                              children: [
-                                SizedBox(width: (listData[index] == currentValue) ? 15 : 0),
-                                Expanded(
-                                  child: Text(
-                                    listData[index],
-                                    // overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                    style: AppStyles.textButtonBlack.copyWith(color: const Color(0xff666666), height: 1)
-                                  ),
-                                ),
-                                (listData[index] == currentValue) ? SvgPicture.asset(AppIcons.iconSelected) : const SizedBox(),
-                              ],
-                            ),
-                          )
-                        );
-                      })
-                    ]
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
-      },
     );
   }
 }

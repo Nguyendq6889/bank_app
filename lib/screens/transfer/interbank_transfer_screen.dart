@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../app_assets/app_colors.dart';
 import '../../app_assets/app_icons.dart';
 import '../../app_assets/app_styles.dart';
+import '../../widgets/common_widget.dart';
 import '../../widgets/main_button_widget.dart';
 
 class InterbankTransferScreen extends StatefulWidget {
@@ -126,7 +126,18 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                             ),
                           ),
                           InkWell(
-                            onTap: () => _modalBottomSheet(listData: listBanks, valueType: 'select_bank', currentValue: selectedBank),
+                            onTap: () => CommonWidget.modalBottomSheetSelectValue(
+                              context: context,
+                              listData: listBanks,
+                              valueType: 'select_bank',
+                              currentValue: selectedBank,
+                              onValueSelected: (selectedValue) {
+                                // Reset the value of variable "selectedBank" to the selected value
+                                setState(() {
+                                  selectedBank = selectedValue;
+                                });
+                              },
+                            ),
                             child: Container(
                               width: double.infinity,
                               height: 44,
@@ -193,11 +204,18 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                                 ),
                                 const VerticalDivider(thickness: 1, width: 1, color: Color(0xffD7DBE6)),
                                 InkWell(
-                                  onTap: () => _modalBottomSheet(
+                                  onTap: () => CommonWidget.modalBottomSheetSelectValue(
+                                    context: context,
                                     listData: listCurrency,
                                     valueType: 'select_currency',
                                     currentValue: selectedCurrency,
                                     height: 30,
+                                    onValueSelected: (selectedValue) {
+                                      // Reset the value of variable "selectedCurrency" to the selected value
+                                      setState(() {
+                                        selectedCurrency = selectedValue;
+                                      });
+                                    },
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 12, right: 16, top: 6, bottom: 6),
@@ -217,11 +235,18 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                             ),
                           ),
                           InkWell(
-                            onTap: () => _modalBottomSheet(
+                            onTap: () => CommonWidget.modalBottomSheetSelectValue(
+                              context: context,
                               listData: listFeePayer,
                               valueType: 'select_fee_payer',
                               currentValue: selectedFeePayer,
                               height: 30,
+                              onValueSelected: (selectedValue) {
+                                // Reset the value of variable "selectedFeePayer" to the selected value
+                                setState(() {
+                                  selectedFeePayer = selectedValue;
+                                });
+                              },
                             ),
                             child: Container(
                               width: double.infinity,
@@ -384,89 +409,6 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
           )
         ],
       ),
-    );
-  }
-
-  _modalBottomSheet({required List<String> listData, required String valueType, required String? currentValue, int? height}) {
-    return showModalBottomSheet<void>(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16)
-        ),
-      ),
-      context: context,
-      builder: (BuildContext context) {
-        return SizedBox(
-          height: (height ?? 50) * MediaQuery.of(context).size.height / 100,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(valueType.tr(), style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16)),
-                  ),
-                  InkWell(
-                    onTap: () => Navigator.pop(context),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: SvgPicture.asset(AppIcons.iconClose),
-                    ),
-                  )
-                ],
-              ),
-              const Divider(color: Color(0xfff1f1f1), height: 1.0, thickness: 1, indent: 16, endIndent: 16),
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 10),
-                      ...List.generate(listData.length, (index) {
-                        return InkWell(
-                          onTap: () {
-                            setState(() {
-                              if(listData == listBanks) {
-                                selectedBank = listData[index];
-                              } else if(listData == listFeePayer) {
-                                selectedFeePayer = listData[index];
-                              } else {
-                                selectedCurrency = listData[index];
-                              }
-                            });
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 15),
-                            color: (listData[index] == currentValue) ? const Color(0xfff1f1f1) : null,
-                            child: Row(
-                              children: [
-                                SizedBox(width: (listData[index] == currentValue) ? 15 : 0),
-                                Expanded(
-                                  child: Text(
-                                    listData[index],
-                                    // overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                    style: AppStyles.textButtonBlack.copyWith(color: const Color(0xff666666), height: 1)
-                                  ),
-                                ),
-                              (listData[index] == currentValue) ? SvgPicture.asset(AppIcons.iconSelected) : const SizedBox(),
-                              ],
-                            ),
-                          )
-                        );
-                      })
-                    ]
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
-      },
     );
   }
 }
