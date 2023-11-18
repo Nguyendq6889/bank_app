@@ -31,14 +31,15 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         width: size.width,
         height: size.height,
-        decoration: const BoxDecoration(
-          gradient: AppColors.colorAppBar,
-        ),
+        color: const Color(0xff1F69F6),
         child: Column(
           children: [
             Container(
               height: size.height * 23.275 / 100,
               padding: const EdgeInsets.symmetric(horizontal: 16),
+              decoration: const BoxDecoration(
+                gradient: AppColors.colorAppBar,
+              ),
               child: SafeArea(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

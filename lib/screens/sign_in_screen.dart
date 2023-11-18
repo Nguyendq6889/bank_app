@@ -51,38 +51,41 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Container(
           width: size.width,
           height: size.height,
-          decoration: const BoxDecoration(
-            gradient: AppColors.colorAppBar,
-          ),
+          color: const Color(0xff1F69F6),
           child: Stack(
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SizedBox(width: double.infinity, height: MediaQuery.of(context).padding.top),
-                        InkWell(
-                          onTap: () => _showModalBottomSheet(),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                SvgPicture.asset(_language == 'vi_VN' ? AppIcons.iconVietNam : AppIcons.iconEnglish),
-                                const SizedBox(width: 6),
-                                Text(
-                                  _language == 'vi_VN' ? 'VI' : 'EN',
-                                  style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.bold)
-                                )
-                              ],
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        gradient: AppColors.colorAppBar,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          SizedBox(width: double.infinity, height: MediaQuery.of(context).padding.top),
+                          InkWell(
+                            onTap: () => _showModalBottomSheet(),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  SvgPicture.asset(_language == 'vi_VN' ? AppIcons.iconVietNam : AppIcons.iconEnglish),
+                                  const SizedBox(width: 6),
+                                  Text(
+                                    _language == 'vi_VN' ? 'VI' : 'EN',
+                                    style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.bold)
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   ),
                   Container(
