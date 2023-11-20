@@ -14,8 +14,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive); // Hide the default device navigation bar.
+
+    // Delay the navigation to the SignInScreen by 2 seconds.
     Future.delayed(const Duration(seconds: 2), () {
+      // After 2 seconds, navigate to the SignInScreen and replace the current SplashScreen.
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const SignInScreen()));
     });
     super.initState();
@@ -23,6 +26,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   void dispose() {
+    // Restore the default navigation bar of the device.
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.dispose();
   }
@@ -31,8 +35,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width, // Set the width of the Container equal to the width of the device.
+        height: MediaQuery.of(context).size.height, // Set the height of the Container equal to the height of the device.
         decoration: const BoxDecoration(
           gradient: AppColors.colorAppBar,
         ),
@@ -41,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'welcome_to'.tr(),
+                'welcome_to'.tr(),  // Use the tr() method to enable translation feature.
                 style: const TextStyle(
                   height: 1.5,
                   fontSize: 16,

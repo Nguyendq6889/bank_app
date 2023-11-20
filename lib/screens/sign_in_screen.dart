@@ -44,13 +44,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size; // Retrieve the screen size information of the device
 
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: size.width,
-          height: size.height,
+          width: size.width, // Set the width of the Container equal to the width of the device
+          height: size.height, // Set the height of the Container equal to the height of the device
           color: const Color(0xff1F69F6),
           child: Stack(
             children: [
@@ -124,7 +124,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         // print("Đăng ký tạo tài khoản");
                       },
                       child: Text(
-                        'sign_up'.tr(),
+                        'sign_up'.tr(),  // Use the tr() method to enable translation feature.
                         textAlign: TextAlign.center,
                         style: AppStyles.textButtonWhite.copyWith(
                           height: 1.5,
@@ -183,7 +183,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                                       isCollapsed: true,
                                       border: InputBorder.none,
-                                      hintText: '${'username'.tr()} / ${'phone_number'.tr()}',
+                                      hintText: '${'username'.tr()} / ${'phone_number'.tr()}',  // Use the tr() method to enable translation feature.
                                         hintStyle: const TextStyle(
                                         fontSize: 14, color: Color(0xffA1A1A1), fontWeight: FontWeight.w400
                                       ),
@@ -214,7 +214,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                                       isCollapsed: true,
                                       border: InputBorder.none,
-                                      hintText: 'password'.tr(),
+                                      hintText: 'password'.tr(),  // Use the tr() method to enable translation feature.
                                         hintStyle: const TextStyle(
                                         fontSize: 14, color: Color(0xffA1A1A1), fontWeight: FontWeight.w400
                                       )
@@ -257,7 +257,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   // print('Quên mật khẩu?');
                                 },
                                 child: Text(
-                                  'forgot_password'.tr(),
+                                  'forgot_password'.tr(),  // Use the tr() method to enable translation feature.
                                   style: AppStyles.textButtonBlue.copyWith(height: 1.5, decoration: TextDecoration.underline),
                                 ),
                               ),
@@ -310,7 +310,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      'select_language'.tr(),
+                      'select_language'.tr(),  // Use the tr() method to enable translation feature.
                       style: AppStyles.titleAppBarBlack.copyWith(fontSize: 16),
                     ),
                   ),
@@ -326,7 +326,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  'language_use_question'.tr(),
+                  'language_use_question'.tr(),  // Use the tr() method to enable translation feature.
                   style: AppStyles.textButtonGray,
                 ),
               ),
@@ -358,6 +358,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
+  // Function to get the user's language preference from SharedPreferences.
   Future<void> _getLanguage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final String savedLanguage = prefs.getString('language') ?? 'en_US';
@@ -387,7 +388,7 @@ class _SignInScreenState extends State<SignInScreen> {
   Future<void> _authenticate() async {
     try {
       bool authenticated = await auth.authenticate(
-        localizedReason: 'text_use_finger'.tr(),
+        localizedReason: 'text_use_finger'.tr(),  // Use the tr() method to enable translation feature.
         options: const AuthenticationOptions(
           stickyAuth: true,
           biometricOnly: true

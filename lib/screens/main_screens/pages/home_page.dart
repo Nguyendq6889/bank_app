@@ -26,16 +26,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size; // Retrieve the screen size information of the device
+
     return Scaffold(
       body: Container(
-        width: size.width,
-        height: size.height,
+        width: size.width, // Set the width of the Container equal to the width of the device
+        height: size.height, // Set the height of the Container equal to the height of the device
         color: const Color(0xff1F69F6),
         child: Column(
           children: [
             Container(
-              height: size.height * 23.275 / 100,
+              height: size.height * 23.275 / 100, // Set the height of the information display section (the section with the blue background) to 23.275% of the device's height
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: const BoxDecoration(
                 gradient: AppColors.colorAppBar,
@@ -46,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     const SizedBox(height: 12),
                     Text(
-                      "${'hello'.tr()}, Đỗ Quang Nguyên",
+                      "${'hello'.tr()}, Đỗ Quang Nguyên",  // Use the tr() method to enable translation feature.
                       style: AppStyles.titleAppBarWhite
                     ),
                     const SizedBox(height: 12),
@@ -54,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'payment_account'.tr(),
+                          'payment_account'.tr(),  // Use the tr() method to enable translation feature.
                           style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
                         ),
                         Text(
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'current_balance'.tr(),
+                          'current_balance'.tr(),  // Use the tr() method to enable translation feature.
                           style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
                         ),
                         Text(
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        'currency'.tr(),
+                        'currency'.tr(),  // Use the tr() method to enable translation feature.
                         style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400)
                       ),
                     )
@@ -145,6 +146,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisSpacing: 12,
                             crossAxisCount: 4,
                             children: <Widget>[
+                              _feature('insurance'.tr(), AppIcons.iconInsurance),
                               _feature(
                                 'transfer'.tr(),
                                 AppIcons.iconTransfer,
@@ -155,12 +157,11 @@ class _HomePageState extends State<HomePage> {
                                 AppIcons.iconPayment,
                                 onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PaymentScreen())),
                               ),
+                              _feature('card_service'.tr(), AppIcons.iconCards),
+                              _feature('account'.tr(), AppIcons.iconWallet),
+                              _feature('top_up'.tr(), AppIcons.iconTopUp),
                               _feature('saving'.tr(), AppIcons.iconSaving),
                               _feature('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                              _feature('account'.tr(), AppIcons.iconWallet),
-                              _feature('card_service'.tr(), AppIcons.iconCards),
-                              _feature('insurance'.tr(), AppIcons.iconInsurance),
-                              _feature('top_up'.tr(), AppIcons.iconTopUp),
                             ],
                           ),
                           GridView.count(
@@ -173,13 +174,13 @@ class _HomePageState extends State<HomePage> {
                             crossAxisCount: 4,
                             children: <Widget>[
                               _feature('atm_branch'.tr(), AppIcons.iconATMHome),
+                              _feature('promotion'.tr(), AppIcons.iconPromotion),
+                              _feature('support'.tr(), AppIcons.iconSupportHome),
                               _feature('withdraw'.tr(), AppIcons.iconWithdraw),
                               _feature('interest_rate'.tr(), AppIcons.iconInterestRate),
-                              _feature('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                              _feature('promotion'.tr(), AppIcons.iconPromotion),
                               _feature('book_tickets'.tr(), AppIcons.iconTicketHome),
-                              _feature('support'.tr(), AppIcons.iconSupportHome),
                               _feature('news'.tr(), AppIcons.iconNews),
+                              _feature('exchange_rate'.tr(), AppIcons.iconExchangeRate),
                             ],
                           ),
                         ]
@@ -299,7 +300,7 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.77,
+          height: MediaQuery.of(context).size.height * 0.77, // Set the height of the ModalBottomSheet to 77% of the device's height
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -332,6 +333,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisSpacing: 12,
                 crossAxisCount: 4,
                 children: <Widget>[
+                  _feature('insurance'.tr(), AppIcons.iconInsurance),
                   _feature(
                     'transfer'.tr(),
                     AppIcons.iconTransfer,
@@ -342,20 +344,19 @@ class _HomePageState extends State<HomePage> {
                     AppIcons.iconPayment,
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const PaymentScreen())),
                   ),
+                  _feature('card_service'.tr(), AppIcons.iconCards),
+                  _feature('account'.tr(), AppIcons.iconWallet),
+                  _feature('top_up'.tr(), AppIcons.iconTopUp),
                   _feature('saving'.tr(), AppIcons.iconSaving),
                   _feature('payment_request'.tr(), AppIcons.iconPaymentRequest),
-                  _feature('account'.tr(), AppIcons.iconWallet),
-                  _feature('card_service'.tr(), AppIcons.iconCards),
-                  _feature('insurance'.tr(), AppIcons.iconInsurance),
-                  _feature('top_up'.tr(), AppIcons.iconTopUp),
                   _feature('atm_branch'.tr(), AppIcons.iconATMHome),
+                  _feature('promotion'.tr(), AppIcons.iconPromotion),
+                  _feature('support'.tr(), AppIcons.iconSupportHome),
                   _feature('withdraw'.tr(), AppIcons.iconWithdraw),
                   _feature('interest_rate'.tr(), AppIcons.iconInterestRate),
-                  _feature('exchange_rate'.tr(), AppIcons.iconExchangeRate),
-                  _feature('promotion'.tr(), AppIcons.iconPromotion),
                   _feature('book_tickets'.tr(), AppIcons.iconTicketHome),
-                  _feature('support'.tr(), AppIcons.iconSupportHome),
                   _feature('news'.tr(), AppIcons.iconNews),
+                  _feature('exchange_rate'.tr(), AppIcons.iconExchangeRate),
                 ],
               ),
             ],

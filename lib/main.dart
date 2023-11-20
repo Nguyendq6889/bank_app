@@ -4,20 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();  // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized();  // Initialize EasyLocalization to load translations.
   final bool english = await _getLanguage();
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en', 'US'), Locale('vi', 'VN')],
-      path: 'assets/translations',
-      startLocale: const Locale('en', 'US'),
-      fallbackLocale: english ? const Locale('en', 'US') : const Locale('vi', 'VN'),
+      supportedLocales: const [Locale('en', 'US'), Locale('vi', 'VN')],  // Define supported locales for localization.
+      path: 'assets/translations',  // Specify the path where translation files are located.
+      startLocale: const Locale('en', 'US'),  // Set the default locale when the app starts.
+      fallbackLocale: english ? const Locale('en', 'US') : const Locale('vi', 'VN'),  // Set the fallback locale based on the user's language preference.
       child: const MyApp(),
     ),
   );
 }
 
+// Function to get the user's language preference from SharedPreferences.
 Future<bool> _getLanguage() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final String language = prefs.getString('language') ?? 'en_US';
@@ -33,17 +34,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,  // Remove the debug banner in the top right corner.
+      // Use the localizationDelegates, supportedLocales, and locale from the context.
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      title: 'Bank App',
       theme: ThemeData(
-        fontFamily: 'Mulish',
+        fontFamily: 'Mulish',  // Set the default font family for the entire app.
         primarySwatch: Colors.blue,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
       ),
       home: const SplashScreen(),
     );
