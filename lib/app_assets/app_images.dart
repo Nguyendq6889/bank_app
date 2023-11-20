@@ -13,6 +13,4 @@ class AppImages {
   static const String imageRecentNews1 = '$imagesPath/image_recent_news_1.png';
   static const String imageRecentNews2 = '$imagesPath/image_recent_news_2.png';
   static const String imageRecentNews3 = '$imagesPath/image_recent_news_3.png';
-  // static const String imageNews4 = '$imagesPath/image_news_4.png';
-  // static const String imageMercedes = '$imagesPath/image_mercedes.svg';
 }
