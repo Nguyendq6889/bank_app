@@ -50,24 +50,32 @@ class _TransactionsPageState extends State<TransactionsPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(1),
+        child: AppBar(
+          backgroundColor: const Color(0xff4E86F3),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+        ),
+      ),
       body: Stack(
         children: [
           Column(
             children: [
               Container(
                 width: size.width,
-                height: size.height * 16.748 / 100,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 91,
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 40),
                 decoration: const BoxDecoration(
                   gradient: AppColors.colorAppBar,
                 ),
                 child: Center(
-                  child: Text('transactions_history'.tr(), style: AppStyles.titleAppBarWhite),
+                  child: Text('transactions_history'.tr(), style: AppStyles.titleAppBarWhite.copyWith(height: 1)),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(16, size.height * 6.8 / 100, 16, 0),
+                  padding: const EdgeInsets.fromLTRB(16, 52, 16, 0),
                   child: Column(
                     children: [
                       Row(
@@ -245,10 +253,10 @@ class _TransactionsPageState extends State<TransactionsPage> {
           ),
           Positioned(
             left: 16,
-            top: size.height * 11.822 / 100,
+            top: 52,
             child: Container(
               width: size.width - 32,
-              height: size.height * 9.852 / 100,
+              height: 80,
               padding: const EdgeInsets.symmetric(vertical: 10),
               decoration: BoxDecoration(
                 color: Colors.white,

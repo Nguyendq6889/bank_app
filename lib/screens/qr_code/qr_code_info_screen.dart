@@ -20,39 +20,44 @@ class QRCodeInfoScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(1),
+        child: AppBar(
+          backgroundColor: const Color(0xff4E86F3),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+        ),
+      ),
       body: Stack(
         children: [
-          // AppBar
           Column(
             children: [
               Container(
                 width: size.width,
-                height: size.height * 18.472 / 100,
+                height: 105,
                 decoration: const BoxDecoration(
                   gradient: AppColors.colorAppBar,
                 ),
-                child: SafeArea(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: (size.height * 12.807 / 100) - MediaQuery.of(context).padding.top,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap: () => Navigator.pop(context),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16),
-                                child: SvgPicture.asset(AppIcons.iconBack),
-                              ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 60,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                            onTap: () => Navigator.pop(context),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: SvgPicture.asset(AppIcons.iconBack),
                             ),
-                            Text('qr_code_detail'.tr(), style: AppStyles.titleAppBarWhite.copyWith(height: 1)),
-                            const SizedBox(width: 42)
-                          ],
-                        ),
+                          ),
+                          Text('qr_code_detail'.tr(), style: AppStyles.titleAppBarWhite.copyWith(height: 1)),
+                          const SizedBox(width: 42)
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -60,7 +65,7 @@ class QRCodeInfoScreen extends StatelessWidget {
           // Body
           Positioned(
             left: 16,
-            top: size.height * 12.807 / 100,
+            top: 60,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

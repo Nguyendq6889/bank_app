@@ -51,7 +51,6 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
         children: [
           Column(
             children: [
-              // AppBar
               Container(
                 width: size.width,
                 height: 105,

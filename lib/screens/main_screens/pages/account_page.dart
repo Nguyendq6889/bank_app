@@ -46,44 +46,51 @@ class _AccountPageState extends State<AccountPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(1),
+        child: AppBar(
+          backgroundColor: const Color(0xff4E86F3),
+          automaticallyImplyLeading: false,
+          elevation: 0,
+        ),
+      ),
       body: Stack(
         children: [
           Column(
             children: [
               Container(
                 width: size.width,
-                height: size.height * 20.689 / 100,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                height: 123,
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                 decoration: const BoxDecoration(
                   gradient: AppColors.colorAppBar,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(color: Colors.white, width: 1),
-                        ),
-                        child: Image.asset(AppImages.avatar),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 1),
+                        image: const DecorationImage(
+                          image: AssetImage(AppImages.avatar), fit: BoxFit.contain,
+                        )
                       ),
-                      const SizedBox(width: 16),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Đỗ Quang Nguyên', style: AppStyles.titleAppBarWhite),
-                          const SizedBox(height: 4),
-                          Text(
-                            "touch_to_view".tr(),
-                            style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
-                          )
-                        ],
-                      )
-                    ],
-                  ),
+                    ),
+                    const SizedBox(width: 16),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Đỗ Quang Nguyên', style: AppStyles.titleAppBarWhite),
+                        const SizedBox(height: 4),
+                        Text(
+                          "touch_to_view".tr(),
+                          style: AppStyles.textButtonWhite.copyWith(fontWeight: FontWeight.w400, height: 1.5)
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
               const Expanded(
@@ -93,7 +100,7 @@ class _AccountPageState extends State<AccountPage> {
           ),
           Positioned(
             left: 16,
-            top: size.height * 16.748 / 100,
+            top: 92,
             child: Column(
               children: [
                 Container(
