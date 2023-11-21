@@ -1,10 +1,14 @@
 import 'package:bank_app/screens/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();  // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
+  SystemChrome.setPreferredOrientations([   // Ensure the application always displays in portrait mode.
+    DeviceOrientation.portraitUp,
+  ]);
   await EasyLocalization.ensureInitialized();  // Initialize EasyLocalization to load translations.
   final bool english = await _getLanguage();
   runApp(
