@@ -1,11 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
-
 import '../../app_assets/app_icons.dart';
 import '../../app_assets/app_styles.dart';
 import 'qr_code_info_screen.dart';
@@ -21,6 +19,7 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
+/// In order to get hot reload to work we need to pause the camera if the platform is android, or resume the camera if the platform is iOS.
   @override
   void reassemble() {
     super.reassemble();
@@ -51,6 +50,7 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
       body: Stack(
         children: <Widget>[
           _buildQrView(context),
+/// Turn on flash section and select QR photo section start
           Positioned(
             left: 32,
             bottom: 16,
@@ -105,6 +105,8 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
               ),
             ),
           ),
+/// Turn on flash section and select QR photo section end
+/// Text(Move camera) section start
           Positioned(
             top: size.height / 5,
             child: Container(
@@ -117,6 +119,7 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
               ),
             ),
           ),
+/// Text(Move camera) section end
         ],
       ),
     );
@@ -142,29 +145,29 @@ class _QRCodeScanScreenState extends State<QRCodeScanScreen> {
     setState(() {
       this.controller = controller;
     });
-    controller.scannedDataStream.listen((scanData) async {
-      await controller.pauseCamera();
-      goToQRCodeInfoScreen(scanData);
-      // Navigator.pushReplacement(context, EnterExitRoute(enterPage: const QRCodeInfoScreen()));
+    controller.scannedDataStream.listen((scanData) async {  // Listen to scanned data stream
+      await controller.pauseCamera();    // After scanning is complete, pause the camera.
+      goToQRCodeInfoScreen(scanData);    // Navigate to QRCodeInfoScreen with the scanned data
     });
   }
 
   void goToQRCodeInfoScreen(Barcode result) {
+    // Navigate to the QRCodeInfoScreen and replace the current QRCodeScanScreen.
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => QRCodeInfoScreen(result: result)));
   }
 
   void _onPermissionSet(BuildContext context, QRViewController ctrl, bool p) {
-    log('${DateTime.now().toIso8601String()}_onPermissionSet $p');
-    if (!p) {
+    log('${DateTime.now().toIso8601String()}_onPermissionSet $p');    // Log permission set status with timestamp
+    if (!p) {    // Show a SnackBar if permission is not granted
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('no Permission')),
+        const SnackBar(content: Text('No permission')),
       );
     }
   }
 
   @override
   void dispose() {
-    controller?.dispose();
+    controller?.dispose();    // Dispose of the controller to release resources
     super.dispose();
   }
 }
