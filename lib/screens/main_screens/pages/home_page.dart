@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
         color: const Color(0xff1F69F6),
         child: Column(
           children: [
+/// Account info section start
             Container(
               height: size.height * 23.275 / 100, // Set the height of the information display section (the section with the blue background) to 23.275% of the device's height
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -89,6 +90,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+/// Account info section end
             Expanded(
               child: Container(
                 padding: const EdgeInsets.only(top: 4),
@@ -103,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                   physics: const BouncingScrollPhysics(),
                   child: Column(
                     children: [
-// Features
+/// Features section start
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -127,6 +129,7 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       const SizedBox(height: 8),
+/// Features slider start
                       ExpandablePageView(
                         controller: _featuresPageController,
                         physics: const BouncingScrollPhysics(),
@@ -185,7 +188,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ]
                       ),
+/// Features slider end
                       const SizedBox(height: 10),
+/// Features dots indicator start
                       SizedBox(
                         height: 10,
                         child: ListView.builder(
@@ -211,7 +216,10 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ),
-// News
+/// Features dots indicator end
+/// Features section end
+
+/// News section start
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -234,6 +242,7 @@ class _HomePageState extends State<HomePage> {
                           )
                         ],
                       ),
+/// News slider start
                       ExpandablePageView(
                         controller: _bannerPageController,
                         physics: const BouncingScrollPhysics(),
@@ -249,7 +258,9 @@ class _HomePageState extends State<HomePage> {
                           _banner(AppImages.imageNews4, size),
                         ]
                       ),
+/// News slider end
                       const SizedBox(height: 16),
+/// News dots indicator start
                       SizedBox(
                         height: 10,
                         child: ListView.builder(
@@ -275,6 +286,8 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ),
+/// News dots indicator end
+/// News section enđ
                       const SizedBox(height: 16),
                     ],
                   ),
