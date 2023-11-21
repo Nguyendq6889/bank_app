@@ -42,6 +42,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'Mulish',  // Set the default font family for the entire app.
         primarySwatch: Colors.blue,
+        // Disable default Widget splash effect in Flutter.
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
       ),
       home: const SplashScreen(),
     );
