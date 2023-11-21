@@ -50,6 +50,7 @@ class _NewsScreenState extends State<NewsScreen> {
           child: Column(
             children: [
               const SizedBox(height: 16),
+/// News slider start
               ExpandablePageView(
                 controller: _bannerPageController,
                 physics: const BouncingScrollPhysics(),
@@ -65,7 +66,9 @@ class _NewsScreenState extends State<NewsScreen> {
                   _banner(AppImages.imageNews4, size),
                 ]
               ),
+/// News slider end
               const SizedBox(height: 16),
+/// Dots indicator start
               SizedBox(
                 height: 10,
                 child: ListView.builder(
@@ -91,7 +94,9 @@ class _NewsScreenState extends State<NewsScreen> {
                   },
                 ),
               ),
+/// Dots indicator end
               const SizedBox(height: 16),
+/// Recent news start
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -106,11 +111,12 @@ class _NewsScreenState extends State<NewsScreen> {
                 child: Column(
                   children: [
                     _recentNews(AppImages.imageRecentNews1, 'recent_news_title_1'.tr()),
+                    _recentNews(AppImages.imageRecentNews3, 'recent_news_title_3'.tr()),
                     _recentNews(AppImages.imageRecentNews2, 'recent_news_title_2'.tr()),
-                    _recentNews(AppImages.imageRecentNews3, 'recent_news_title_3'.tr())
                   ]
                 ),
               )
+/// Recent news end
             ],
           ),
         ),
