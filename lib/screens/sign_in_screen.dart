@@ -66,6 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           SizedBox(width: double.infinity, height: MediaQuery.of(context).padding.top),
+/// Language selection button start
                           InkWell(
                             onTap: () => _showModalBottomSheet(),
                             child: Padding(
@@ -84,6 +85,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               ),
                             ),
                           ),
+/// Language selection button end
                         ],
                       ),
                     )
@@ -102,6 +104,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
+/// Features section start
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -111,9 +114,11 @@ class _SignInScreenState extends State<SignInScreen> {
                             _feature('support'.tr(), AppIcons.iconSupport),
                           ],
                         ),
+/// Features section end
                       ],
                     )
                   ),
+/// Sign up account section start
                   Container(
                     width: size.width,
                     height: size.height * 10.714 / 100,
@@ -134,8 +139,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ),
                   )
+/// Sign up account section end
                 ],
               ),
+/// Login form start
               Positioned(
                 left: 16,
                 bottom: size.height * 30.788 / 100,
@@ -269,6 +276,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               )
+/// Login form end
             ],
           ),
         ),
@@ -289,6 +297,7 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
+  // ModalBottomSheet select language
   _showModalBottomSheet() {
     return showModalBottomSheet<void>(
       shape: const RoundedRectangleBorder(
@@ -358,49 +367,56 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  // Function to get the user's language preference from SharedPreferences.
+  // Function to retrieve the saved language preference from SharedPreferences and update the state.
   Future<void> _getLanguage() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    final String savedLanguage = prefs.getString('language') ?? 'en_US';
-    setState(() {
+    SharedPreferences prefs = await SharedPreferences.getInstance();    // Retrieve an instance of SharedPreferences.
+    final String savedLanguage = prefs.getString('language') ?? 'en_US';    // Get the saved language preference from SharedPreferences, defaulting to 'en_US' if not found.
+    setState(() {    // Update the state with the saved language preference.
       _language = savedLanguage;
     });
   }
 
+  // Function to save the selected language to SharedPreferences and update the state.
   Future<void> _saveLanguage(String newLanguage) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('language', newLanguage);
-    setState(() {
+    SharedPreferences prefs = await SharedPreferences.getInstance();    // Retrieve an instance of SharedPreferences.
+    prefs.setString('language', newLanguage);    // Save the new language preference to SharedPreferences.
+    setState(() {    // Update the state with the new language.
       _language = newLanguage;
     });
   }
 
+  // Function to retrieve available biometric methods supported by the device.
   Future<void> _getAvailableBiometrics() async {
-    availableBiometrics = await auth.getAvailableBiometrics();
-    if (kDebugMode) {
+    availableBiometrics = await auth.getAvailableBiometrics();    // Call the authentication service to get the list of available biometrics.
+    if (kDebugMode) {    // If in debug mode, print the list of available biometrics.
       print('List of availableBiometrics: $availableBiometrics');
     }
+    // Check if the widget is still mounted before proceeding.
+    // This is important to avoid updating the state of an unmounted widget.
     if (!mounted) {
       return;
     }
   }
 
+  // Biometric authentication function.
   Future<void> _authenticate() async {
     try {
+      // Attempt to authenticate using biometrics.
       bool authenticated = await auth.authenticate(
-        localizedReason: 'text_use_finger'.tr(),  // Use the tr() method to enable translation feature.
+        localizedReason: 'text_use_finger'.tr(),    // Use the tr() method to enable translation feature.
         options: const AuthenticationOptions(
           stickyAuth: true,
           biometricOnly: true
         ),
       );
-      if (kDebugMode) {
+      if (kDebugMode) {    // If in debug mode, print whether authentication was successful.
         print('Authenticated: $authenticated');
       }
-      if(authenticated) {
+      if(authenticated) {    // If authentication is successful, navigate to the MainScreen.
         _goToMainScreen();
       }
     } on PlatformException catch (e) {
+      // Catch and print any platform-specific exceptions that may occur.
       if (kDebugMode) {
         print(e);
       }
@@ -408,6 +424,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   _goToMainScreen() {
+    // Navigate to the MainScreen and replace the current SignInScreen.
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()));
   }
 }
