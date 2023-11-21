@@ -18,10 +18,10 @@ void main() async {
   );
 }
 
-// Function to get the user's language preference from SharedPreferences.
+// Function to retrieve the saved language preference from SharedPreferences.
 Future<bool> _getLanguage() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  final String language = prefs.getString('language') ?? 'en_US';
+  SharedPreferences prefs = await SharedPreferences.getInstance();    // Retrieve an instance of SharedPreferences.
+  final String language = prefs.getString('language') ?? 'en_US';    // Get the saved language preference from SharedPreferences, defaulting to 'en_US' if not found.
   if (language == 'vi_VN') {
     return false;
   }
