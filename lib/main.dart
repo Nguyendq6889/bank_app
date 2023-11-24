@@ -2,7 +2,9 @@ import 'package:bank_app/screens/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'app_assets/app_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();  // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
@@ -37,21 +39,39 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,  // Remove the debug banner in the top right corner.
-      // Use the localizationDelegates, supportedLocales, and locale from the context.
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: ThemeData(
-        fontFamily: 'Mulish',  // Set the default font family for the entire app.
-        primarySwatch: Colors.blue,
-        // Disable default Widget splash effect in Flutter.
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
+    return GlobalLoaderOverlay(     // This widget is from the loader_overlay package to create loading effects for the app.
+    overlayColor: Colors.black.withOpacity(0.3),
+      useDefaultLoading: false,
+      overlayWidgetBuilder: (progress) {
+        return Center(
+          child: Container(
+            width: 80,
+            height: 80,
+            padding: const EdgeInsets.all(22),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
+            child: const CircularProgressIndicator(
+              strokeWidth: 2,
+              color: AppColors.primaryColor,
+            ),
+          )
+        );
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,  // Remove the debug banner in the top right corner.
+        // Use the localizationDelegates, supportedLocales, and locale from the context.
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        theme: ThemeData(
+          fontFamily: 'Mulish',  // Set the default font family for the entire app.
+          primarySwatch: Colors.blue,
+          // Disable default Widget splash effect in Flutter.
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          hoverColor: Colors.transparent,
+        ),
+        home: const SplashScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }

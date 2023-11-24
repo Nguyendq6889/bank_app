@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -424,7 +425,11 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   _goToMainScreen() {
-    // Navigate to the MainScreen and replace the current SignInScreen.
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()));
+    context.loaderOverlay.show();     // Show loading effect
+    Future.delayed(const Duration(seconds: 2), () {
+      // After 2 seconds, hide loading effect and navigate to the MainScreen and replace the current SignInScreen.
+      context.loaderOverlay.hide();
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const MainScreen()));
+    });
   }
 }
