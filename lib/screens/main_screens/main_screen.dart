@@ -1,4 +1,3 @@
-import 'package:bank_app/screens/qr_code/qr_code_info_screen.dart';
 import 'package:bank_app/screens/qr_code/qr_code_scan_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +19,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   static const TextStyle selectedLabelStyle = TextStyle(fontSize: 12, fontWeight: FontWeight.w700, height: 1.6);
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     TransactionsPage(),
     Text(
-      'Index 2: School',
-      style: optionStyle,
+      'Index 2: QR Code Scan Screen',
     ),
     NotificationsPage(),
     AccountPage()
@@ -46,17 +43,13 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: Localizations.override(
         context: context,
         locale: context.locale,
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
-          // selectedFontSize: 14,
           selectedLabelStyle: selectedLabelStyle,
-          // unselectedFontSize: 14,
           unselectedLabelStyle: selectedLabelStyle,
           selectedItemColor: const Color(0XFF5289F4),
           unselectedItemColor: const Color(0xffC4C4C4),
@@ -89,7 +82,6 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
           currentIndex: _selectedIndex,
-//         selectedItemColor: Colors.amber[800],
           onTap: _onItemTapped,
         ),
       ),

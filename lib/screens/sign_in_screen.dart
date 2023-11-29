@@ -249,9 +249,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                         : SvgPicture.asset(AppIcons.iconFingerprint),
                                     const SizedBox(width: 12),
                                     Text(
-                                        availableBiometrics.contains(BiometricType.face)
-                                            ? 'Face ID'
-                                            : 'Touch ID',
+                                      availableBiometrics.contains(BiometricType.face)
+                                          ? 'Face ID'
+                                          : 'Touch ID',
                                       style: AppStyles.textButtonBlack.copyWith(fontWeight: FontWeight.w600)
                                     )
                                   ],
