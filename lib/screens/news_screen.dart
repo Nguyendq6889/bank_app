@@ -1,4 +1,4 @@
-import 'ấdasds/app_assets/app_styles.dart';
+import '../app_assets/app_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
