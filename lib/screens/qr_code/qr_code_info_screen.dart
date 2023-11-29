@@ -1,4 +1,3 @@
-import 'package:bank_app/app_assets/app_images.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../app_assets/app_colors.dart';
 import '../../app_assets/app_icons.dart';
+import '../../app_assets/app_images.dart';
 import '../../app_assets/app_styles.dart';
 import '../../widgets/main_button_widget.dart';
 

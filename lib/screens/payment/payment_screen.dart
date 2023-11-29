@@ -1,10 +1,10 @@
-import 'package:bank_app/widgets/feature_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../app_assets/app_colors.dart';
 import '../../app_assets/app_icons.dart';
 import '../../app_assets/app_styles.dart';
+import '../../widgets/feature_widget.dart';
 
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({Key? key}) : super(key: key);
