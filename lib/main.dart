@@ -1,10 +1,10 @@
-import 'package:bank_app/screens/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'app_assets/app_colors.dart';
+import 'screens/splash_screen.dart';
+import 'widgets/loading_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();  // Needs to be called so that we can await for EasyLocalization.ensureInitialized();
@@ -43,18 +43,7 @@ class MyApp extends StatelessWidget {
     overlayColor: Colors.black.withOpacity(0.3),
       useDefaultLoading: false,
       overlayWidgetBuilder: (progress) {
-        return Center(
-          child: Container(
-            width: 80,
-            height: 80,
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: Colors.white),
-            child: const CircularProgressIndicator(
-              strokeWidth: 2,
-              color: AppColors.primaryColor,
-            ),
-          )
-        );
+        return const LoadingWidget();
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,  // Remove the debug banner in the top right corner.
