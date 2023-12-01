@@ -72,12 +72,9 @@ class PaymentScreen extends StatelessWidget {
                   crossAxisSpacing: 12,
                   crossAxisCount: 3,
                   children: const <Widget>[
-                    FeatureWidget(title: 'electric_bill', icon: AppIcons.iconElectric,
-                      // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InterbankPaymentScreen()))
-                    ),
-                    FeatureWidget(title: 'water_fee', icon: AppIcons.iconWater,
-                      // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const InterbankPaymentScreen()))
-                    ),
+                    // FeatureWidget in lib/widgets/feature_widget.dart file.
+                    FeatureWidget(title: 'electric_bill', icon: AppIcons.iconElectric),
+                    FeatureWidget(title: 'water_fee', icon: AppIcons.iconWater),
                     FeatureWidget(title: 'airline_tickets', icon: AppIcons.iconAirplane),
                     FeatureWidget(title: 'Internet', icon: AppIcons.iconInternet),
                     FeatureWidget(title: 'television', icon: AppIcons.iconTV),

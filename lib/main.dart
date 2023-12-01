@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
     overlayColor: Colors.black.withOpacity(0.3),
       useDefaultLoading: false,
       overlayWidgetBuilder: (progress) {
-        return const LoadingWidget();
+        return const LoadingWidget();     // LoadingWidget in lib/widgets/loading_widget.dart file.
       },
       child: MaterialApp(
         debugShowCheckedModeBanner: false,  // Remove the debug banner in the top right corner.

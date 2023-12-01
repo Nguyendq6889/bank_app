@@ -73,6 +73,7 @@ class TransferScreen extends StatelessWidget {
                   crossAxisSpacing: 12,
                   crossAxisCount: 3,
                   children: <Widget>[
+                    // FeatureWidget in lib/widgets/feature_widget.dart file.
                     FeatureWidget(
                       title: 'intra_bank',
                       icon: AppIcons.iconIntraBank,

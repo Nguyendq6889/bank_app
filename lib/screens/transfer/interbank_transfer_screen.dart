@@ -125,6 +125,7 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                             ),
                           ),
                           InkWell(
+                            // modalBottomSheetSelectValue function in lib/widgets/common_widget.dart file.
                             onTap: () => CommonWidget.modalBottomSheetSelectValue(
                               context: context,
                               listData: listBanks,
@@ -203,6 +204,7 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                                 ),
                                 const VerticalDivider(thickness: 1, width: 1, color: Color(0xffD7DBE6)),
                                 InkWell(
+                                  // modalBottomSheetSelectValue function in lib/widgets/common_widget.dart file.
                                   onTap: () => CommonWidget.modalBottomSheetSelectValue(
                                     context: context,
                                     listData: listCurrency,
@@ -234,6 +236,7 @@ class _InterbankTransferScreenState extends State<InterbankTransferScreen> {
                             ),
                           ),
                           InkWell(
+                            // modalBottomSheetSelectValue function in lib/widgets/common_widget.dart file.
                             onTap: () => CommonWidget.modalBottomSheetSelectValue(
                               context: context,
                               listData: listFeePayer,

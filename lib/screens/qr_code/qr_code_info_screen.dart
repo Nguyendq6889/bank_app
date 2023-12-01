@@ -112,7 +112,7 @@ class QRCodeInfoScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 24),
-                MainButtonWidget(
+                MainButtonWidget(     // MainButtonWidget in lib/widgets/main_button_widget.dart file.
                   width: size.width - 32,
                   text: 'transfer'.tr(),
                   onTap: () {},

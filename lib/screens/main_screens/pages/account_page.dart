@@ -234,7 +234,7 @@ class _AccountPageState extends State<AccountPage> {
                 ),
               ),
               const SizedBox(height: 12),
-              LanguageOptionWidget(
+              LanguageOptionWidget(     // LanguageOptionWidget in lib/widgets/language_option_widget.dart file.
                 icon: AppIcons.iconVietNam,
                 label: 'Tiếng Việt',
                 selected: (_language == 'vi_VN') ? true : false,
@@ -244,7 +244,7 @@ class _AccountPageState extends State<AccountPage> {
                   Navigator.pop(context);
                 },
               ),
-              LanguageOptionWidget(
+              LanguageOptionWidget(     // LanguageOptionWidget in lib/widgets/language_option_widget.dart file.
                 icon: AppIcons.iconEnglish,
                 label: 'English',
                 selected: (_language == 'en_US') ? true : false,

@@ -258,6 +258,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ),
                               SizedBox(height: size.height * 2.5 / 100),
+                              // MainButtonWidget in lib/widgets/main_button_widget.dart file.
                               MainButtonWidget(text: 'sign_in'.tr(), onTap: () => _goToMainScreen()),
                               SizedBox(height: size.height * 2.5 / 100),
                               GestureDetector(
@@ -341,7 +342,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
               const SizedBox(height: 12),
-              LanguageOptionWidget(
+              LanguageOptionWidget(     // LanguageOptionWidget in lib/widgets/language_option_widget.dart file.
                 icon: AppIcons.iconVietNam,
                 label: 'Tiếng Việt',
                 selected: (_language == 'vi_VN') ? true : false,
@@ -351,7 +352,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Navigator.pop(context);
                 },
               ),
-              LanguageOptionWidget(
+              LanguageOptionWidget(     // LanguageOptionWidget in lib/widgets/language_option_widget.dart file.
                 icon: AppIcons.iconEnglish,
                 label: 'English',
                 selected: (_language == 'en_US') ? true : false,
